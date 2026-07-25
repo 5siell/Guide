@@ -1,0 +1,902 @@
+﻿\section{Move Order \& Picking Phase}
+\subsection{Explanation of Move Order - ABBA} \label{ABBA}
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{Images/moveorder.jpg}
+    \caption{ABBA applied}
+    \label{ABBA_image}
+\end{wrapfigure}
+
+In accordance with \href{https://www.warzone.com/wiki/Move_Order}{Warzone Wiki Move Order Explanation}, in a Warzone 1vs1 game between player A and player B, and under the assumption that player A has the first move, the move order alternates as $\text{ABBAABBAA}\dots$. This sequence can be described as follows:
+
+\begin{itemize}
+    \item Player A executes their $1^{\text{st}}$ move.
+    \item Player B executes their $1^{\text{st}}$ and $2^{\text{nd}}$ moves consecutively.
+    \item Player A executes their $2^{\text{nd}}$ and $3^{\text{rd}}$ moves consecutively.
+    \item Player B executes their $3^{\text{rd}}$ and $4^{\text{th}}$ moves consecutively.
+    \item Player A executes their $4^{\text{th}}$ and $5^{\text{th}}$ moves consecutively.
+    \item Player B executes their $5^{\text{th}}$ and $6^{\text{th}}$ moves consecutively.
+    \item And so on, following the $\text{ABBA}$ pattern, with an example at Figure \ref{ABBA_image}.
+\end{itemize}
+
+This pattern ensures that player A and player B alternate moves, with each player receiving consecutive moves in pairs after the first move by player A. The sequence $\text{ABBA}$ then continues cyclically.
+\\
+\\
+Of course, in the opposite case that player B has first move, then the move order follows the inverse pattern $\text{BAABBAABB} \dots$. The ABBA algorithm determines not only the order of moves but also the order of deployments, without exception. The arising question regarding the above rule, how is it decided which player moves first each turn. The answer to that question relies on the 3 different settings of implementation one can find upon creating a game. Needless to say, each game follows exactly 1 of the settings below:
+\begin{enumerate}
+    \item Random Move Order \ref{random_move_order}
+    \item Cyclic Move Order \ref{cyclic_move_order}
+    \item No-Luck Cycle Move Order \ref{noluck_cycle}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Move Order Settings}
+
+\textbf{Random Move Order} \label{random_move_order}
+\\
+\\
+When a game is configured to Random Move Order, Warzone will randomize the move order on each turn. Very straight forward, no way to predict whether you have first move or not, it's a 50-50 chance. The ABBA pattern applies always. 
+\\
+\\
+When Warzone was first released, it resembled a lot Risk's settings of luck with dice rolls. Now I am not certain of this, but the game used to have only RMO for some years, with Fizzer pushing for a more strategic, less luck-heavy meta later on, which included cyclic and nlc. Older templates have RMO de facto. That has been the subject of discussion, with a lot of templates throughout time altered by the community from RMO to a periodic and predictable setting.
+\\
+\\
+\textbf{Cyclic Move Order} \label{cyclic_move_order}
+\\
+\\
+Suppose the picking phase of a Warzone's game is Turn 0, basically the only Turn happening prior to Turn 1, with the purpose of allocating territories to the 2 players based on their pick choices (assuming of course some manual distribution of territories). The first turn of the game (Turn 0), is randomised, just as it would be in the Random Move Order presented above, but subsequent turns reverse the order each time. 
+\\
+\\
+In an example of an 1vs1 game between player A and B, the dice is rolled during picking phase and let's assume for the sake of the example player A has 1st pick. Then player B gets 2 picks, then A gets 2 picks, and so on till both players exhaust the number of initial territories the corresponding template offers them. To sum it up, in Cyclic Move Order, and if player A had 1st pick, then:
+\begin{itemize}
+    \item Every even Turn (Turn 2, 4, 6 etc) will involve the patter $\text{ABBAABB} \dots$ meaning A has first move.
+    \item Every odd Turn (Turn 1, 3, 5 etc) will involve the pattern $\text{BAABBAA} \dots$ meaning B has first move.
+\end{itemize}
+
+What this implies is that move order is predictable. As long as you are able to perceive the move order once, you know who has first move each turn in the future and in the past. 
+
+\textbf{No-Luck Cycle Move Order} \label{noluck_cycle}
+\\
+\\
+No-Luck Cycle Move Order is the same as Cyclic, except that it aims to remove the random effect of the random roll on the first turn of who plays first. The initial order of the cycle is determined by how fast each player plays during their first turn. Under the assumption the game involves a manual distribution setting, the first turn is the picking phase, alternatively it's the first turn of the game. Whoever plays (and commits) faster, will be placed first in the move order.
+\\
+\\
+Basically, whoever picks fastest can guarantee they will get their first pick of choice. 
+
+\textbf{Discussion}
+\\
+\\
+If you study or at least come across games from the 2010s you'll quickly see that all templates featured RMO. The introduction of cyclic and NLC started as an attempt at reducing the luck factor in games. However this is a very controversial topic of discussion. NLC degrades
+\subsection{MTL templates Move Order archive}
+
+Categorizing the templates by Move Order
+
+
+\footnotesize
+
+\begin{longtable}{|p{2.5cm}|c|p{1.5cm}|c|c|c|c|c|c|}
+\hline
+\rowcolor{Baby_Blue}
+\makecell{\textbf{Map}} & 
+\makecell{\textbf{SR} \\ \textbf{WR}} & 
+\makecell{\textbf{Specialty}} & 
+\makecell{\textbf{Income}} & 
+\makecell{\textbf{Picks}} & 
+\makecell{\textbf{Armies per} \\ \textbf{Initial Terr.}} & 
+\makecell{\textbf{Move} \\ \textbf{Order}} & 
+\makecell{\textbf{Neutrals}} & 
+\makecell{\textbf{Neutrals} \\ \textbf{in Distr}} \\ 
+\hline
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{Baby_Blue}
+\makecell{\textbf{Map}} & 
+\makecell{\textbf{SR} \\ \textbf{WR}} & 
+\makecell{\textbf{Specialty}} & 
+\makecell{\textbf{Income}} & 
+\makecell{\textbf{Picks}} & 
+\makecell{\textbf{Armies per} \\ \textbf{Initial Terr.}} & 
+\makecell{\textbf{Move} \\ \textbf{Order}} & 
+\makecell{\textbf{Neutrals}} & 
+\makecell{\textbf{Neutrals} \\ \textbf{in Distr}} \\ 
+\hline
+\hline
+\endhead
+
+% Data Rows
+Aseridith Islands & SR & INSS & 0 & 8 & 3 & cycle & 2 & 2 \\ \hline
+Australia & SR & SR & 3 & 5 & 3 & cycle & 2 & 3 \\ \hline
+\rowcolor{Light_Blue}
+Basileia & SR & SR & 5 & 3 & 4 & random & 2 & 2 \\ \hline
+\rowcolor{Light_Blue}
+Battle for Middle Earth & SR & Luck & 5 & 3 & 4 & random & 2 & 4 \\ \hline
+Battle Islands V & SR & SR & 5 & 3 & 4 & cycle & 2 & 4 \\ \hline
+Belarus & WR & WR & 5 & 3 & 6 & cycle & 3 & 2 \\ \hline
+Biomes of America & SR & INSS & 0 & 7 & 4 & cycle & 4 & 2 \\ \hline
+\rowcolor{Light_Blue}
+Black Sea & SR & SR & 5 & 4 & 4 & random & 2 & 2 \\ \hline
+Blitzkrieg Bork & SR & Army Cap & 5 & 3 & 4 & cycle & 2 & 2 \\ \hline
+\rowcolor{Light_Blue}
+British Raj & WR & WR & 5 & 4 & 4 & random & 2 & 2 \\ \hline
+Discovery & SR & SR & 4 & 4 & 3 & cycle & 6 & 2 \\ \hline
+Earthsea & SR & Weird & 5 & 5 & 3 & cycle & 2 & 2 \\ \hline
+Elitist Africa & SR & INSS & 5 & 7 & 4 & cycle & 2 & 2 \\ \hline
+Fast Earth & SR & Kill Rate & 3 & 5 & 3 & cycle & 2 & 2 \\ \hline
+\rowcolor{Light_Blue}
+Final Fantasy VII & WR & WR & 5 & 3 & 4 & random & 2 & 4 \\ \hline
+French Brawl & SR & Extra & 4 & 6 & 3 & cycle & 2 & 2 \\ \hline
+Georgia Army Cap & SR & Army Cap & 5 & 5 & 1 & cycle & 2 & 2 \\ \hline
+Great Lakes & WR & WR & 6 & 4 & 5 & cycle & 3 & 2 \\ \hline
+\rowcolor{Light_Blue}
+Greater Middle East III & SR & SR & 4 & 4 & 3 & random & 2 & 4 \\ \hline
+Greece LD & SR & LD & 6 & 4 & 2 & cycle & 2 & 4 \\ \hline
+\rowcolor{Light_Blue}
+Guiroma & SR & Luck & 5 & 4 & 5 & random & 2 & 4 \\ \hline
+\rowcolor{Light_Blue}
+Hannibal at the Gates & SR & SR & 4 & 5 & 3 & random & 2 & 2 \\ \hline
+Island of Ruins & SR & MOD & 4 & 5 & 2 & cycle & 4 & 2 \\ \hline
+\rowcolor{Light_Blue}
+Laketown & SR & SR & 4 & 4 & 4 & random & 2 & 3 \\ \hline
+Lampuria Swap & SR & MOD & 5 & 4 & 4 & cycle & 2 & 3 \\ \hline
+Landria & SR & Weird & 5 & 6 & 4 & cycle & 2 & 2 \\ \hline
+\rowcolor{Light_Blue}
+MA Battle Islands V & SR & Multi Attack & 5 & 3 & 6 & random & 1 & 4 \\ \hline
+Macedonia no Split & SR & No Split & 3 & 5 & 4 & cycle & 2 & 2 \\ \hline
+Malvia & SR & SR & 5 & 4 & 4 & cycle & 2 & 3 \\ \hline
+MME MA LD & SR & Multi Attack & 5 & 3 & 4 & cycle & 2 & 4 \\ \hline
+Numenor & SR & SR & 3 & 5 & 3 & cycle & 2 & 4 \\ \hline
+Pangea Ultima & WR & WR & 6 & 3 & 2 & cycle & 2 & 4 \\ \hline
+\rowcolor{Light_Blue}
+Phobia & WR & WR & 5 & 3 & 4 & random & 2 & 4 \\ \hline
+Post-melt Antarctica & SR & SR & 5 & 3 & 4 & cycle & 2 & 0 \\ \hline
+\rowcolor{Light_Blue}
+Randomized Strat ME & WR & WR & 5 & 3 & 4 & random & 2 & 4 \\ \hline
+Saudi Arabia & SR & SR & 4 & 4 & 4 & cycle & 2 & 3 \\ \hline
+Slow Burn & SR & SR & 3 & 3 & 2 & cycle & 2 & 3 \\ \hline
+\rowcolor{Light_Blue}
+Strat ME & WR & WR & 5 & 3 & 4 & random & 2 & 4 \\ \hline
+Strat MME & SR & SR & 5 & 3 & 4 & cycle & 2 & 4 \\ \hline
+Strategic Commanders & WR & Commanders & 4 & 3 & 4 & cycle & 3 & 5 \\ \hline
+\rowcolor{Light_Blue}
+Strategic Greece & SR & SR & 5 & 5 & 5 & random & 2 & 3 \\ \hline
+Succession Wars & SR & LD & 0 & 7 & 4 & cycle & 3 & 2 \\ \hline
+Tarabonia's Choice & SR & Light Fog & 4 & 3 & 4 & cycle & 2 & 4 \\ \hline
+Timid Lands & SR & Kill Rate & 3 & 5 & 3 & cycle & 2 & 2 \\ \hline
+\rowcolor{Light_Blue}
+Tor-ture & WR & WR & 5 & 4 & 4 & random & 2 & 4 \\ \hline
+Treasure Map & SR & SR & 4 & 4 & 4 & cycle & 2 & 4 \\ \hline
+Turkey LD & SR & LD & 3 & 3 & 4 & cycle & 2 & 2 \\ \hline
+Unicorn Island & SR & SR & 5 & 5 & 3 & cycle & 2 & 4 \\ \hline
+Volcano Island & SR & SR & 5 & 4 & 4 & cycle & 2 & 4 \\ \hline
+\rowcolor{Light_Blue}
+World of Warhammer & SR & SR & 5 & 4 & 4 & random & 2 & 4 \\ \hline
+Yorkshire Brawl & SR & Extra & 4 & 6 & 3 & cycle & 2 & 2 \\ \hline
+
+\caption{Map Details as of April 2024}
+\label{tab:map-details}
+\end{longtable}
+
+\normalsize
+
+
+\subsection{ABBA expanded to Team Games}
+
+\subsubsection{2vs2}
+
+\paragraph{2vs2: ABBA in Orders and determining Move Order}
+
+Team Games (2vs2s and 3vs3s) tend to have cyclic move order. Expanding on this, the order follows the same ABBA pattern. In a 2vs2 game between Team A (players A1 and A2) and Team B (players B1 and B2), the move order would follow the pattern $$\text{A1,B1,B2,A2} ,\text{A2,B2,B1,A1} , \text{A1,B1,B2,A2} \dots$$
+
+This is best illustrated in the Figure \ref{moveorder_2v2s}. Also remember that the ABBA pattern follows both the moves - orders and the deployments.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{Images/moveorder2v2.jpg}
+  \caption{Move Order in 2vs2 games}
+  \label{moveorder_2v2s}
+\end{figure}
+
+For example, in this \href{https://www.warzone.com/MultiPlayer?GameID=37917076}{Strategic 2vs2} game when checking the history from everyone's POV as well as my POV after Turn 1 we see Figure \ref{ex1} and \ref{ex2}.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth, height=13cm]{Images/ex1.jpg}
+    \caption{Full POV}
+    \label{ex1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth, height=13cm]{Images/ex2.jpg}
+    \caption{My Perspective}
+    \label{ex2}
+  \end{minipage}
+\end{figure}
+
+After Turn 1 me and my teammate should be able to figure out the move order within seconds. Upon seeing history, it's straight forward that on Turn 1 the order is Ralph->7ate9, with Xeno making an attack visible to us in between 7ate9's 1st and 2nd move. If Xeno and Jack were team B, then the moves we see in history are impossible to take place, considering the move order would be A1->B1->B2->A2->A2, implying that A2, in this case 7ate9, would have 2 consecutive moves (Figure \ref{2v2deriving}). As a result, Xeno/Jack are team A, and the move order is revealed to be:
+\begin{itemize}
+    \item Odd Turns: 1.Jack, 2/3 Ralph, 7ate9, 4. Xeno
+    \item Even Turns (and picks): 1. Xeno 2/3 7ate9, Ralph, 4. Jack
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Images/2v2figuring.jpg}
+  \caption{Deriving move order}
+  \label{2v2deriving}
+\end{figure}
+
+Following the same \href{https://www.warzone.com/MultiPlayer?GameID=37917076}{Strategic 2vs2} game, after figuring the Move Order, the next step is utilizing that so as to get any information possible for the opponent spawns as well as expansion and leftover armies.
+
+\paragraph{2vs2: ABBA in making picks: Mirroring}
+
+In a Game between 2 teams, A and B, with each team having x number of players and each player receiving y number of territories, the total number of territories allocated to all players participating is \textit{2xy}. As such, during pick phase, you should always make enough picks up to the number \textit{2xy}, as you might end up losing enough picks to reach that number.
+\\
+\\
+There is a core idea behind picking in Team Games, that holds true to every Team Game, regardless of the amount of players participating, and that is mirror picking. Suppose that in a 2vs2 template, there as an undisputed best territory/bonus in the board and you want for your team (team A for the example's sake) to maximize the chances that you get that. If team B mirror picks (meaning both B1 and B2 put their first pick on that territory), whereas team A has only A1 first pick it, then Team A has 25\% probability to get first pick. Therefore, if there is a territory you want to make sure your team gets, mirroring first pick is the way. Expanding this idea to a quantifiable 2vs2 template where team A can confidently order the territories in distribution in a ranking of preference, has given birth to the idea that is "full mirroring".
+\\
+\\
+By full mirroring, we refer to teams that would mirror pick their entire set of picks. For example, in Final Earth 2vs2 (commonly referred as Strat 2vs2) where each player receives 3 initial territories, full mirroring refers to making a ranking of 12 territories in the map and mirror picking the entire list. If a team full mirrors 1->12 in Final Earth 2vs2 and doesn't lose a single pick during pick phase, they get their first 6 territories, meaning player A1 receives 1,4,5 while A2 receives 2,3,6. If the team loses for example picks 3 and 4, then suddenly the distribution looks like A1: 1,6,7 and A2: 2,5,8 and the allocation looks completely different. This introduces us to the biggest drawback in mirror picking, that is ensuring coverage in the map for all possible scenarios of pick combinations for both players. Take a close look for example at this \href{https://www.warzone.com/MultiPlayer?GameID=39930222}{CW 2vs2} game. Team A full mirrors and receives their 1,3,4,6,7,8 allocated as:
+\begin{itemize}
+    \item Aika: 1,6,7
+    \item No.One: 3,4,8
+\end{itemize}
+After Turn 1 we quickly see that Aika has 3 contested picks. In expansion-heavy 2vs2 templates that might not be a big issue, as long as No.One could expand while Aika absorbs pressure, but 3 fronts vs 2 opponents at Turn 2 is impossible to overcome. 
+\\
+\\
+The argument in favor of mirroring (not necessarily full mirroring), is reducing the degrees of freedom or variance during picking phase. For example, take a look at this \href{https://www.warzone.com/MultiPlayer?GameID=38651245}{Ladder 2vs2} game, accompanied by Figure \ref{abba2v2}. In the Figure, I have denoted:
+\begin{itemize}
+    \item With G10 the 5 wastelands as well as with T2 the neutrals in the bonuses containing wastelands and R4 the in distribution spawns that belong to wastelanded bonuses.
+    \item With Y4 the pickable territories in distribution.
+    \item With white regions the 5 income zones. Thick white lines for the 2 safest income regions, Africa and Oceania, with the other 3 for NA, SA and Eurasia.
+    \item With Yellow Team A's picks.
+    \item With Pink Team B's picks.
+    \item With Black arrows the fastest paths into the safe regions.
+    \item With Bright Green 2 important territories in Eurasia.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{Images/abba2v2.jpg}
+  \caption{Map dynamics of this distribution}
+  \label{abba2v2}
+\end{figure}
+
+First things first we can spot that both teams decide on covering the 2 safest income regions at picks 1-4 with the reasons being:
+\begin{itemize}
+    \item If we successfully get our first 4 picks, with our last 2 picks as a team we cover 2/3 of the large income regions within 1-3 turns. The paths should be obvious: 
+    \begin{itemize}
+        \item Indonesia -> Japan -> Cover East Asia
+        \item Oceaania -> Hawaii -> Cover USA
+        \item South Africa -> Argentina -> Cover SA
+        \item East Africa -> Europe into West Russia
+    \end{itemize}
+    \item If we get 3 out of our first 4 picks, this means we have secured 1 safe income region and opt to get coverage in the other 3.
+    \item If we split both safe income regions (expected result), we have to optimize accordingly the later picks.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Images/opt2v2.jpg}
+    \caption{ABBA if we split 1-4}
+    \label{opt2v2}
+\end{wrapfigure}
+But what does it mean to optimize later picks? Under those premises, player A2 will get a territory, followed by team A getting 2 consecutive territories. So, if I am making picks and expecting my opponents to go for the same 1-5 territories, if I cover a region only with my 5th pick, I risk a 50-50\% chance of losing that territory. If I want to take that risk I must optimize my 6/7, as I will be guaranteed to get them.
+\\
+\\
+With that settled, the my pickset now make more sense.
+\begin{enumerate}
+    \item For my picks (7ate9): I select 5th in Ural based on:
+    \begin{enumerate}
+        \item It's 3 double borders are all 4army neutrals that I either see Turn 1 or Turn 2 -> is relatively safely
+        \item It is in the center of the biggest income region on the map, eurasia.
+        \item Has immediate expansion if needed. 
+        \item Is a +3 bonus. Since I expect early contact and splitting 1-4, it's generally better to go for safe +3 bonuses instead of +4, as +4s require 10/10 of your deployments in the first 2 turns.
+    \end{enumerate}
+    \item If I lose Ural, I always get 6/7, which ensures for me coverage on NA and a backup safe +3 bonus in eurasia, Fast East Russia. The latter is especially useful for having direct paths to Oceania and NA.
+    \item If I lose 6 in NA I either get two picks from 1-4, 5,7,8 and a last one, or I am getting two from 1-4, 5,7,9 and 1 more. Notice that it is impossible to lose all 6,7,8 under this scenario of splitting 1-4. As such,
+    \begin{enumerate}
+        \item If I get two from 1-4, 5, 7, 8 and a last one, 8 is my coverage for NA and with the remaining picks i can stack cover the last income region.
+        \item If I get two from 1-4, 5,7,9 I should be team A, have lost 6,8 but have Far East Russia to cover NA if needed + position my 10 in SA in the spawn closest to NA, while 12 also can positionally cover that.
+    \end{enumerate}
+\end{enumerate}
+
+\paragraph{2vs2: ABBA in making picks: Not Mirroring}
+
+As some wise people have said, full mirroring is a lazy way to pick. Let's take a look at two games, with the first one this \href{https://www.warzone.com/MultiPlayer?GameID=38757694}{Biomes 2vs2} game. 
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/boa2v2.jpg}
+    \caption{ABBA in Biomes 2v2, 1}
+    \label{boa2v2}
+\end{wrapfigure}
+
+Upon looking at the distribution there are 3 combos that can either net income turn 1 or +3/+4 income on turn 2 with 0 deployments, followed by the more niche but equally strong combo in Gulf of Mexico. Due to the other good picks being relativelly slow, with the exception of the city in Brazil which can be covered in multiple ways, let's accept that the best course of action is split picking the 4 combos from 1-4 in both players. After that, Team A has a guaranteed pick on player A1, followed by two picks for team B followed by two picks on player A2. 
+\\
+\\
+The key in this distribution is recognizing that there are 3 territories worth mirroring at 5-7, in two cities and the farm in SA (look Rufus' team picks). If he loses the city in Brazil, he guarantees 6,7 which provide the last city as well as the farm in Argentina. Even more importantly, 8/9 should be split picks, since if you are team A, you want to capitalize on the fact that A2 will get two picks consecutively and you want to aim at them getting initial income.
+\\
+\\
+In another example, again at \href{https://www.warzone.com/MultiPlayer?GameID=38696110}{Biomes 2vs2}:
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/boarps.jpg}
+    \caption{First 4 picks}
+    \label{boarps1}
+\end{wrapfigure}
+
+There are in the distribution two undisputed busted city combos that both teams should split pick 1-2 otherwise they are completely trolling. But after that we have a problem, as there are so many different combos and individual territories that we would like to cover. Experienced players should agree that the combo in Llanos (oil) as well as the solo Farm pick in NA are the best of the rest, as we can make multiple picks around Argentina and the whites in the surrounding region to ensure coverage. If we proceed on split picking after 1-2 and have one player do 3 in Farm in NA and 4 onward somewhere in Argentina while the other player does 3/4 in the oil in Llanos, then there is a hidden trap, that I try to exploit with my pickset.
+\begin{itemize}
+    \item If the 3/4 Oil player is A1 and team B mirror picks 3-5 (2x Oil and Farm), then A2 gets solo Farm and team B get both Oil picks and can gift Turn 1 to get the bonus. Therefore there is 25\% chance that a team not mirroring 3-5 can lose that combo entirely.
+\end{itemize}
+
+Proceeding on the same path, there are more issues arising, as shown in \ref{boarps2}. 
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/boarps2.jpg}
+    \caption{Later picks}
+    \label{boarps2}
+\end{wrapfigure}
+
+As long as both teams in some way or another split all picks from 1-7, player A1 is about to get a combo, with 2 consecutive picks. So, the correct approach after the combo oil \& farm in NA, is to split pick between the two players of the team for the combos in either the rain-forest, or forest, or whites, so as to ensure that if you are team A, you get a really good combo on A1. Then, the only compensation that team B can get, since B1 and B2 get a pick each, and not a combo in one of them, is the Farm in Argentina as well as the Oil in Gulf of Mexico, followed by a combo pick for player A2.
+
+Understanding all the intricacies of ABBA will give you the upper hand and a better and thorough understanding of the picking phase.
+
+\subsubsection{3vs3}
+
+Similarly to 2vs2 games, 3vs3 also tend to have cyclic move order. Expanding on this, the order follows the same ABBA pattern. In a 3vs3 game between Team A (players A1, A2 and A3) and Team B (players B1, B2 and B3), the move order would follow the pattern $$\text{A1,B1,B2,A2,A3,B3} ,\text{B3,A3,A2,B2,B1,A1} , \text{A1,B1,B2,A2,A3,B3} \dots$$
+
+This is best illustrated in the Figure \ref{3vs3}. Also remember that the ABBA pattern follows both the moves - orders and the deployments.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Images/3vs3.jpg}
+  \caption{ABBA in moves in 3vs3}
+  \label{3vs3}
+\end{figure}
+
+Mirroring, either fully or partially is extremely common in non-INSS 3vs3 templates, as it drastically reduces the number of variables while at the same time optimizing the probabilities of certain cover or combo picks. For example, one can go into analysing in detail \href{https://www.warzone.com/MultiPlayer?GameID=33969282}{this CL 3vs3 game}, while taking into account \ref{3vs3alloc}, being the order of pick allocation during the game. Analyzing a 3vs3 Europe game is an a exhausting and complicated task, in which I will not delve into at the moment.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Images/3vs3alloc.jpg}
+  \caption{Order of pick allocation in 3vs3}
+  \label{3vs3alloc}
+\end{figure}
+\subsection{Structuring Picks}
+
+All of the important principles are very clearly written in \href{http://nghood.com/pages/warzone/strategyguide}{M'Hunters Warlight Strategy Guide}. (Alternative \href{https://warlight.nghood.com/index.html}{link}), something I suggest revisiting. I will not delve too deep into different picksets here, as this is case specific for each template and distribution, but rather use this to just comment on how to structure picks properly given a strategy and knowing your ABBA.
+\\
+\\
+In the previous section when you saw the table you surely must be wondering why know all this. In reality, you do not need to memorize the combinations (sometimes), it is but a guideline for what you can expect. Take for example templates with 3 initial territories. We sometimes see in the distribution an FTB or a big income region and think to ourselves I will do 3/4/5/6 in that area, or 3/4/5 to counter that area and 6th somewhere else. The fault in this logic comes with assuming that we will always get our 1/2 and have our 3rd pick as a counter pick. If we lose one of our first 2 picks, then we suddenly find ourselves with a cluster at 3/4/5. In other words, sometimes we should deviate from the 1/2 safe 3/4/5 counter logic to a 1/2/3 safe 4/5/6 counter logic, with 1/2 combo and 3 safe, or gamble 1 safe 2/3 combo, or completely disregard both ideas and go for more versatile picks. Examples of this backfiring in \href{https://www.warzone.com/MultiPlayer?GameID=39323183}{1v1 Ladder}, \href{https://www.warzone.com/MultiPlayer?GameID=40124025}{Slow Burn}, \href{https://www.warzone.com/MultiPlayer?GameID=15035176}{Strat ME}. 
+\\
+\\
+Depending on the distribution in the game we can formulate picks based on what we expect to get or lose. For example in this \href{https://www.warzone.com/MultiPlayer?GameID=40132924}{Malvia} game, the yellow +4 west as a first pick controls two FTBs. Besides that, there is immediate expansion to every direction while also controlling the south +5 and +4 with the neutral double borders within 1 move. At the same time, north east provides fast income in 2 ways, the no deploy +2 combo and the ftb +3 in the islands. If the two players A and B split 1-4, then player A will get 5 and 8, while B gets two consecutive at 6,7. What this means effectively, is that the plan of: combo 1-2, then combo 3-4, then cover a region with 5-6-7-8, risks a pickset like 1,4,5,6 with two picks in the region you wanted to cover last. Meanwhile, your opponent could in theory have 2,3, a safe pick somewhere else, and a last pick neighboring your 5,6. Therefore, for each combo you expect to split, you can push cover picks later on your pickset.
+\\
+\\
+Another important idea during picks is knowing how to ensure coverage, or should I rephrase, setup your picks in a specific way so that you reduce the variance while picking. Ask yourself this question: In a 4 initial territory template like Malvia, are there any scenarios where I can lose 4 consecutive picks? What about 3 consecutive picks? What if I want to cover a region with my 3/4/5, is it ever possible losing that triple combination? Same goes for something like 4/5/6, or 5/6/7. The answers lie in Table \ref{tab:4territories_consecutive}.
+
+\small
+\begin{longtable}{|p{2.5cm}|p{3cm}|p{2.5cm}|c|}
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endhead
+
+% Data Rows for 4 Consecutive
+4 & \texttt{[1, 2, 3, 8]} & \textcolor{red}{first} & \{4, 5, 6, 7\} \\ \hline
+
+% Thicker horizontal line between sections
+\hline\hline
+
+% Data Rows for 3 Consecutive
+3 & \texttt{[1, 2, 3, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ \hline
+3 & \texttt{[1, 2, 4, 8]} & \textcolor{red}{first} & \{5, 6, 7\} \\ \hline
+3 & \texttt{[1, 3, 4, 8]} & \textcolor{red}{first} & \{5, 6, 7\} \\ \hline
+3 & \texttt{[1, 2, 6, 7]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ \hline
+
+% Thicker horizontal line between sections
+\hline\hline
+% Data Rows for 2 Consecutive
+2 & \texttt{[1, 4, 5, 6]} & \textcolor{red}{first} & \{2, 3\} \\ 
+2 & \texttt{[1, 4, 5, 7]} & \textcolor{red}{first} & \{2, 3\} \\ 
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 4, 5, 8]} & \textcolor{red}{first} & \{2, 3\} \\ \hline
+2 & \texttt{[1, 2, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{3, 4\} \\ 
+2 & \texttt{[1, 2, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{3, 4\} \\ 
+2 & \texttt{[1, 2, 5, 8]} & \textcolor{red}{first} & \{3, 4\} \\ \hline
+2 & \texttt{[1, 2, 3, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ \hline
+2 & \texttt{[1, 2, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ \hline
+2 & \texttt{[1, 2, 5, 8]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[1, 3, 5, 8]} & \textcolor{red}{first} & \{6, 7\} \\ 
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 4, 5, 8]} & \textcolor{red}{first} & \{6, 7\} \\ \hline
+
+\caption{Picking Combinations for 4 Initial Territories with Missing Picks}
+\label{tab:4territories_consecutive}
+\end{longtable}
+\normalsize
+
+
+There are a lot of takeaways from this, but the simplest ones are:
+\begin{enumerate}
+    \item Covering an area or an FTB with 3/4/5 and losing all three guarantees a 1/2/6/7 with known move order.
+    \item Covering  an area or an FTB with 5/6/7 and losing all three, gives intel on move order and one of the combinations in the table.
+    \item Expanding on that, you can lose 3/4/5 (get 1/2/6/7), you can lose 2/4/5 (get 1/3/6/7) and you can lose 1/4/5 (get 2/3/6/7). So if you can afford losing that sequence you control the outcome. If you can't afford losing all three because it is an FTB or a region you deem worthy of stacking, the latest you can guarantee coverage is at 2/3/5 (impossible to lose all three). You can lose 2/3/6 by getting first pick and a combination of 1/4/5 and a last pick on 7 or 8. If you think of picks by imagining the ABBA table these should make sense.
+    \item Losing 2/3 translates to getting 1/4/5 and knowing move order.
+    \item Losing 3/4 translates to getting 1/2/5 100\% of the time. This does mean that you can use 5 to immediately counter 3/4, however you can position 5 somewhere that will counter the expansion from 3/4 while having a positional advantage.
+    \item Losing 4/5 means you guarantee 2/3/6.
+\end{enumerate}
+
+Some players actively think about these things. Some others have an amazing intuition and it comes to them naturally. Some others tend to forget and write things down, like me. Let's look fast at some games purely to evaluate the picks based on possible combinations, starting with \href{https://www.warzone.com/MultiPlayer?GameID=34661130}{this Guiroma} game. 
+\begin{itemize}
+    \item The 2/3/4 combination around Illyricum, the most efficient bonus on the map, guarantees coverage, as it is impossible to lose 2/3/4 as well as 2/3/5. Choosing to do 4 Illy instead of 5 comes simply from wanting to get that triple pick, as it is dominating. 
+    \item 3 in Asia instead of Illyricum as losing 1, guarantees 2/3, and 3 is the latest of the two, providing coverage in the whole Turkey income region. 2 can be completed by the end of t1.
+    \begin{itemize}
+        \item Consider adrenaline's 1/2/3/4 only. At worst he gets only two of the four picks. There are two paths moving on with picks from here. One of them revolves doing 5 in a safe bonus, then 6/7/8 in an income region. The other revolves around doing 5/6 in one region and 7/8 in another region. The first, involves the 50-50\% risk of losing coverage. The latter involves the possibility of getting 5/6 vs a situation where your opponent gets a safe pick and a counter to your 5/6. This dilemma is something that depends on your comfort as well as the distribution give to you.
+        \item If you scout completed games by the best players in the website, you will see a trend where the 5/6 and 7/8 style is preferred. To me, the answer lies in the size of the map and the number of areas you deem worthy of ensuring coverage. after 1-4 there is only one region left, it might be worth it going for 5 safe into 6/7/8 cover, planning to get 1/4/5/8 or 2/3/6/7. If there's multiple regions, then 5/6 into 7/8 eliminates the coinflip of whether i get my choice of safe 5 or not.
+    \end{itemize}
+\end{itemize}
+
+Ultimately, remember that every scenario is unique and every set can be countered the weirdest blind counter in existence. 
+\\
+\\
+It becomes increasingly fruitless to construct a matrix similar to Table \ref{tab:4territories_consecutive} for more than 5 Initial Territory maps, as the pick combinations are way too many. Nevertheless, maybe this Table \ref{tab:5territories_consecutive} is useful to you. 
+
+\small
+\begin{longtable}{|p{2.5cm}|p{3cm}|p{2.5cm}|c|}
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endhead
+
+% Data Rows for 5 Consecutive
+5 & \texttt{[1, 2, 3, 4, 10]} & \textcolor{CustomBlue}{second} & \{5, 6, 7, 8, 9\} \\ \hline \hline 
+
+% Data Rows for 4 Consecutive
+\rowcolor{Light_Blue}
+4 & \texttt{[1, 2, 3, 8, 9]} & \textcolor{red}{first} & \{4, 5, 6, 7\} \\ \hline \hline
+4 & \texttt{[1, 2, 3, 4, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6, 7, 8\} \\ \hline \hline
+4 & \texttt{[1, 2, 3, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ 
+4 & \texttt{[1, 2, 4, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ 
+4 & \texttt{[1, 3, 4, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ 
+4 & \texttt{[2, 3, 4, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ \hline \hline 
+
+% Data Rows for 3 Consecutive 7,8,9
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 2, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 2, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 3, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 3, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[2, 3, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[2, 3, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ \hline \hline
+
+% Data Rows for 3 Consecutive 6,7,8
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ 
+3 & \texttt{[1, 2, 4, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ 
+3 & \texttt{[1, 3, 4, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ 
+3 & \texttt{[2, 3, 4, 5, 9]} & \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ \hline \hline 
+
+% Data Rows for 3 Consecutive 5,6,7
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 4, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6, 7\} \\ 
+3 & \texttt{[1, 2, 4, 8, 9]} & \textcolor{red}{first} & \{5, 6, 7\} \\ 
+3 & \texttt{[1, 3, 4, 8, 9]} & \textcolor{red}{first} & \{5, 6, 7\} \\ \hline \hline
+
+% Data Rows for 3 Consecutive 4,5,6
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ 
+3 & \texttt{[1, 2, 3, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ 
+3 & \texttt{[1, 2, 3, 7, 10]} & \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ \hline \hline
+
+% Data Rows for 3 Consecutive 3,4,5
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ 
+3 & \texttt{[1, 2, 6, 7, 9]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ 
+3 & \texttt{[1, 2, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 2, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 2, 5, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 2, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 3, 5, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[2, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[2, 3, 5, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[2, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 2, 4, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 2, 5, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 3, 4, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 3, 5, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 4, 5, 6, 9]} & \textcolor{red}{first} & \{7, 8\} \\ 
+2 & \texttt{[2, 3, 4, 6, 9]} & \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[2, 3, 5, 6, 9]} & \textcolor{CustomBlue}{second} & \{7, 8\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7\} \\ 
+2 & \texttt{[1, 2, 4, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7\} \\ 
+2 & \texttt{[1, 2, 5, 8, 9]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[1, 3, 4, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7\} \\ 
+2 & \texttt{[1, 3, 5, 8, 9]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[1, 4, 5, 8, 9]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[2, 3, 4, 5, 8]} & \textcolor{CustomBlue}{second} & \{6, 7\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive 5,6
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 2, 4, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 2, 4, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 2, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7, 8]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7, 9]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ \hline \hline 
+
+% Data Rows for 2 Consecutive 4,5
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 2, 3, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 2, 3, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 2, 3, 6, 10]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 3, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 3, 6, 7, 9]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7, 9]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ \hline \hline
+
+\caption{Picking Combinations for 4 Initial Territories with Missing Picks (excluded combos (2,3)(3,4))}
+\label{tab:5territories_consecutive}
+\end{longtable}
+\normalsize
+
+
+
+
+
+Some links I need for specific templates later
+\href{https://www.warzone.com/MultiPlayer?GameID=26520726}{Malvia}
+\href{https://www.warzone.com/MultiPlayer?GameID=27346932}{Malvia}
+\href{https://www.warzone.com/MultiPlayer?GameID=40193312 }{Phobia}
+
+\subsection{Order of Deployment}
+
+Best explained with an example
+\href{https://www.warzone.com/MultiPlayer?GameID=36719132}{Chris vs Ragnar, MTL}
+I received my first 3 picks. End of turn 3 I meet up an opponent an a very suspicious place. Look at the game from my POV turn 4, specifically the deployments that took place.
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{Images/order_deployments.jpg}
+    \caption{History from my POV}
+    \label{order_deployments}
+\end{wrapfigure}
+
+I deploy 3 times and then I see my opponent's deployment of 8 armies. I can derive from his capture of 4 armies that on that specific turn, I had 1st move. Deployments also follow move order. That means Ragnar deployed in 2 places or more before deploying on the border vs me. Get into the habit of hiding your position and income. If your opponent is repeatedly making this again and again and again, use that information against them.
+\\
+Another example is \href{https://www.warzone.com/MultiPlayer?GameID=36233122}{Chris vs Gincompetent, 1vs1 Ladder}, Turn 4. I know from the attacks that have taken place, that I have first move on turn 4. And my opponent deploys elsewhere twice, then on me. + I see all his delays. After such a turn you should be able to understand exactly where you opponent is. Invest those 3 minutes to understand the position and find the winning moves.
+\subsection{Pick Combinations}
+
+For someone that doesn't understand what is meant by pick combinations, think of a template with 3 initial territories per player. Is it every possible for us to get our 2,4,5 picks while losing 1 and 3? In the scenario that we lose 1, we always get 2\&3, therefore this scenario cannot occur. This raises the question which combinations are possible for each template.
+\\
+\\
+In the MTL as of January 2025, all templates belong in the range of 3 to 8 initial territories.
+
+\small
+\begin{longtable}{|p{2.5cm}|p{2.5cm}||p{2.5cm}|p{2.5cm}|}
+\hline
+\rowcolor{black!20}
+\textbf{Combination} & \textbf{Picking Phase} & \textbf{Combination} & \textbf{Picking Phase} \\ \hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{Combination} & \textbf{Picking Phase} & \textbf{Combination} & \textbf{Picking Phase} \\ \hline
+\endhead
+
+% Data Rows
+\texttt{[1, 2, 3, 4]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 5]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 8]} & \textcolor{red}{first} & \texttt{[1, 2, 4, 5]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 8]} & \textcolor{red}{first} & \texttt{[1, 2, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 5, 8]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 3, 4, 5]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 8]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 3, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 5, 8]} & \textcolor{red}{first} & \texttt{[1, 4, 5, 6]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 4, 5, 7]} & \textcolor{red}{first} & \texttt{[1, 4, 5, 8]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 2, 6, 7]} & \textcolor{CustomBlue}{second} & \texttt{[1, 3, 6, 7]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 5]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 6]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 7]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 5, 6]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 5, 7]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 6, 7]} & \textcolor{CustomBlue}{second} \\ \hline
+
+\caption{Picking Combinations for 4 Initial Territories}
+\label{tab:4territories}
+\end{longtable}
+
+\normalsize
+
+\small
+\begin{longtable}{|p{3.5cm}|p{2.5cm}||p{3.5cm}|p{2.5cm}|}
+\hline
+\rowcolor{black!20}
+\textbf{Combination} & \textbf{Picking Phase} & \textbf{Combination} & \textbf{Picking Phase} \\ \hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{Combination} & \textbf{Picking Phase} & \textbf{Combination} & \textbf{Picking Phase} \\ \hline
+\endhead
+
+% Data Rows
+\texttt{[1, 2, 3, 4, 5]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 4, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 4, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 4, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 8, 9]} & \textcolor{red}{first} & \texttt{[1, 2, 4, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 8, 9]} & \textcolor{red}{first} & \texttt{[1, 2, 5, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 5, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 5, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 5, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 5, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 5, 8, 9]} & \textcolor{red}{first} & \texttt{[1, 3, 4, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 8, 9]} & \textcolor{red}{first} & \texttt{[1, 3, 5, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 5, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 5, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 5, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 5, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 5, 8, 9]} & \textcolor{red}{first} & \texttt{[1, 4, 5, 6, 7]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 4, 5, 6, 8]} & \textcolor{red}{first} & \texttt{[1, 4, 5, 6, 9]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 4, 5, 7, 8]} & \textcolor{red}{first} & \texttt{[1, 4, 5, 7, 9]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 4, 5, 8, 9]} & \textcolor{red}{first} & \texttt{[1, 2, 3, 4, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 5, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 2, 3, 6, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 3, 7, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 5, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4, 7, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 2, 5, 7, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \texttt{[1, 2, 6, 7, 9]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 5, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \texttt{[1, 3, 5, 7, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \texttt{[1, 3, 6, 7, 9]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 5, 6]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 5, 7]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 5, 8]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 5, 9]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 5, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 6, 7]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 6, 8]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 6, 9]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 6, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 7, 8]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 4, 7, 9]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 5, 6, 7]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 5, 6, 8]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 5, 6, 9]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 5, 7, 8]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 5, 7, 9]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 5, 7, 10]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 6, 7, 9]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & & \\ \hline
+
+\caption{Picking Combinations for 5 Initial Territories}
+\label{tab:5territories}
+\end{longtable}
+
+\normalsize
+
+\small
+\begin{longtable}{|p{2.5cm}|p{2.5cm}||p{2.5cm}|p{2.5cm}|}
+\hline
+\rowcolor{black!20}
+\textbf{Combination} & \textbf{Picking Phase} & \textbf{Combination} & \textbf{Picking Phase} \\ \hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{Combination} & \textbf{Picking Phase} & \textbf{Combination} & \textbf{Picking Phase} \\ \hline
+\endhead
+
+% Data Rows
+\texttt{[1, 2, 3]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 2, 4]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 2, 5]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 3, 4]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[1, 3, 5]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \texttt{[1, 4, 5]} & \textcolor{red}{first} \\ \hline
+\texttt{[1, 2, 6]} & \textcolor{CustomBlue}{second} & \texttt{[1, 3, 6]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 4]} & \textcolor{CustomBlue}{second} & \texttt{[2, 3, 5]} & \textcolor{CustomBlue}{second} \\ \hline
+\texttt{[2, 3, 6]} & \textcolor{CustomBlue}{second} & & \\ \hline
+
+\caption{Picking Combinations for 3 Initial Territories}
+\label{tab:3territories}
+\end{longtable}
+
+\normalsize
+
+Above 5 initial territories the combinations are not worth it typing them out. You can find the ones up to 7 at \href{https://github.com/Norman1/WarLight-pick-combinations}{Norman's GitHub} and calculate up to infinity or get selectively the pick combinations based on different factors at \href{https://github.com/5siell/wz-random-code/blob/main/picks/pick_combinations.ipynb}{my GitHub}.
+\subsection{Figuring the Move Order based on pick outcome}
+
+On guessing with some certainty the move order from the pick outcome in non-light fog templates. examples from inss, or templates with a lot of picks, where you can be somewhat certain what the move order is based on the picks. Not 100\% but somewhat certain. 
+\\
+\\
+For example in this \href{https://www.warzone.com/MultiPlayer?GameID=40500155}{Earthsea} game at Figure \ref{earthsea} (my picks are pretty bad, don't use this as a guideline for how to pick on the template), I receive 1/2/4/7/8 and lose 3/5/6 as well 10. The issue after the territory allocation is that without information on the move order, I cannot make sound moves as me and Guest are contesting two red +1 castles.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Images/earthsea.jpg}
+  \caption{My picks. Red circle what I received. Light Blue circle what I lost and what I have vision on.}
+  \label{earthsea}
+\end{figure}
+
+But let's assume that I was first pick, meaning Guest moves first on turn 1. Then the allocation would have to look like \ref{earth_guest} which logically speaking doesn't make sense from any possible perspective.  With the numbers below identifying the territories as I picked them:
+\begin{itemize}
+    \item If Guest decided to include all the territories that border the +1s, or 3/4 of those, in his first 4 picks, it is impossible for me get 3/4 as first pick. It would have to be 7ate9: 1, Guest: 2,3, 7ate9: 4,5 etc but I received 1,2,4.
+    \item If Guest decided to do picks in order of 1->2->3->5 prioritising the central +1 followed by the ftb I picked at 2/3/5, or did his first three picks on my 2/3/5, it again doesn't make sense.
+\end{itemize}
+
+It is useful in your own games to try and apply trial and error into thinking what was your opponents idea in picks so as to derive how they will act upon the distribution they received, as well as the move order. In this game, while I am not certain of the move order, I am fairly confident I was second pick and choose to play my moves under that assumption.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Images/earhsea_oucome.jpg}
+  \caption{For move order: 1. 7ate9, 2. Guest on picks}
+  \label{earth_guest}
+\end{figure}
+\subsection{Turn Phases}
+
+In reference to \href{https://www.warzone.com/wiki/Turn_phases}{Wikipedia on Turn phases}, understanding this is vital to a lot of tricks as well as strategy in general. There are distinct phases where each action takes place, with those being the below. These turn phases are absolute, they are applied 24/7, unless there is a Mod in the game bypassing a mechanic. The list is taken from the Wikipedia, but isn't entirely correct with some details like the diplomacy card wearing off after receiving new cards.
+
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Active Cards wear off
+        \item Discards
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Order Priority Cards
+        \item Spy-like Cards
+        \item Reinforcement Cards
+    \end{enumerate}
+    \item Deploy / Purchase
+    \item 
+    \begin{enumerate}
+        \item Bomb Cards
+        \item Emergency Blockade
+        \item Airlift Cards
+        \item Gift Cards
+    \end{enumerate}
+    \item Attacks/Transfers and Order Delay Cards
+    \item Blockade
+    \item Sanction Cards
+    \item Receive new cards
+\end{enumerate}
+
+The move order isn't applied in all of the Turn Phases, albeit it is in some:
+\begin{enumerate}
+    \item Active Cards wear off
+    \item Discards
+    \item Order Priority Cards
+    \item Spy-like Cards
+    \item Reinforcement Cards: They are executed in the same order as the turn. \href{https://www.warzone.com/MultiPlayer?GameID=40211798}{For example, Turn 9}.
+    \item Deploy / Purchase: They are executed in the same order as the turn.
+    \item Bomb Cards: clueless
+    \item Emergency Blockade: They are executed in the same order as the turn. \href{https://www.warzone.com/MultiPlayer?GameID=37399642}{For example, turns 15,19,44}.
+    \item Airlift Cards: clueless and haven't bothered to check.
+    \item Gift Cards: They are executed in the same order as the turn. \href{https://www.warzone.com/MultiPlayer?GameID=40266635}{For Example}.
+    \item Attacks/Transfers and Order Delay Cards
+    \item Blockade: They are executed in the same order as the turn. \href{https://www.warzone.com/MultiPlayer?GameID=26656413}{For Example, Turn 20}.
+    \item Sanction Cards: They are executed in the same order as the turn. \href{https://www.warzone.com/MultiPlayer?GameID=34305927}{For Example, Turn 5}.
+    \item Receive new cards: One of the players is selected (no idea as to the rule) and that player is always first in that list. \href{https://www.warzone.com/MultiPlayer?GameID=33173841}{For example}. Therefore, this cannot be used to either derive the move order, or gain any advantage.
+\end{enumerate}
+
+There are a handful of small things one can note of, but most of them are extremely case-specific. As an example, in Georgia Army Cap and Landria the players have an abundance of Blockades. It's always recommended to first blockade territories bordering your opponent so as to avoid passing information on how many territories you blockaded or how many cards you used.
+
+\subsubsection{Order Delay and Phases}
+
+\label{OD and phases}
+So the first mention of this that I found dates back to \href{https://www.warzone.com/Forum/152388-move-order?Offset=0}{2016}. But before we jump deep into this, let's first understand the way OD functions with this \href{https://www.warzone.com/MultiPlayer?GameID=38665549}{Game, and Turns 10,17} in Figures \ref{od1} and \ref{od2}. 
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth, height=15cm]{Images/od1.jpg}
+    \caption{Turn 10}
+    \label{od1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth, height=15cm]{Images/od2.jpg}
+    \caption{Turn 17}
+    \label{od2}
+  \end{minipage}
+\end{figure}
+
+Playing an OD card effectively creates a new phase for orders to execute in. Playing a set of OD cards at the same time, or more, pushes moves to a second, or latter phase, respectively. But you can que moves between each OD phase. The arising question is what happens with the move order, as in the above 2016 forum, quoting this \href{https://www.warzone.com/multiplayer?GameID=11157247}{game}, turn 7 doesn't seem to make any sense. Fizzer's response to it \href{https://www.warzone.com/Forum/152388-move-order?Offset=20}{was}:
+\begin{enumerate}
+    \item Consider all players with unprocessed orders. Is the top order for everyone an OD? 
+    \begin{itemize}
+        \item If so, process one OD from everyone.
+    \end{itemize}
+    \item Process top order from each player whose top order is not an order delay card.
+    \item Reverse the move order
+    \item If there are still unprocessed orders, go to 1
+\end{enumerate}
+
+So to explain it further, in that game on Turn 7, first move belongs to Sultan. After deployments, the above algorithm is implemented.
+\begin{enumerate}
+    \item 1. Is skipped since not both players have OD first
+    \item 2. Njord's first move is played
+    \item 3. Move order is reversed, meaning next move will belong to njord, followed by 2x from sultan, etc.
+    \item 4. If there were unprocessed orders this algorithm repeats. Here there aren't. The set of ODs is played.
+\end{enumerate}
+
+Practically speaking, this algorithm implies that moves in this game are coded as AB pairs and not ABBA pairs, with the order flipped after each pair. If A has a move while B doesn't then the order will still be flipped if the turn has more actions later on during an OD. Now I will use the same simple matrix used in \href{https://www.warzone.com/Forum/694458-new-trick-solarflare}{Gak's and Solar's trick} to define a set of ODs as well as the actions before, inbetween and after those.
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{Images/odtrick.jpg}
+    \caption{OD phases}
+    \label{odphases}
+\end{wrapfigure}
+
+Applying the same algorithm on \href{https://www.warzone.com/MultiPlayer?GameID=40150939}{Turn 19} as well as \href{https://www.warzone.com/MultiPlayer?GameID=26880828}{Turn 19} proves that in the before ODs phase:
+\begin{itemize}
+    \item Playing a single move results in the move order always getting flipped. So, \href{https://www.warzone.com/MultiPlayer?GameID=40150939}{here}, on Turn 19 Krzysztof has first move, has 1 order in the before OD phase. Move order then is reversed to 1. nickpugs 2. Krzysztof. Set of ODs is played, followed by 1 move from nickpugs, 2 from Krzysztof and so on.
+    \item If there are no moves played, the move order is not flipped \href{https://www.warzone.com/MultiPlayer?GameID=33954581}{Turn 1}.
+    \item If there are 2 moves played, the move order is flipped twice, practically speaking going back to the original one, like \href{https://www.warzone.com/MultiPlayer?GameID=26880828}{Turn 19}.
+    \item 3 onward you get the memo.
+\end{itemize}
+
+When 2 sets of ODs are played like in \href{https://www.warzone.com/MultiPlayer?GameID=33173841}{Turn 37}, the algorithm is still run as above. Specifically:
+\begin{enumerate}
+    \item 1. Yes the top order from both is an OD-> 1st set of ODs is played
+    \item 2. No order found in this setep to process
+    \item 3. Move order is reversed. Now Crazy has first move.
+    \item 4. There are still unprocessed orders so back to 1.
+    \item 1. The second set of ODs is played.
+    \item 2. Crazy's first move is played. Move Order reversed, no more ODs, proceed into 2x Gak etc
+\end{enumerate}
+
+The trick behind these, is that the game treats 0-moves in the same way it treats every other order, as it doesn't know the orders will fail. Therefore, you can use a failed 0-move like in \href{https://www.warzone.com/MultiPlayer?GameID=37574317}{Turn 7} to make sure the cycle after the set of ODs favors you (Rufus playing 2 moves before the set of ODs makes it that the order is not flipped and he has first move after the set of ODs, especially since Rufus plays an OP himself). You can scout for more scenarios in Solar's games \href{https://www.warzone.com/MultiPlayer?GameID=33965256}{1} and \href{https://www.warzone.com/MultiPlayer?GameID=33954581}{2}.
