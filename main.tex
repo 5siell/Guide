@@ -1,0 +1,209 @@
+\documentclass[a4paper,10pt]{article}
+
+\input{Userpackages.tex}
+\begin{document}
+
+\input{41_FrontPage/41_Front_Page}
+\onehalfspacing
+
+%% TABLE OF CONTENTS
+\pagenumbering{roman} 
+\include{30_Abstract&Introduction/301_Abstract}
+
+\section*{Abbreviation}
+\input{Abbreviation}
+
+\newpage
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
+
+\newpage
+\pagenumbering{arabic} 
+
+%% INCLUDING SECTIONS 
+
+\input{30_Abstract&Introduction/302_Introduction}
+\input{31_Categorisation/311_categorisation}
+\input{36_Useful_Links/Useful_links}
+\input{37_MTL_general/37_mtl_general_stuff}
+\input{37_MTL_general/371_ranking_elo}
+
+%%% Move Order %%%
+\input{32_Move_Order/321_move_order}
+\input{32_Move_Order/322_mo_settings}
+\input{32_Move_Order/323_mo_archive}
+\input{32_Move_Order/324_abba_teamgames}
+\input{32_Move_Order/326_mo_and_orderofdeployments}
+\input{32_Move_Order/327_pickcombinations}
+\input{32_Move_Order/325_structuring_picks}
+\input{32_Move_Order/328_figuring_moveorder}
+\input{32_Move_Order/329_Turn_Phases}
+
+%%% General Gameplay %%%
+
+\input{02_General_Gameplay/02_General_Gameplay}
+\input{02_General_Gameplay/021_efficiency-killrates}
+\input{02_General_Gameplay/022_army-management}
+\input{02_General_Gameplay/023_positional-play}
+\input{02_General_Gameplay/024_pattern-recognition}
+\input{02_General_Gameplay/026_Bonus_efficiency}
+
+%%% Rounding %%%
+\input{45_Rounding/451_Rounding}
+
+%%% Card Settings %%%
+\input{33_Card_Settings/331_overall}
+\input{33_Card_Settings/334_airlift}
+\input{33_Card_Settings/3391_blockade}
+\input{33_Card_Settings/3392_bomb}
+\input{33_Card_Settings/333_emergency_blockade}
+\input{33_Card_Settings/336_diplomacy}
+\input{33_Card_Settings/335_gift}
+\input{33_Card_Settings/3394_order_delay}
+\input{33_Card_Settings/3393_order_priority}
+\input{33_Card_Settings/338_reconnaissance}
+\input{33_Card_Settings/331_reinforcement_card}
+\input{33_Card_Settings/337_sanction}
+\input{33_Card_Settings/339_surveillance}
+\input{33_Card_Settings/332_spy_card}
+
+
+%%% Tricks %%%
+\input{34_Percentage_Moves/34_percentage_moves}
+\input{35_Intel_Move/35_intel_moves}
+\input{35_Intel_Move/351_attack_only}
+\input{35_Intel_Move/352_transfer_only}
+\input{35_Intel_Move/353_hiding_armies_income}
+\input{35_Intel_Move/354_denying card pieces}
+
+%%% Weighted Random %%%
+\input{00_Weighted_Random/WR_introduction}
+%%% WR Cyclic %%%
+\input{00_Weighted_Random/001_WR_cyclic/0011_intro}
+\input{00_Weighted_Random/001_WR_cyclic/0012_Belarus}
+\input{00_Weighted_Random/001_WR_cyclic/0013_Great_Lakes}
+\input{00_Weighted_Random/001_WR_cyclic/0014_Pangea_Ultima}
+%%% WR Random %%%
+\input{00_Weighted_Random/002_WR_random/0021_intro}
+\input{00_Weighted_Random/002_WR_random/0022_British_raj}
+\input{00_Weighted_Random/002_WR_random/0023_Final_Fantasy_VII}
+\input{00_Weighted_Random/002_WR_random/0024_Phobia}
+\input{00_Weighted_Random/002_WR_random/0025_Randomised_Strat_ME}
+\input{00_Weighted_Random/002_WR_random/0026_Strat_ME}
+\input{00_Weighted_Random/002_WR_random/0027_Tor-ture}
+
+%%% Case-Specific Stuff
+
+%%% 01 %%% extra armies per territory
+\input{01_Weird_Ones/01_Extra_Armies_per_territory/011_introduction}
+\input{01_Weird_Ones/01_Extra_Armies_per_territory/012_French_Brawl}
+\input{01_Weird_Ones/01_Extra_Armies_per_territory/013_Yorkshire Brawl}
+
+%%% 02 %%% luck-modifier
+\input{01_Weird_Ones/02Luck_Modifier/021_Luck_explanation}
+\input{01_Weird_Ones/02Luck_Modifier/022_Guiroma}
+\input{01_Weird_Ones/02Luck_Modifier/023_BfME}
+
+%%% 03 %%% different-kill-rates
+
+\input{01_Weird_Ones/03Different_Kill_Rates/031_introduction}
+\input{01_Weird_Ones/03Different_Kill_Rates/032_timid_lands}
+\input{01_Weird_Ones/03Different_Kill_Rates/033_fast_earth}
+
+%%% 04 %%% local deployment
+
+\input{01_Weird_Ones/04_Local_Deployment/041_intro}
+\input{01_Weird_Ones/04_Local_Deployment/042_turkeyLD}
+\input{01_Weird_Ones/04_Local_Deployment/043_greeceLD}
+\input{01_Weird_Ones/04_Local_Deployment/044_Succession Wars}
+
+%%% 05 %%% army cap
+
+\input{01_Weird_Ones/05_Army_Cap/051_intro}
+\input{01_Weird_Ones/05_Army_Cap/052_georgia}
+\input{01_Weird_Ones/05_Army_Cap/053_bork}
+
+%%% 06 %%% multi attack
+
+\input{01_Weird_Ones/06_Multi_Attack/061_intro}
+\input{01_Weird_Ones/06_Multi_Attack/062_BIV}
+\input{01_Weird_Ones/06_Multi_Attack/063_mme_ma_ld}
+
+%%% 07 %%% modded templates
+
+\input{01_Weird_Ones/07_Modded_templates/071_Island_of_Ruins}
+\input{01_Weird_Ones/07_Modded_templates/072_Lampuria_Swap}
+
+%%% 08 %%% INSS
+
+\input{01_Weird_Ones/08_INSS/081_introduction}
+\input{01_Weird_Ones/08_INSS/082_Aseridith_Island}
+\input{01_Weird_Ones/08_INSS/083_Biomes_of_America}
+\input{01_Weird_Ones/08_INSS/084_Elitist_Africa}
+
+
+%%% 09 %%% commanders
+\input{01_Weird_Ones/09_Commanders/091_Strategic_Commanders}
+%%% 10 %%% macedonia
+\input{01_Weird_Ones/10_No-Split/101_macedonia_no_split}
+%%% 11 %%% landria
+\input{01_Weird_Ones/11_Landria/111_landria}
+%%% 12 %%% earthsea
+\input{01_Weird_Ones/12_EarthSea/121_earthsea}
+%%% 13 %%% tarabonia
+\input{01_Weird_Ones/13_Tarabonia/131_Tarabonia's_Choice}
+
+
+%%% Straight Round
+\input{20_Straight_Round/200_introduction}
+%%% 5armies per initial territory
+\input{20_Straight_Round/21_5armies_per_initial_terr/211_strategic greece}
+
+%%% 4armies per initial territory
+    %% 5 income, 4 picks
+\input{20_Straight_Round/22_4armies_per_initial_terr/22_introduction}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2211_4picks/Black_Sea}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2211_4picks/Malvia}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2211_4picks/Volcano_Island}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2211_4picks/World_of_Warhammer}
+    %% 5 income, 3 picks
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2212_3picks/Antarctica}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2212_3picks/Basileia}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2212_3picks/Battle_Islands_V}
+\input{20_Straight_Round/22_4armies_per_initial_terr/221_5income/2212_3picks/Strat_MME}
+    %% 4 income    
+\input{20_Straight_Round/22_4armies_per_initial_terr/222_4income/Laketown}
+\input{20_Straight_Round/22_4armies_per_initial_terr/222_4income/Saudi_Arabia}
+\input{20_Straight_Round/22_4armies_per_initial_terr/222_4income/Treasure_Map}
+
+%%% 3armies per initial territory
+\input{20_Straight_Round/23_3armies_per_initial_terr/23_introduction}
+\input{20_Straight_Round/23_3armies_per_initial_terr/231_5income/Unicorn_Island}
+\input{20_Straight_Round/23_3armies_per_initial_terr/232_4income/Discovery}
+\input{20_Straight_Round/23_3armies_per_initial_terr/232_4income/Greater_Middle_East_III}
+\input{20_Straight_Round/23_3armies_per_initial_terr/232_4income/Hannibal_at_the_Gates}
+\input{20_Straight_Round/23_3armies_per_initial_terr/233_3income/Australia}
+\input{20_Straight_Round/23_3armies_per_initial_terr/233_3income/Numenor}
+
+%%% 2armies per initial territory
+\input{20_Straight_Round/24_2armies_per_initial_terr/Slow Burn}
+
+%%% Retired Templates
+
+\input{70_Retired_templates/0Retired_intro}
+\input{70_Retired_templates/Master Mania}
+
+%%% Other Templates
+
+
+\input{80_Conclusion/Conclusion}
+
+\newpage
+\pagenumbering{Roman}
+\printbibliography[heading=bibintoc,title={Bibliography}]
+
+\include{90_Appendix/90_Code}
+
+\end{document}

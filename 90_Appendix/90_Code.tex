@@ -1,0 +1,56 @@
+\section{Appendix}
+
+\subsection{Calculating Luck}
+
+\begin{lstlisting}[language=R]
+# 16% Luck, attackers
+A <- 86
+D <- 57
+L <- 0.16
+binomial <- c()
+kills <- c()
+output <- 0
+kills_nr <- c()
+
+for (i in 0:A) {
+  
+  binomial <- c(binomial,factorial(A)/factorial(i)/factorial(A-i)*0.6^i*0.4^(A-i))
+  kills_nr <- c(kills_nr, (i-0.6*A)*L+0.6*A)
+  kills <- c(kills, round((i-0.6*A)*L+0.6*A))
+  
+}
+
+indices <- which(kills >= D)
+new_output <- sum(binomial[indices])
+binomial
+kills_nr
+kills
+new_output*100
+
+###############
+
+# 16% Luck, defenders
+
+D <- 15
+A <- 11
+L <- 0.16
+binomial <- c()
+kills <- c()
+probability <- 0
+kills_nr <- c()
+
+for (i in 0:D){
+  binomial <- c(binomial, factorial(D)/factorial(i)/factorial(D-i)*0.7^i*0.3^(D-i))
+  kills_nr <- c(kills_nr, (i-0.7*D)*L + 0.7*D)
+  kills <- c(kills, round((i-0.7*D)*L + 0.7*D))
+}
+
+indices <- which(kills >= A)
+probability <- sum(binomial[indices])
+
+binomial
+kills_nr
+kills
+probability
+probability*100
+\end{lstlisting}

@@ -1,0 +1,225 @@
+\subsection{Structuring Picks}
+
+All of the important principles are very clearly written in \href{http://nghood.com/pages/warzone/strategyguide}{M'Hunters Warlight Strategy Guide}. (Alternative \href{https://warlight.nghood.com/index.html}{link}), something I suggest revisiting. I will not delve too deep into different picksets here, as this is case specific for each template and distribution, but rather use this to just comment on how to structure picks properly given a strategy and knowing your ABBA.
+\\
+\\
+In the previous section when you saw the table you surely must be wondering why know all this. In reality, you do not need to memorize the combinations (sometimes), it is but a guideline for what you can expect. Take for example templates with 3 initial territories. We sometimes see in the distribution an FTB or a big income region and think to ourselves I will do 3/4/5/6 in that area, or 3/4/5 to counter that area and 6th somewhere else. The fault in this logic comes with assuming that we will always get our 1/2 and have our 3rd pick as a counter pick. If we lose one of our first 2 picks, then we suddenly find ourselves with a cluster at 3/4/5. In other words, sometimes we should deviate from the 1/2 safe 3/4/5 counter logic to a 1/2/3 safe 4/5/6 counter logic, with 1/2 combo and 3 safe, or gamble 1 safe 2/3 combo, or completely disregard both ideas and go for more versatile picks. Examples of this backfiring in \href{https://www.warzone.com/MultiPlayer?GameID=39323183}{1v1 Ladder}, \href{https://www.warzone.com/MultiPlayer?GameID=40124025}{Slow Burn}, \href{https://www.warzone.com/MultiPlayer?GameID=15035176}{Strat ME}. 
+\\
+\\
+Depending on the distribution in the game we can formulate picks based on what we expect to get or lose. For example in this \href{https://www.warzone.com/MultiPlayer?GameID=40132924}{Malvia} game, the yellow +4 west as a first pick controls two FTBs. Besides that, there is immediate expansion to every direction while also controlling the south +5 and +4 with the neutral double borders within 1 move. At the same time, north east provides fast income in 2 ways, the no deploy +2 combo and the ftb +3 in the islands. If the two players A and B split 1-4, then player A will get 5 and 8, while B gets two consecutive at 6,7. What this means effectively, is that the plan of: combo 1-2, then combo 3-4, then cover a region with 5-6-7-8, risks a pickset like 1,4,5,6 with two picks in the region you wanted to cover last. Meanwhile, your opponent could in theory have 2,3, a safe pick somewhere else, and a last pick neighboring your 5,6. Therefore, for each combo you expect to split, you can push cover picks later on your pickset.
+\\
+\\
+Another important idea during picks is knowing how to ensure coverage, or should I rephrase, setup your picks in a specific way so that you reduce the variance while picking. Ask yourself this question: In a 4 initial territory template like Malvia, are there any scenarios where I can lose 4 consecutive picks? What about 3 consecutive picks? What if I want to cover a region with my 3/4/5, is it ever possible losing that triple combination? Same goes for something like 4/5/6, or 5/6/7. The answers lie in Table \ref{tab:4territories_consecutive}.
+
+\small
+\begin{longtable}{|p{2.5cm}|p{3cm}|p{2.5cm}|c|}
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endhead
+
+% Data Rows for 4 Consecutive
+4 & \texttt{[1, 2, 3, 8]} & \textcolor{red}{first} & \{4, 5, 6, 7\} \\ \hline
+
+% Thicker horizontal line between sections
+\hline\hline
+
+% Data Rows for 3 Consecutive
+3 & \texttt{[1, 2, 3, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ \hline
+3 & \texttt{[1, 2, 4, 8]} & \textcolor{red}{first} & \{5, 6, 7\} \\ \hline
+3 & \texttt{[1, 3, 4, 8]} & \textcolor{red}{first} & \{5, 6, 7\} \\ \hline
+3 & \texttt{[1, 2, 6, 7]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ \hline
+
+% Thicker horizontal line between sections
+\hline\hline
+% Data Rows for 2 Consecutive
+2 & \texttt{[1, 4, 5, 6]} & \textcolor{red}{first} & \{2, 3\} \\ 
+2 & \texttt{[1, 4, 5, 7]} & \textcolor{red}{first} & \{2, 3\} \\ 
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 4, 5, 8]} & \textcolor{red}{first} & \{2, 3\} \\ \hline
+2 & \texttt{[1, 2, 5, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{3, 4\} \\ 
+2 & \texttt{[1, 2, 5, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{3, 4\} \\ 
+2 & \texttt{[1, 2, 5, 8]} & \textcolor{red}{first} & \{3, 4\} \\ \hline
+2 & \texttt{[1, 2, 3, 6]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ \hline
+2 & \texttt{[1, 2, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ \hline
+2 & \texttt{[1, 2, 5, 8]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[1, 3, 5, 8]} & \textcolor{red}{first} & \{6, 7\} \\ 
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 4, 5, 8]} & \textcolor{red}{first} & \{6, 7\} \\ \hline
+
+\caption{Picking Combinations for 4 Initial Territories with Missing Picks}
+\label{tab:4territories_consecutive}
+\end{longtable}
+\normalsize
+
+
+There are a lot of takeaways from this, but the simplest ones are:
+\begin{enumerate}
+    \item Covering an area or an FTB with 3/4/5 and losing all three guarantees a 1/2/6/7 with known move order.
+    \item Covering  an area or an FTB with 5/6/7 and losing all three, gives intel on move order and one of the combinations in the table.
+    \item Expanding on that, you can lose 3/4/5 (get 1/2/6/7), you can lose 2/4/5 (get 1/3/6/7) and you can lose 1/4/5 (get 2/3/6/7). So if you can afford losing that sequence you control the outcome. If you can't afford losing all three because it is an FTB or a region you deem worthy of stacking, the latest you can guarantee coverage is at 2/3/5 (impossible to lose all three). You can lose 2/3/6 by getting first pick and a combination of 1/4/5 and a last pick on 7 or 8. If you think of picks by imagining the ABBA table these should make sense.
+    \item Losing 2/3 translates to getting 1/4/5 and knowing move order.
+    \item Losing 3/4 translates to getting 1/2/5 100\% of the time. This does mean that you can use 5 to immediately counter 3/4, however you can position 5 somewhere that will counter the expansion from 3/4 while having a positional advantage.
+    \item Losing 4/5 means you guarantee 2/3/6.
+\end{enumerate}
+
+Some players actively think about these things. Some others have an amazing intuition and it comes to them naturally. Some others tend to forget and write things down, like me. Let's look fast at some games purely to evaluate the picks based on possible combinations, starting with \href{https://www.warzone.com/MultiPlayer?GameID=34661130}{this Guiroma} game. 
+\begin{itemize}
+    \item The 2/3/4 combination around Illyricum, the most efficient bonus on the map, guarantees coverage, as it is impossible to lose 2/3/4 as well as 2/3/5. Choosing to do 4 Illy instead of 5 comes simply from wanting to get that triple pick, as it is dominating. 
+    \item 3 in Asia instead of Illyricum as losing 1, guarantees 2/3, and 3 is the latest of the two, providing coverage in the whole Turkey income region. 2 can be completed by the end of t1.
+    \begin{itemize}
+        \item Consider adrenaline's 1/2/3/4 only. At worst he gets only two of the four picks. There are two paths moving on with picks from here. One of them revolves doing 5 in a safe bonus, then 6/7/8 in an income region. The other revolves around doing 5/6 in one region and 7/8 in another region. The first, involves the 50-50\% risk of losing coverage. The latter involves the possibility of getting 5/6 vs a situation where your opponent gets a safe pick and a counter to your 5/6. This dilemma is something that depends on your comfort as well as the distribution give to you.
+        \item If you scout completed games by the best players in the website, you will see a trend where the 5/6 and 7/8 style is preferred. To me, the answer lies in the size of the map and the number of areas you deem worthy of ensuring coverage. after 1-4 there is only one region left, it might be worth it going for 5 safe into 6/7/8 cover, planning to get 1/4/5/8 or 2/3/6/7. If there's multiple regions, then 5/6 into 7/8 eliminates the coinflip of whether i get my choice of safe 5 or not.
+    \end{itemize}
+\end{itemize}
+
+Ultimately, remember that every scenario is unique and every set can be countered the weirdest blind counter in existence. 
+\\
+\\
+It becomes increasingly fruitless to construct a matrix similar to Table \ref{tab:4territories_consecutive} for more than 5 Initial Territory maps, as the pick combinations are way too many. Nevertheless, maybe this Table \ref{tab:5territories_consecutive} is useful to you. 
+
+\small
+\begin{longtable}{|p{2.5cm}|p{3cm}|p{2.5cm}|c|}
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{black!20}
+\textbf{n Consecutive} & \textbf{Combination} & \textbf{Picking Phase} & \makecell{\textbf{Consecutive} \\ \textbf{Missing}} \\ 
+\hline
+\endhead
+
+% Data Rows for 5 Consecutive
+5 & \texttt{[1, 2, 3, 4, 10]} & \textcolor{CustomBlue}{second} & \{5, 6, 7, 8, 9\} \\ \hline \hline 
+
+% Data Rows for 4 Consecutive
+\rowcolor{Light_Blue}
+4 & \texttt{[1, 2, 3, 8, 9]} & \textcolor{red}{first} & \{4, 5, 6, 7\} \\ \hline \hline
+4 & \texttt{[1, 2, 3, 4, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6, 7, 8\} \\ \hline \hline
+4 & \texttt{[1, 2, 3, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ 
+4 & \texttt{[1, 2, 4, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ 
+4 & \texttt{[1, 3, 4, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ 
+4 & \texttt{[2, 3, 4, 5, 10]} & \textcolor{CustomBlue}{second} & \{6, 7, 8, 9\} \\ \hline \hline 
+
+% Data Rows for 3 Consecutive 7,8,9
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 2, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 2, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 3, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[1, 3, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[2, 3, 4, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ 
+3 & \texttt{[2, 3, 5, 6, 10]} & \textcolor{CustomBlue}{second} & \{7, 8, 9\} \\ \hline \hline
+
+% Data Rows for 3 Consecutive 6,7,8
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ 
+3 & \texttt{[1, 2, 4, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ 
+3 & \texttt{[1, 3, 4, 5, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ 
+3 & \texttt{[2, 3, 4, 5, 9]} & \textcolor{CustomBlue}{second} & \{6, 7, 8\} \\ \hline \hline 
+
+% Data Rows for 3 Consecutive 5,6,7
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 4, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6, 7\} \\ 
+3 & \texttt{[1, 2, 4, 8, 9]} & \textcolor{red}{first} & \{5, 6, 7\} \\ 
+3 & \texttt{[1, 3, 4, 8, 9]} & \textcolor{red}{first} & \{5, 6, 7\} \\ \hline \hline
+
+% Data Rows for 3 Consecutive 4,5,6
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 3, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ 
+3 & \texttt{[1, 2, 3, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ 
+3 & \texttt{[1, 2, 3, 7, 10]} & \textcolor{CustomBlue}{second} & \{4, 5, 6\} \\ \hline \hline
+
+% Data Rows for 3 Consecutive 3,4,5
+\rowcolor{Light_Blue}
+3 & \texttt{[1, 2, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ 
+3 & \texttt{[1, 2, 6, 7, 9]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ 
+3 & \texttt{[1, 2, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{3, 4, 5\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 2, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 2, 5, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 2, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 3, 5, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[1, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[2, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[2, 3, 5, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ 
+2 & \texttt{[2, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{8, 9\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 2, 4, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 2, 5, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 3, 4, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 3, 5, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[1, 4, 5, 6, 9]} & \textcolor{red}{first} & \{7, 8\} \\ 
+2 & \texttt{[2, 3, 4, 6, 9]} & \textcolor{CustomBlue}{second} & \{7, 8\} \\ 
+2 & \texttt{[2, 3, 5, 6, 9]} & \textcolor{CustomBlue}{second} & \{7, 8\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7\} \\ 
+2 & \texttt{[1, 2, 4, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7\} \\ 
+2 & \texttt{[1, 2, 5, 8, 9]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[1, 3, 4, 5, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{6, 7\} \\ 
+2 & \texttt{[1, 3, 5, 8, 9]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[1, 4, 5, 8, 9]} & \textcolor{red}{first} & \{6, 7\} \\ 
+2 & \texttt{[2, 3, 4, 5, 8]} & \textcolor{CustomBlue}{second} & \{6, 7\} \\ \hline \hline
+
+% Data Rows for 2 Consecutive 5,6
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 4, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 2, 4, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 2, 4, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 2, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[1, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7, 8]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7, 9]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ 
+2 & \texttt{[2, 3, 4, 7, 10]} & \textcolor{CustomBlue}{second} & \{5, 6\} \\ \hline \hline 
+
+% Data Rows for 2 Consecutive 4,5
+\rowcolor{Light_Blue}
+2 & \texttt{[1, 2, 3, 6, 7]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 2, 3, 6, 8]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 2, 3, 6, 9]} & \textcolor{red}{first}, \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 2, 3, 6, 10]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 3, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 3, 6, 7, 9]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[1, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7, 8]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7, 9]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ 
+2 & \texttt{[2, 3, 6, 7, 10]} & \textcolor{CustomBlue}{second} & \{4, 5\} \\ \hline \hline
+
+\caption{Picking Combinations for 4 Initial Territories with Missing Picks (excluded combos (2,3)(3,4))}
+\label{tab:5territories_consecutive}
+\end{longtable}
+\normalsize
+
+
+
+
+
+Some links I need for specific templates later
+\href{https://www.warzone.com/MultiPlayer?GameID=26520726}{Malvia}
+\href{https://www.warzone.com/MultiPlayer?GameID=27346932}{Malvia}
+\href{https://www.warzone.com/MultiPlayer?GameID=40193312 }{Phobia}
+

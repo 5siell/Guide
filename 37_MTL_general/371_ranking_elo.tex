@@ -1,0 +1,85 @@
+\subsection{Ranking, Elo \& Veto Adjustment}
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{Images/profile.jpg}
+    \caption{Screenshot of a profile in the MTL website}
+    \label{profile_rankings}
+\end{wrapfigure}
+
+In regards with Figure \ref{profile_rankings}, upon opening your any profile in the MTL you should be able to spot certain numbers/parameters that influence your final ranking, including:
+\begin{itemize}
+    \item Current Rating (CR)
+    \item Elo Rating (ER)
+    \item Veto Adjustment (VA)
+    \item Activity Bonus (AB)
+\end{itemize}
+
+Needless to say, Current Rank is derived when listing all players based on their Current Rating from top to bottom, Best rank is self-explanatory and Best Rating is the highest Current Rating you've had till today. The Ladder Rankings follow CR, which is the rounded integer of the following equation:
+$$
+CR = ER + AB + VA
+$$
+Consequently, the final Elo, or so called Current Ranking, abbreviated as CR or simply Elo later on, consists of 3 parameters.
+
+\subsubsection{Elo Rating - ER}
+
+The MTL uses a veto-adjusted version of the \href{https://www.warzone.com/Forum/216823-multiday-ladder?Offset=628}{MWElo Rating System}.
+\\
+\\
+Imagine 2 players A and B, with ER equal to r(A) and r(B) respectively before their game. In order to calculate their ER after the match, denoted as r'(A) and r'(B), the algorithm:
+\begin{enumerate}
+    \item \textbf{Transformation of r to R} $$ \begin{cases}
+        R(A) = 10^{(r(a)/400)} \\ 
+        R(B) = 10^{(r(b)/400)}
+    \end{cases} $$
+    \item \textbf{Expected Result - E} $$
+    \begin{cases}
+        E(A) = R(A)/(R(A)+R(B)) \\
+        E(B) = R(B)/(R(A)+R(B))
+    \end{cases} $$
+    \item \textbf{Final Score - S (Binary)} $$ 
+    \begin{cases}
+        S(A) = \begin{cases}
+            1, \text{if} \; A \; \text{wins} \\
+            0, \text{if} \; A \; \text{loses}
+        \end{cases} \\
+        S(B) = \begin{cases}
+            0, \text{if} \; A \; \text{wins} \\
+            1, \text{if} \; A \; \text{loses}
+        \end{cases}
+    \end{cases} $$
+    \item \textbf{New Elo - ER} $$
+    \begin{cases}
+        r'(A) = r(A) + K \times (S(A)-E(A)) \\
+        r'(B) = r(B) + K \times (S(B)-E(B)) \\
+    \end{cases} $$
+\end{enumerate}
+
+Given as an example, for 2 players A and B with ER $r(A) = 1639$ and $r(B) = 1635$ where player A won ($S(A)=1$ and $S(B) = 0$:
+\begin{enumerate}
+\item \textbf{Transformation of r to R} $$ \begin{cases}
+        R(A) = 10^{(1639/400)} = 12516.99 \\ 
+        R(B) = 10^{(1635/400)} = 12232.07
+    \end{cases} $$
+    \item \textbf{Expected Result - E} $$
+    \begin{cases}
+        E(A) = 12516.99)/(12516.99+12232.07) = 0.5057562 \\
+        E(B) = 12232.07/(12516.99+12232.07) = 0.4942438
+    \end{cases} $$
+    \item \textbf{Final Score - S (Binary)} $$ 
+    \begin{cases}
+        S(A) = 1 \\
+        S(B) = 0
+    \end{cases} $$
+    \item \textbf{New Elo - ER} $$
+    \begin{cases}
+        r'(A) = 1639 + 32 \times (1-0.5057562) = 1654.816 \\
+        r'(B) = 1635 + 32 \times (0-0.4942438) = 1619.184 \\
+    \end{cases} $$
+\end{enumerate}
+
+\subsubsection{Veto Adjustment}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.

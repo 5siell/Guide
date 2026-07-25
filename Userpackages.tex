@@ -1,0 +1,132 @@
+
+% Font and language
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{soul}
+\setlength{\parindent}{0pt}
+
+% other 
+
+\usepackage{glossaries}
+
+
+%Tables
+\usepackage{siunitx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabularray}
+\usepackage{colortbl}
+
+%Graphics-Figures
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
+%Layout-Formatting
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fullpage}
+
+%Links-references
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    colorlinks=true, 
+    linkcolor=magenta, % internal links
+    filecolor=black,  % color of links to local files
+    urlcolor=orange, % color of hyperlinks href
+    citecolor=blue % color of citation links
+}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\bibliography{bibliography.bib}
+\usepackage{xurl}
+
+%Misc
+\usepackage{float} %interface for floating objects
+\usepackage{listings} % typesets source code listings
+\usepackage{enumitem} % customised itemize/enumerate
+\usepackage{placeins} % \floatbarrier command
+
+%Maths
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{cleveref}
+
+\newcommand{\Frejac}[1]{{\color[rgb]{1,0,0}[Freja: #1]}}
+\newcommand{\Jeppec}[1]{{\color[rgb]{0,1,0}[Jeppe: #1]}}
+\newcommand{\Astac}[1]{{\color[rgb]{0,1,1}[Asta: #1]}}
+\newcommand{\Elishac}[1]{{\color[rgb]{0,0,1}[Elisha: #1]}}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{headercolor}{RGB}{0, 31, 63}
+\definecolor{rowcolor}{RGB}{220, 220, 220}
+
+\usepackage{cases}
+
+
+
+
+% Custom colors for syntax highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+   backgroundcolor=\color{backcolour},   
+   commentstyle=\color{codegreen},
+   keywordstyle=\color{magenta},
+   numberstyle=\tiny\color{codegray},
+   stringstyle=\color{codepurple},
+   basicstyle=\ttfamily\footnotesize,
+   breakatwhitespace=false,         
+   breaklines=true,                 
+   captionpos=b,                    
+   keepspaces=true,                 
+   numbers=left,                    
+   numbersep=5pt,                  
+   showspaces=false,                
+   showstringspaces=false,
+   showtabs=false,                  
+   tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% paragraoh and subparagraph
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titleformat{\subparagraph}[hang]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% subsubparagraph
+\newcounter{subsubparagraph}[subparagraph]
+\renewcommand{\thesubsubparagraph}{\thesubparagraph.\arabic{subsubparagraph}}
+\newcommand{\subsubparagraph}[1]{%
+    \par\refstepcounter{subsubparagraph}%
+    \paragraph*{\thesubsubparagraph\hspace{1em}#1}%
+    \addcontentsline{toc}{subsubparagraph}{\thesubsubparagraph\hspace{1em}#1}%
+}
+\titlespacing*{\subsubparagraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Adjust ToC depth
+\setcounter{tocdepth}{7} % Include subsubparagraphs in the ToC
+
+% Define the ToC level for subsubparagraph (assuming level 6 for deeper than subparagraph)
+\makeatletter
+\newcommand*\l@subsubparagraph{\@dottedtocline{6}{10em}{4em}}
+\makeatother
+
+\usepackage{makecell}
+\usepackage{pdflscape}

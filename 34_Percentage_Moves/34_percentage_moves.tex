@@ -1,0 +1,31 @@
+\section{Specific Tricks}
+
+\subsection{Percentage Moves}
+
+This concerns specifically the idea discussed in this \href{https://www.warzone.com/Forum/224889-attack-percentage-conditional-moves}{Forum post} on how you can do conditional delays using percentage moves. (key reminder, it rounds down, not up).
+\\
+\\
+Suppose this \href{https://www.warzone.com/MultiPlayer?GameID=41513918}{Elitist Africa game} and the very last turn. On the two red territories in the center I deploy up to 5 for beneficial kill rates, setup 2x 13\% percentage moves back and forth on the same cycle for extra delays in case my opponent delays me, and then attack. If my opponent attacks me before the percentage moves take place, as it happened, they appear as 0-moves and nothing happens. You can see similar examples in \href{https://www.warzone.com/MultiPlayer?GameID=34661130}{Turn 7 in Asia}, \href{https://www.warzone.com/MultiPlayer?GameID=35183711}{Turn 5, 6} and \href{https://www.warzone.com/MultiPlayer?GameID=37050920}{Turn 6}.
+\\
+\\
+A case specific example of this can be seen in this \href{https://www.warzone.com/MultiPlayer?GameID=23344117}{Yorkshire Brawl} game. You are Rufus 6 vs 6 income and you have priority on Turn 2. How can you defend your +1 bonus on the north while also attempting to conquer the +2 bonus on the south. Pardon can attack with up to 6 armies. That means, as Rufus, with 5 defenders you are good. His sequence of 
+    \begin{enumerate}
+        \item 75\% tap
+        \item 1 army transfer
+        \item Then last move capture +2 bonus south
+    \end{enumerate}
+    ensure that:
+    \begin{enumerate}
+        \item If pardon doesn't attack, 76\% of 4 is 3, Rufus attacks with 3 armies and then transfers 1 (extra delay)
+        \item If Pardon taps Rufus, 76\% of 3 is 2, Rufus attacks with 2 and then transfers 1 (extra delay)
+        \item If Pardon attacks Rufus with 3, Pardon kills 2, Rufus is left with 3 (2movable). 76\% of 2 is still 2, as such Rufus still attacks with 2, no extra delay
+        \item If Pardon attacks with 5, 76\% of 1 is 1, as such Rufus taps, no delay.
+    \end{enumerate}
+Covering 4 different scenarios with 1 move.
+\\
+\\
+Another case-specific scenario can be seen in this \href{https://www.warzone.com/MultiPlayer?GameID=38696112}{Biomes 2vs2} game on Turn 6. The idea is that if you are on Team A you want to maximize the delays, but move order is Jake -> Koala -> dco. So as koala, if you tap on the right first, then transfer-only to the Oil +4, you risk getting combo attacked before that. But also if you transfer first, you always want to leave one behind to tap to the right. The 92\% move solves it in the way that, if the enemy on the right taps you first, you still transfer all but 1 and use 1 to delay.
+\\
+\\
+A final case for how to use percentage moves comes with this \href{https://www.warzone.com/MultiPlayer?GameID=14309659}{Malvia game}, where on Turn 3 from Bbraw's perspective it's better to split attack with 50-50\% instead of what actually happened. This is a rather interesting idea since percentage moves give you the opportunity to split attack equally or control that number regardless of whether or not your opponent will attack you back. For example in this \href{https://www.warzone.com/MultiPlayer?GameID=41472964}{game}, on Turn 4 NE vs nick, I expect deploys back so I attack the territories at 50 and 50\% to make sure I split evenly.
+

@@ -1,0 +1,34 @@
+\subsection{Templates with different Kill Rates}
+
+Relative to the section on Ratios and Kill Rates (Table \ref{table:killrate_variants} and following bullet-points at \ref{Reverse_Kill_Rates}), 0.75/0.50 KR transform the game into a fast pace, attacking based game. The attacker's advantage is so big, you'd rather defend through out-delaying and attacking back. Chokepoints don't hold and safe income is only safe if it's remote; the game is about initiatives -> fast Income (FTBs - max Income T2/T3) and hitting first.
+\\
+\\
+At 75\% KR for the attacker, every four armies you add the fractional part is repeated, as seen in Table \ref{table:attackerResidue_Timid}. Residue 0/ Multiples of 4 are perfectly efficient (Just like 5 attacks in 60/70 KR). Order of efficiency is 2>1>0>3, with efficiency equalizing at roughly 14-15 attackers. 
+
+\small
+\begin{longtable}{|c|c|c|c|}
+\hline
+\rowcolor{Baby_Blue}
+$r$ & Rounded Kills K & First Kills & Convergence \\ 
+\hline\hline
+\endfirsthead
+\hline
+\rowcolor{Baby_Blue}
+$r$ & Rounded Kills K & First Kills & Convergence \\ 
+\hline\hline
+\endhead
+0 & exact 0.75n & 4->3 (0.75) $\dots$ 8->6 (0.75) & Perfect, 0.75 for all n. \\
+1 & 0.75n + 0.25 & 1->1 (1.00) $\dots$ 5->4 (0.80) $\dots$ 9->7 (0.77) & Efficient, approaches from above. \\
+2 & 0.75n + 0.50 & 2->2 (1.00) $\dots$ 6->5 (0.83) $\dots$ 10->8 (0.80) & Biggest overshoot. \\
+3 & 0.75n - 0.25 & 3->2 (0.67) $\dots$ 7->5 (0.714) $\dots$ 11->8 (0.72) & Inefficient. \\ 
+\hline
+\caption{Attacker efficiency curves ($p = 0.75$) under 0\,\% Luck + Straight Round}
+\label{table:attackerResidue_Timid}
+\end{longtable}
+\normalsize
+
+Defender Kill-Rates at 50\% are very simple. 
+\begin{itemize}
+    \item Even number of defenders -> exact $0.5\times m$ Kills.
+    \item Odd number of defenders -> Always above $0.5\times m$ - more efficient. (e.g. 3->2 (0.667). But you are still often better served attacking your own territories to defend. (5 defenders from 1 army stand guard and 4 deployments kill 3 attackers. If you out-delay and attack your defending territory with 2x 2 army attacks - the 4 deployments - you kill 4 attackers.)
+\end{itemize}

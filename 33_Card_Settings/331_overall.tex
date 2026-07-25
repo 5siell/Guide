@@ -1,0 +1,124 @@
+\section{Card Settings}
+
+For start, here's the \href{https://www.warzone.com/wiki/Card_minimums}{Wiki} link for how the settings work when making a template and here's every setting in template-creation explained on Tables \ref{table:card_globals} and \ref{table:card_per_type}.
+
+%====================  A. GLOBAL CARD DIALS  ====================
+\scriptsize
+\begin{longtable}{|l|p{7.3cm}|c|}
+\hline
+\rowcolor{Baby_Blue}
+Setting (lobby label) & What it controls & Typical range / default \\ \hline\hline
+\endfirsthead
+\hline
+\rowcolor{Baby_Blue}
+Setting & What it controls & Typical range / default \\ \hline\hline
+\endhead
+(p) Pieces to divide the card into      & How many card pieces you must collect before a \textbf{whole} card appears in your stack. & 2–20 \ (8) \\ \hline
+(min) Pieces awarded per turn             & Pieces gained for simply capturing \(\ge\!1\) territory that turn. & 0–5 \ (1) \\ \hline
+(start) Pieces at game start                & Free head-start pieces each player begins with. & 0–full card \\ \hline
+(w) Weight                              & When several card types exist, higher weight = drawn more often. & 0–5 \ (1) \\ \hline
+Maximum cards you can hold          & Hard cap; excess cards choose to discard.          & 1–999 \\ \hline
+Visibility of opponent cards        & Hidden / Visible — shows how many cards foes possess. & Hidden \\ \hline
+Visibility of opponent’s played card      & Hidden / Visible — shows the card order itself when it is executed. & Hidden \\ \hline
+\caption{Universal card settings — affect \emph{all} card types on the template.}
+\label{table:card_globals}
+\end{longtable}
+\normalsize
+
+
+
+%====================  B. PER-CARD EXTRA KNOBS  ====================
+\scriptsize
+\begin{longtable}{|l|p{6.8cm}|p{3.6cm}|}
+\hline
+\rowcolor{Baby_Blue}
+Card type & Extra knobs in the UI & Rounding / special notes \\ \hline\hline
+\endfirsthead
+\hline
+\rowcolor{Baby_Blue}
+Card type & Extra knobs & Rounding / notes \\ \hline\hline
+\endhead
+Reinforcement        & Mode: \emph{Fixed} (+X armies) \textit{or} \emph{Progressive} (multiplier × turn) & Armies round to nearest; .5 rounds \textbf{down}. \\ \hline
+Order Priority / Delay & none (just play the card) & \\ \hline
+Airlift              & none & May target teammate if option is enabled. \\ \hline
+Blockade             & Multiplier (\% of armies kept) & Resulting stack rounds \textbf{down}. \\ \hline
+Emergency Blockade   & Multiplier (smaller than regular blockade) & Same round-up rule. \\ \hline
+Bomb                 & \% reduction (default 50 \%) & Surviving stack rounds \textbf{down}. \\ \hline
+Gift                 & none & Transfers ownership the moment the order fires. \\ \hline
+Diplomacy            & Duration (\# turns)          & \\ \hline
+Spy / Recon / Surveillance & Duration (turns); Recon: radius &  \\ \hline
+Sanctions            & Type: “Set to 0” \textit{or} \% income; Duration (turns) & Check Rounding Section \\ \hline
+\caption{Extra settings and rounding quirks that apply to each individual card.}
+\label{table:card_per_type}
+\end{longtable}
+\normalsize
+
+You can see all the settings in Table \ref{table:card_strings_slim}.
+
+%------------------ Card strings, slim view (no Spy / Airlift / Surv / Bomb) ------------------
+\tiny
+\begin{longtable}{|p{1.8cm}|p{1cm}|p{0.8cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.3cm}|p{1cm}|p{1.4cm}|}
+\hline
+\rowcolor{Baby_Blue}
+Template & RF & E-block & OP & OD & Gift & Diplo & Sanction & Recon & Blockade \\ \hline\hline
+\endfirsthead
+\hline
+\rowcolor{Baby_Blue}
+Template & RF & E-block & OP & OD & Gift & Diplo & Sanction & Recon & Blockade \\ \hline\hline
+\endhead
+Aseridith Islands         & 1,0,0,2,+3  & –                    & 1,0,0,2   & –         & –   & –   & 3,1,1,1,6,20\%  & –   & 10,1,1,19,200\% \\ \hline
+Australia                 & 3,1,1,0,+4  & –                    & –         & –         & –   & –   & –               & –   & – \\ \hline
+Basileia                  & 4,1,1,0,+5  & –                    & –         & –         & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Battle for Middle Earth   & –           & –                    & –         & –         & –   & –   & –               & –   & 20,1,1,20,351\% \\ \hline
+Battle Islands V          & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & 3,1,1,0,1 & 19,1,1,19,351\% \\ \hline
+Belarus                   & 4,1,1,0,+4  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 21,1,1,21,351\% \\ \hline
+Biomes of America         & 1,1,0,1,+5  & –                    & –         & –         & 1,1,0,1 & – & 4,1,1,0,4,25\%  & –   & 1,1,0,2,200\% \\ \hline
+Black Sea                 & –           & –                    & 7,1,1,3   & 5,1,1,2   & –   & –   & –               & –   & – \\ \hline
+Blitzkrieg Bork           & 4,1,1,8,+5  & –                    & 1,0,0,1   & –         & 5,1,1,5 & – & –               & –   & 1,1,1,10,200\% \\ \hline
+British Raj               & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & 1,1,0,1,1       & –   & 18,1,1,18,351\% \\ \hline
+Discovery                 & 4,1,1,0,+6  & –                    & –         & –         & –   & –   & –               & –   & 1,1,0,1,400\% \\ \hline
+Earthsea                  & –           & –                    & –         & –         & –   & –   & –               & –   & – \\ \hline
+Elitist Africa            & –           & –                    & 5,0,0,1   & –         & 10,0,0,1 & – & –            & –   & 10,1,1,16,314\% \\ \hline
+Fast Earth                & –           & –                    & 1,0,0,2   & –         & –   & –   & –               & –   & 1,0,0,1,200\% \\ \hline
+Final Fantasy VII         & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+French Brawl              & –           & –                    & –         & –         & –   & –   & –               & –   & – \\ \hline
+Georgia Army Cap          & 4,1,1,4,+5  & –                    & –         & –         & 1,0,0,1 & – & –               & –   & 1,1,1,30,200\% \\ \hline
+Great Lakes               & 3,1,1,0,+5  & –                    & 5,1,1,0   & 6,1,1,0   & –   & –   & –               & –   & 10,1,1,5,400\% \\ \hline
+Greater Middle East III   & 8,1,1,0,+3  & –                    & –         & –         & –   & –   & –               & 5,1,1,0,1 & 19,1,1,14,400\% \\ \hline
+Greece LD                 & 5,1,1,0,+3  & –                    & –         & –         & –   & –   & –               & –   & 14,1,1,9,400\% \\ \hline
+Guiroma                   & –           & –                    & –         & –         & –   & –   & –               & –   & 1,0,0,1,314\% \\ \hline
+Hannibal at the Gates     & 3,1,1,0,+3  & –                    & 5,1,1,0   & –         & –   & –   & –               & –   & 1,0,0,1,200\% \\ \hline
+Island of Ruins           & 3,1,1,2,+3  & –                    & 6,1,1,12  & 5,1,1,0   & –   & –   & 1,0,0,1,1       & –   & 8,1,1,8,200\% \\ \hline
+Laketown                  & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 18,1,1,18,400\% \\ \hline
+Lampuria Swap             & 4,1,1,0,+5  & –                    & –         & –         & –   & –   & 1,0,0,1,1       & –   & – \\ \hline
+Landria                   & 3,1,1,0,+5  & –                    & 1,0,0,1   & –         & 8,1,1,16 & – & –            & –   & 3,1,1,12,200\% \\ \hline
+MA Battle Islands V       & –           & –                    & 1,0,0,1   & –         & 3,1,1,1 & – & 2,1,1,2,1      & –   & 2,1,1,1,1000\% \\ \hline
+Macedonia no split        & 3,1,1,0,+6  & –                    & –         & –         & –   & –   & 3,1,1,0,1       & –   & – \\ \hline
+Malvia                    & 5,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+MME MA LD                 & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Numenor                   & 3,1,1,0,+2  & –                    & –         & –         & –   & –   & 10,1,1,8,1      & –   & 8,1,1,8,254\% \\ \hline
+Pangea Ultima             & 6,1,1,5,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 12,1,1,12,400\% \\ \hline
+Phobia                    & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Post-melt Antarctica      & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Randomized Strat ME       & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Saudi Arabia              & 4,1,1,0,+5  & –                    & –         & –         & –   & –   & –               & –   & 16,1,1,16,400\% \\ \hline
+Slow Burn                 & 4,1,1,2,+3  & –                    & 6,1,1,0   & 7,1,1,0   & –   & –   & 1,0,0,1,1       & –   & 15,1,1,15,400\% \\ \hline
+Strat ME                  & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Strat MME                 & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Strategic Commanders      & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Strategic Greece          & –           & –                    & –         & –         & –   & –   & –               & –   & – \\ \hline
+Succession Wars           & 4,1,1,4,+2  & –                    & –         & –         & –   & –   & 5,1,1,0,1       & –   & – \\ \hline
+Tarabonia's        & 4,1,1,4, & 1,0,0,1,   & 1,0,0,1   & 1,0,0,1   & –   & –   & 1,0,0,1,5 & –   & 1,0,0,1,400\% \\ 
+Choice & 0.4*turn & 200\% & & & & & - 3\% & & \\ \hline
+Timid Lands               & 1,1,1,0,+1  & –                    & 1,0,0,2   & –         & –   & –   & –               & –   & 1,0,0,1,300\% \\ \hline
+Tor-ture                  & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & – \\ \hline
+Treasure Map              & 4,1,1,0,+5  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Turkey LD                 & 3,1,0,0,+3  & –                    & –         & –         & –   & –   & –               & –   & 1,0,0,1,200\% \\ \hline
+Unicorn Island            & 5,1,1,0,+4  & –                    & 6,1,1,0   & –         & –   & –   & –               & –   & 19,1,1,19,351\% \\ \hline
+Volcano Island            & 4,1,1,0,+4  & –                    & 6,1,1,0   & 5,1,1,0   & –   & –   & –               & –   & 16,1,1,16,351\% \\ \hline
+World of Warhammer        & –           & –                    & 4,1,1,1   & 4,1,1,0   & –   & –   & –               & –   & 8,1,1,8,314\% \\ \hline
+Yorkshire Brawl           & –           & –                    & –         & –         & –   & –   & –               & –   & – \\ \hline
+\caption{Card settings for all templates (shorthand \texttt{p,w,min,start,trailer}).  “–” = card disabled.}
+\label{table:card_strings_slim}
+\end{longtable}
+\normalsize

@@ -1,0 +1,132 @@
+\subsection{Luck Modifier}
+
+\subsubsection{How Luck works}
+
+\url{https://www.warzone.com/wiki/Luck_Modifier}
+\\
+\\
+Welcome to the rabbit hole that is luck. Thankfully, the 2 templates in MTL that involve luck are simpler than this shit-show that is calculating the binomial probability of an attack succeeding. If you want to go in depth about how it works, go ahead. I will do my best in explaining it as simply as possible, which also linking to you the code in order to calculate it as fast as possible. Let's Define:
+\begin{enumerate}
+    \item $A \rightarrow$ Attacking Armies
+    \item $D \rightarrow$ Defending Armies
+    \item $L \rightarrow$ Luck Percent
+\end{enumerate}
+
+3 Steps in our calculations. Baby steps:
+\begin{enumerate}
+    \item Binomial Probability
+    $$ P(x;p,n) = \begin{pmatrix}{} n \\ x \end{pmatrix} {p}^x(1-p)^{n-x} $$
+    What happens behind the scenes when attacking in Warlight. Imagine attacking with 3 armies. That means 3 integers are randomly generated behind the scenes between 1 and 100 (RNG). for kill rate 60\% or 0.6, then:
+    \begin{itemize}
+        \item if RNG>60, successfull roll
+        \item if RNG<60, unsuccessfull roll
+    \end{itemize}
+    That of course means there are 4 scenarios, 0,1,2 and 3 successful rolls. Or, mathematically, the number of successfully rolls, defined as (i), takes values from 0 to A. That's where the binomial distribution comes in play.
+    $$ P = \begin{cases}
+    \frac{A!}{i! \times(A-i)!} \times 0.6^i \times (1-0.6)^{(A-i)}, & \text{for } i=[0,1,...,A]
+    \end{cases}
+    $$
+    Following till now? Good.
+    \item Armies killed
+    $$ K = \text{Round}[L\times(i-(0.6 \times A))+(0.6 \times A)] $$
+    By round, I refer to rounding K to the closest integer
+    \item Addition of the Probabilities
+    For A attackers there are A+1 number of rolls. We spot which of these rolls correspond to killing equal or more than D, defined as the defending armies. Then sum up their corresponding probabilities
+\end{enumerate}
+
+Examples:
+
+\paragraph{Attack of 3 on 2}
+
+$A=3, D=2, L=0.16$
+Binomial Probability:
+\begin{itemize}
+    \item $i=0 \rightarrow P=0.064$
+    \item $i=1 \rightarrow P=0.288$
+    \item $i=2 \rightarrow P=0.432$
+    \item $i=3 \rightarrow P=0.216$
+\end{itemize}
+The probabilities add up to 1, which translates to 100\%.
+Armies Killed:
+\begin{itemize}
+    \item $i=0 \rightarrow K=1.512 \rightarrow 2$
+    \item $i=1 \rightarrow K=1.672 \rightarrow 2$
+    \item $i=2 \rightarrow K=1.832 \rightarrow 2$
+    \item $i=3 \rightarrow K=1.992 \rightarrow 2$
+\end{itemize}
+K rounds to the nearest integer!
+
+Probability of killing 2 defenders: 
+$$P = P_{i=0} + P_{i=1} + P_{i=2} + P_{i=3} = 1$$
+, means the attack works 100\% of the time
+
+\paragraph{Attack of 6 on 4}
+
+$A=6, D=4, L=0.16$
+Binomial Probability:
+\begin{itemize}
+    \item $i=0 \rightarrow P=0.004096$
+    \item $i=1 \rightarrow P=0.036864$
+    \item $i=2 \rightarrow P=0.138240$
+    \item $i=3 \rightarrow P=0.276480$
+    \item $i=4 \rightarrow P=0.311040$
+    \item $i=5 \rightarrow P=0.186624$
+    \item $i=6 \rightarrow P=0.046656$
+\end{itemize}
+The probabilities add up to 1, which translates to 100\%.
+Armies Killed:
+\begin{itemize}
+    \item $i=0 \rightarrow K=3.024 \rightarrow 3$
+    \item $i=1 \rightarrow K=3.184 \rightarrow 3$
+    \item $i=2 \rightarrow K=3.344 \rightarrow 3$
+    \item $i=3 \rightarrow K=3.504 \rightarrow 4$
+    \item $i=4 \rightarrow K=3.664 \rightarrow 4$
+    \item $i=5 \rightarrow K=3.824 \rightarrow 4$
+    \item $i=6 \rightarrow K=3.984 \rightarrow 4$
+\end{itemize}
+K rounds to the nearest integer!
+
+Probability of killing 3 defenders: 
+$$P=P_{i=0}+P_{i=1}+P_{i=2} = 0.1792$$
+Probability of killing 4 defenders:
+$$P=P_{i=3}+P_{i=4}+P_{i=5}+P_{i=6} = 0.8208$$
+,where 0.179 means 17.9\% and 0.821 means 82.1\%.
+\\
+\\
+What does this mean? Short story it means Luck is a bad feature. Long story is some people think luck is a good feature. Those people either don't know how luck works, or are serial gamblers. (jk, I'm being harsh about something trivial.) Luck barely affects gameplay 99\% of the times. It makes expansion over a bonus without a starting territory in a bit more difficult and that's usually all there is to it.
+\\
+\\
+But Chris, do I really need to calculate all these when I am playing the game? No young Padawan. You can press Game on the bottom left $\rightarrow$ Analyse Attack, input the number of defending armies and see a graph of numbers of attacking armies with their corresponding probabilities of success in killing the specified number of defenders.
+\\
+\\
+But Chris, you may ask, does the Luck setting only affect attacking and not defending? It should affect both right? How can I see how Luck affects the number of armies that defenders can kill based on Luck. 
+\\
+\\
+Well, it affects both attacking and defending obviously. And you cannot see it in the game somewhere in the graphs, haHA. \href{https://www.warzone.com/MultiPlayer?GameID=35445501}{Here,} on Turn 7, look at Yelo's 1st move of 26 armies capturing a neutral of 4 territories. By what we know, 4x0.7=2.8, which rounds to 3 armies. So, we expect to see 3 attacking armies die in this attack. However, only 2 attacking armies die! 
+\\
+\\
+By applying the same exact methodology as above, but now for a kill rate of 0.7 and accounting for the defending armies, we calculate that 4 defending armies have 100\% chance of killing 2 attacking armies, and 99.19\% chance of killing 3 attacking armies. The cumulative luck graph in-game does say that Yelo won 1 army in the process, which is the factual outcome of this. So in the end, despite how ridiculous 99.19\% chance of an event failing seems, it doesn't really matter.
+
+By this point you have realised that Luck doesn't really affect small attacks (10 or less attacking armies). In fact, for the attacker's luck, it affects:
+\begin{itemize}
+    \item 4 on 3. an attack you would never do regardless unless you are a lunatic (12.96\% to succeed).
+    \item 6 on 4. pain. \href{https://www.warzone.com/MultiPlayer?GameID=36624250}{Example}. Turn 8 and 11 (82.08\% chance to succeed).
+    \item 7 on 5. an attack you should never do regardless, unless you are a serial gambler and need to get into rehab (2.80\% chance to succeed).
+    \item 8 on 5. pain. \href{https://www.warzone.com/MultiPlayer?GameID=36022109}{Example}. Turn 2 (95.02\% chance to succeed).
+    \item 9 on 6: an attack only someone drunk would make (23.18\% chance to succeed)
+\end{itemize}
+
+As the stacks of armies increase, Luck is more likely to affect the outcome. For example, from Yelo vs Octane once again \url{https://www.warzone.com/MultiPlayer?GameID=35445501}, turn 11 there are attacks of 41 and 86 armies. 
+41 Attacking armies:
+\begin{itemize}
+    \item 100\% chance to kill 21 defenders
+    \item 99.99\% chance to kill 22 defenders. In fact, the probability to not kill 22 defenders but less, is approximately in the range of $10^{-8}\%$
+    \item 99.9999829\% chance to kill 23 defenders
+    \item 98.74\% chance to kill 24 defenders
+    \item 64.04\% chance to kill 25 defenders
+    \item 2.74\% chance to kill 26 defenders
+    0.0019\% chance to kill 27 defenders
+\end{itemize}
+\\
+\\
+86 Attacking armies in a SR 0\% luck game kill 52 defenders, but in 16\% luck can kill anything in the range$[43,57]$. The probability of killing 57 defenders is $2.67 \times 10^{-13}\%$ Isn't that cool? If it ever happens in a serious game please link it to me.

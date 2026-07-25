@@ -1,0 +1,49 @@
+\subsection{Blockade}
+
+Blockade appears in almost every single template. The idea behind the card generally speaking is to sacrifice a territory you own to a neutral blocking your opponent towards completing their goal. It happens at the very end of the turn. 
+\\
+\\
+A unique way to use this card is explained in \href{https://www.warzone.com/Forum/94540-blockade-pro}{this Forum}, the so called timi-blockade. As explained in the Transfer-only section, a failed transfer-only move locks the armies in place. You can use that to blockade a territory in a safer way.
+\\
+\\
+You can expand on this idea through \href{https://www.warzone.com/Forum/149405-trans-attc-percentage-cards?Offset=0}{Frog's Tips}, although I've personally not cross-checked the validity nor usefulness of this.
+\begin{itemize}
+  \item \(d\) – defenders  \hfill(after deployments)
+  \item \(a\) – enemy attackers (after his max deployment that you expect). If he goes to a stack of 40, a=40, not 39, ignore 1-army stand guard here.
+  \item \(z_1\) – neutral size you want if he \textbf{does not} attack for your blockade.
+  \item \(z_2\) – neutral size you want if he \textbf{does}   attack for your blockade.
+  \item \(f\) – armies you issue as a transfer-only into the enemy territory (lock in place).
+  \item \(p\in[0,1]\) – fraction you pull back with a percentage transfer.
+\end{itemize}
+
+\begin{align}
+z_1 &= d \;-\; p\bigl(d-f-1\bigr) \tag{I} \\
+z_2 &= d - 0.6a \;-\; p\bigl(d-0.6a-f-1\bigr) \tag{II}
+\end{align}
+
+\[
+\boxed{\,p \;=\; \dfrac{\,z_2 + 0.6a - d\,}{-d + 0.6a + f + 1}\,}
+\]
+
+\[
+\boxed{\,f \;=\;
+\dfrac{\,a\!\left(3z_1-3\right) \;+\; (5-5d)z_1 \;+\; (5d-5)z_2\,}
+      {\,3a - 5z_1 + 5z_2\,}}
+\]
+
+How to use, example \href{https://www.warzone.com/MultiPlayer?GameID=11038333}{game} from the Forum:
+\begin{enumerate}
+    \item From TinyToad's POV, you want to blockade Panama (in Central America).
+    \item a is 40, his stack after max deploys. d is 31 cause we plan that.
+    \item I choose to blockade with 7 if he doesn't attack and 5 if he does attack.
+    \item $f=3.81$ round to 4 -> transfer only to the opponent
+    \item $p=0.91$ -> 91\% transfer back last move
+\end{enumerate}
+
+You can use this \href{https://docs.google.com/spreadsheets/d/1twgkhrvvzQ-SEY8ad3hSIEKupteou-Vpi9Ahl61yaOI/edit?usp=sharing}{Spreadsheet} (it currently has the parameters listed above. Make a copy and insert your own scenario. I haven't seen this in action but play-tested a bit with it's validity and it seems to work. For example in \href{https://www.warzone.com/MultiPlayer?GameID=40353006}{Turn 8}, let's say from sb's perspective Marcus can do a max 11 attack in Scandinavia (a=12), and sb goes to d=12. In the game he does transfer-only 4 and blocks with 5. Well what if we test blockade of 5 if Marcus doesn't attack and blockade of 3 if Marcus attacks (since his stack will be smaller and 3-> becomes 15 in this template). Inputting the number prints a transfer-only move of 1.3 -> rounds to 1 with a 72\% move backwards which according to my drunk calculations works.
+\begin{itemize}
+    \item If Marcus doesn't attack, it's 12vs12, 11 movable for sb, transfer-only 1 forward. now 10 movable. 72\% back that's 7 armies transfered back. 12-7=5 -> block of 5.
+    \item If Marcus attacks with 11, 12vs12 becomes 4vs5 (sb on 5, 4 movable). Transfer-only 1 forward (now 3 movable), then 72\% transfer back -> 2.16 -> 2. From his 5 armies after the trade, sb transfered back 2. 5-2=3 -> block of 3.
+\end{itemize}
+
+While it is mathematically correct, any mis-sizes you witness might occur simply from rounding.
