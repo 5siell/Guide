@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>371_ranking_elo</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="ranking-elo-veto-adjustment">Ranking, Elo &amp; Veto
+Adjustment</h2>
+<div class="wrapfigure">
+<p><span>r</span><span>0.35</span> <img src="Images/profile.jpg"
+style="width:25.0%" alt="image" /></p>
+</div>
+<p>In regards with Figure <a href="#profile_rankings"
+data-reference-type="ref"
+data-reference="profile_rankings">[profile_rankings]</a>, upon opening
+your any profile in the MTL you should be able to spot certain
+numbers/parameters that influence your final ranking, including:</p>
+<ul>
+<li><p>Current Rating (CR)</p></li>
+<li><p>Elo Rating (ER)</p></li>
+<li><p>Veto Adjustment (VA)</p></li>
+<li><p>Activity Bonus (AB)</p></li>
+</ul>
+<p>Needless to say, Current Rank is derived when listing all players
+based on their Current Rating from top to bottom, Best rank is
+self-explanatory and Best Rating is the highest Current Rating you’ve
+had till today. The Ladder Rankings follow CR, which is the rounded
+integer of the following equation:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>R</mi><mo>=</mo><mi>E</mi><mi>R</mi><mo>+</mo><mi>A</mi><mi>B</mi><mo>+</mo><mi>V</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">CR = ER + AB + VA</annotation></semantics></math>
+Consequently, the final Elo, or so called Current Ranking, abbreviated
+as CR or simply Elo later on, consists of 3 parameters.</p>
+<h3 id="elo-rating---er">Elo Rating - ER</h3>
+<p>The MTL uses a veto-adjusted version of the <a
+href="https://www.warzone.com/Forum/216823-multiday-ladder?Offset=628">MWElo
+Rating System</a>.<br />
+<br />
+Imagine 2 players A and B, with ER equal to r(A) and r(B) respectively
+before their game. In order to calculate their ER after the match,
+denoted as r’(A) and r’(B), the algorithm:</p>
+<ol>
+<li><p><strong>Transformation of r to R</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>10</mn><mrow><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>400</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>10</mn><mrow><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>400</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        R(A) = 10^{(r(a)/400)} \\ 
+        R(B) = 10^{(r(b)/400)}
+    \end{cases}</annotation></semantics></math></p></li>
+<li><p><strong>Expected Result - E</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        E(A) = R(A)/(R(A)+R(B)) \\
+        E(B) = R(B)/(R(A)+R(B))
+    \end{cases}</annotation></semantics></math></p></li>
+<li><p><strong>Final Score - S (Binary)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo><mtext mathvariant="normal">if</mtext><mspace width="0.278em"></mspace><mi>A</mi><mspace width="0.278em"></mspace><mtext mathvariant="normal">wins</mtext></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo><mtext mathvariant="normal">if</mtext><mspace width="0.278em"></mspace><mi>A</mi><mspace width="0.278em"></mspace><mtext mathvariant="normal">loses</mtext></mtd></mtr></mtable></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo><mtext mathvariant="normal">if</mtext><mspace width="0.278em"></mspace><mi>A</mi><mspace width="0.278em"></mspace><mtext mathvariant="normal">wins</mtext></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo><mtext mathvariant="normal">if</mtext><mspace width="0.278em"></mspace><mi>A</mi><mspace width="0.278em"></mspace><mtext mathvariant="normal">loses</mtext></mtd></mtr></mtable></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        S(A) = \begin{cases}
+            1, \text{if} \; A \; \text{wins} \\
+            0, \text{if} \; A \; \text{loses}
+        \end{cases} \\
+        S(B) = \begin{cases}
+            0, \text{if} \; A \; \text{wins} \\
+            1, \text{if} \; A \; \text{loses}
+        \end{cases}
+    \end{cases}</annotation></semantics></math></p></li>
+<li><p><strong>New Elo - ER</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>r</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>K</mi><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>r</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>K</mi><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        r&#39;(A) = r(A) + K \times (S(A)-E(A)) \\
+        r&#39;(B) = r(B) + K \times (S(B)-E(B)) \\
+    \end{cases}</annotation></semantics></math></p></li>
+</ol>
+<p>Given as an example, for 2 players A and B with ER
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1639</mn></mrow><annotation encoding="application/x-tex">r(A) = 1639</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1635</mn></mrow><annotation encoding="application/x-tex">r(B) = 1635</annotation></semantics></math>
+where player A won
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">S(A)=1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S(B) = 0</annotation></semantics></math>:</p>
+<ol>
+<li><p><strong>Transformation of r to R</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>10</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>1639</mn><mi>/</mi><mn>400</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mn>12516.99</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>10</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>1635</mn><mi>/</mi><mn>400</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mn>12232.07</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        R(A) = 10^{(1639/400)} = 12516.99 \\ 
+        R(B) = 10^{(1635/400)} = 12232.07
+    \end{cases}</annotation></semantics></math></p></li>
+<li><p><strong>Expected Result - E</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>12516.99</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>12516.99</mn><mo>+</mo><mn>12232.07</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.5057562</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>E</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>12232.07</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>12516.99</mn><mo>+</mo><mn>12232.07</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.4942438</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        E(A) = 12516.99)/(12516.99+12232.07) = 0.5057562 \\
+        E(B) = 12232.07/(12516.99+12232.07) = 0.4942438
+    \end{cases}</annotation></semantics></math></p></li>
+<li><p><strong>Final Score - S (Binary)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        S(A) = 1 \\
+        S(B) = 0
+    \end{cases}</annotation></semantics></math></p></li>
+<li><p><strong>New Elo - ER</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>r</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1639</mn><mo>+</mo><mn>32</mn><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mn>0.5057562</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1654.816</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>r</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1635</mn><mo>+</mo><mn>32</mn><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>−</mo><mn>0.4942438</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1619.184</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+        r&#39;(A) = 1639 + 32 \times (1-0.5057562) = 1654.816 \\
+        r&#39;(B) = 1635 + 32 \times (0-0.4942438) = 1619.184 \\
+    \end{cases}</annotation></semantics></math></p></li>
+</ol>
+<h3 id="veto-adjustment">Veto Adjustment</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.</p>
+<p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam
+varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus
+magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
+gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis
+risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue,
+eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas
+fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a
+mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque.
+Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien,
+sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam
+arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet
+et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu,
+feugiat in, orci. In hac habitasse platea dictumst.</p>
+</body>
+</html>

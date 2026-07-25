@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>021_efficiency-killrates</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="efficiency-and-kill-rates">Efficiency and Kill Rates</h2>
+<p>At 0% luck and SR settings, the game is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="bold">𝐝𝐞𝐭𝐞𝐫𝐦𝐢𝐧𝐢𝐬𝐭𝐢𝐜</mtext><annotation encoding="application/x-tex">\textbf{deterministic}</annotation></semantics></math>.
+1.8 becomes 2, 2.4 becomes 2, 3.2 becomes 3, and so on. The result of
+any battle is 100% predictable once you know the stack sizes. The vast
+majority of templates use the 60/70 kill rate ratio which introduces
+just enough variety and strategy to make things competitive. At lower
+attack rates, big bonuses are painfully slow and you favour dense,
+high-income region instead. At higher defender rate, attrition is
+increased. Each extra income saves you more over time. At the 60/70
+rates, the break-even ratio floats around 1.7, meaning you need
+generally around 1.7 more attackers than defenders, while at something
+like 30/40, that ratio jumps to 2.3-2.5, effectively meaning a small
+income swing no longer guarantees you’ll ever cross the line and
+stalemates occur more easily. But what does it mean behind the
+scenes.<br />
+<br />
+With 0% luck and SR settings, the armies you kill are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>i</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>=</mo><mtext mathvariant="normal">round</mtext><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>×</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Kills = \text{round}(p \times N)</annotation></semantics></math>
+where,</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">p=0.60</annotation></semantics></math>
+for attackers or 0.70 for defenders</p></li>
+<li><p>round means nearest integer. 0.5 rounds up.</p></li>
+</ul>
+<p>If we write p as a reduced fraction:</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>3</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">p = 3/5</annotation></semantics></math>
+(attack) -&gt; denominator 5 -&gt; five distinct curves</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>7</mn><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">p = 7/10</annotation></semantics></math>
+(defense) -&gt; denominator 10 -&gt; ten curves</p></li>
+</ul>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>d</mi><mi>k</mi><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">N = dk + r</annotation></semantics></math>
+for d the denominator (5 or 10) and r its remainder.</p>
+<ul>
+<li><p>Attacker kills
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>3</mn><mo>×</mo><mi>k</mi><mo>+</mo><mtext mathvariant="normal">round</mtext><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo>×</mo><mi>r</mi><mi>/</mi><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">K = 3\times k + \text{round}(3 \times r / 5)</annotation></semantics></math></p></li>
+<li><p>Efficiency given as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>/</mi><mi>N</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>δ</mi><mi>/</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">K/N = (3/5) + \delta / N</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+in the range
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>0.5</mn><mo>,</mo><mi>+</mi><mn>0.5</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-0.5, +0.5]</annotation></semantics></math></p></li>
+<li><p>As N, the number of attacker, grows,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">\delta / N</annotation></semantics></math>
+approaches 0, so every curve asymptotically tends to 0.60 (or
+0.70).</p></li>
+</ul>
+<p>In other words, small attacks are always more efficient than big
+attacks. But also some attacks are generally more efficient than others
+from the above 5/10 distinct curves.</p>
+<h3 id="attacker-curves-at-p-0.60">Attacker Curves at p = 0.60</h3>
+<table id="table:attackerResidue">
+<caption>Attacker efficiency curves
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">p = 0.60</annotation></semantics></math>)
+under 0 % Luck + Straight Round</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Residue
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+(mod 5)</th>
+<th style="text-align: left;">Sequence
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>)</th>
+<th
+style="text-align: center;">round<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>r</mi><mi>/</mi><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(3r/5)</annotation></semantics></math></th>
+<th style="text-align: center;">First Kills /
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></th>
+<th style="text-align: left;">Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Residue
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+(mod 5)</td>
+<td style="text-align: left;">Sequence
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>)</td>
+<td
+style="text-align: center;">round<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>r</mi><mi>/</mi><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(3r/5)</annotation></semantics></math></td>
+<td style="text-align: center;">First Kills /
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></td>
+<td style="text-align: left;">Behaviour</td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>15</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">5,10,15,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">60%</td>
+<td style="text-align: left;">Flat at 60% (perfect multiples)</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>16</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">1,6,11,16,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">100%, 66.7%, …</td>
+<td style="text-align: left;">Starts above 60%, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>12</mn><mo>,</mo><mn>17</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">2,7,12,17,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">50%, 57.1%, …</td>
+<td style="text-align: left;">Starts below 60%, then rises</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>13</mn><mo>,</mo><mn>18</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">3,8,13,18,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">66.7%, 62.5%, …</td>
+<td style="text-align: left;">Starts above 60%, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>,</mo><mn>9</mn><mo>,</mo><mn>14</mn><mo>,</mo><mn>19</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">4,9,14,19,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">50%, 55.6%, …</td>
+<td style="text-align: left;">Starts below 60%, then rises</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>To elaborate.</p>
+<ul>
+<li><p>Multiples of 5 are never wrong. Perfectly on-rate and easy to
+memorize, always kill 60%.</p></li>
+<li><p>The bigger the attack, the less efficient it is. Take residue of
+1 at mod 5, the most efficient attacks. An attack of 1 army guarantees
+you a 1:1 exchange. An attack of 6 kills 0.66, an attack of 11 0.63, an
+attack of 16 0.625 and so on till it reaches asymptotically the 0.60
+attackers kill rate.</p></li>
+</ul>
+<p>Attacks at residue 0,1 or 3, are generally a lot more efficient than
+residue 2 and 4. This is a very complex way of describing why you send
+attack with 3 instead of 4 attackers. 6 instead of 7, and so on. Same
+kills, fewer losses, more efficient. Sequences at 1 or 3 give you the
+best per-army punch when stacks are small, but once you bypass
+approximately 20 troops, the edge shrinks below 1%, and "just send what
+you’ve got" is fine.</p>
+<h3 id="defender-curves-at-p-0.70">Defender Curves at p = 0.70</h3>
+<table id="table:defenderResidue">
+<caption>Defender efficiency curves
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.70</mn></mrow><annotation encoding="application/x-tex">p = 0.70</annotation></semantics></math>)
+under 0 % Luck + Straight Round</caption>
+<thead>
+<tr>
+<th
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+(mod 10)</th>
+<th
+style="text-align: center;">round<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>7</mn><mi>r</mi><mi>/</mi><mn>10</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(7r/10)</annotation></semantics></math></th>
+<th style="text-align: left;">Sequence
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>)</th>
+<th style="text-align: center;">First Kills /
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></th>
+<th style="text-align: left;">Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+(mod 10)</td>
+<td
+style="text-align: center;">round<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>7</mn><mi>r</mi><mi>/</mi><mn>10</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(7r/10)</annotation></semantics></math></td>
+<td style="text-align: left;">Sequence
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>)</td>
+<td style="text-align: center;">First Kills /
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></td>
+<td style="text-align: left;">Behaviour</td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo>,</mo><mn>20</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">10,20,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">70%</td>
+<td style="text-align: left;">Flat at 70% (multiples of 10)</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>21</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">1,11,21,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">100%, 72.7%, …</td>
+<td style="text-align: left;">Starts high, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>12</mn><mo>,</mo><mn>22</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">2,12,22,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">50%, 66.7%, …</td>
+<td style="text-align: left;">Starts low, then rises</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>13</mn><mo>,</mo><mn>23</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">3,13,23,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">66.7%, 69.2%, …</td>
+<td style="text-align: left;">Starts low, then rises</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>,</mo><mn>14</mn><mo>,</mo><mn>24</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">4,14,24,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">75%, 71.4%, …</td>
+<td style="text-align: left;">Starts high, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>,</mo><mn>15</mn><mo>,</mo><mn>25</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">5,15,25,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">80%, 76%, …</td>
+<td style="text-align: left;">Peaks at 80%, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">4</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>,</mo><mn>16</mn><mo>,</mo><mn>26</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">6,16,26,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">66.7%, 68.8%, …</td>
+<td style="text-align: left;">Starts low, then rises</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>,</mo><mn>17</mn><mo>,</mo><mn>27</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">7,17,27,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">71.4%, 70.6%, …</td>
+<td style="text-align: left;">Starts high, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">6</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>,</mo><mn>18</mn><mo>,</mo><mn>28</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">8,18,28,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">75%, 72.2%, …</td>
+<td style="text-align: left;">Starts high, then falls</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>,</mo><mn>19</mn><mo>,</mo><mn>29</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">9,19,29,\dots</annotation></semantics></math></td>
+<td style="text-align: center;">66.7%, 68.3%, …</td>
+<td style="text-align: left;">Starts low, then rises</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>After approximately 30% defenders, every curve is within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><mn>1</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">\pm 1\%</annotation></semantics></math>
+of 0.70. The same mathematical logic applies here as well. Take for
+example r 1. 11 defenders kill 0.727, 21 defenders kill 0.714, 31
+defenders kill 0.709 and so on approaching asymptotically 0.70. Some r’s
+approach 0.7 from higher values, some from lower values. The biggest
+take away you can get from the table is to never end a turn defending a
+territory on 2,3,6,9 etc. Well, almost never. There can always be very
+specific scenarios where this would do the trick but it generally leads
+to losses of armies. 5-defender blocks are outright the most efficient
+thing you can do.</p>
+<h3 id="practical-tips">Practical tips</h3>
+<p>All this gets highly mathematical but there’s a lot of takeaways and
+you have to keep in mind every thing here is very case-specific. Doing
+exclusively attacks of 1 and 6 won’t win you every game.</p>
+<ul>
+<li><p>Using 3-, 6-, 11- attacks are the most efficient. These numbers
+sit on the |66% starts-high| attacker curve and kill as many as 4/7/8
+would but cost one fewer unit every single swing.</p></li>
+<li><p>Defending with 2,3,6,9 etc is inefficient. This however doesn’t
+mean it’s always wrong. Yes, 6 defenders kill 4 attackers, as many as 5
+defenders kill, yet they make the enemy jump from 8-&gt;10 attackers.
+This extra unit from the armies required from them can buy you an extra
+turn on a chokepoint. For example <a
+href="https://www.warzone.com/MultiPlayer?GameID=39915640">Turn 12,
+Greenland</a>. Though I still want to stress that ideas like these are
+useful to either make a comeback or provide a moveset for you that
+cannot go wrong. Generally you should think of efficiency as that will
+give you the necessary advantage in armies that can be converted to a
+win. Take into example this miserable <a
+href="https://www.warzone.com/MultiPlayer?GameID=41012101">Biomes</a>
+game I had once, and particularly turn 6 onwards. I need to play a crazy
+expansion game due to picking poorly and out of pure luck/my opponent
+misplaying it, I manage to get him to lose a card piece on turn 6 and
+transform the game into a 16v14 game (that becomes 12v11 after
+sanctions). However, do I have an advantage in reality? By end of turn
+6,</p>
+<ol>
+<li><p>Syphen sure is down 1 income, but has a total of 14 movable
+armies, 10 in fronts, 4 delays.</p></li>
+<li><p>I (7ate9) have 9 movable armies. 6 in fronts and 3
+delays.</p></li>
+</ol></li>
+<li><p>My income advantage is not seen, as I cannot realistically
+outdelay him, nor attack him due to having way less armies in our
+fronts. So I did the only thing I could do, play around efficient
+attacks/defenses and accept that I cannot do more, I need to have him
+throw armies in the bin to convert my advantage. And through an 8 army
+defense sit, and 2 attacks in USA of 3 and 6, just within one turn the
+movable armies in fronts went from 10v6 in his favor to 2v3 in my favor.
+While you shouldn’t look into this as me making the perfect moves, you
+should get into the habit of investing time into every single move and
+idea you make in your game.</p></li>
+</ul>
+<p>Information is power. As I stated in the beginning of this section,
+0% luck SR settings are deterministic. Deterministic combat turns this
+into a chess-like game where you enter lines, sequences of moves, based
+on how efficient you are. While you can keep as a rule of thumb which
+attacks and which defenses are the best, or tier them even, the ideas
+should pop in upon looking for forced moves. Take for example this <a
+href="https://www.warzone.com/MultiPlayer?GameID=40190484">Strat MME</a>
+game on Turn 4 at Figure <a href="#finding_best_moves"
+data-reference-type="ref" data-reference="finding_best_moves">1</a>.</p>
+<figure id="finding_best_moves" data-latex-placement="H">
+<img src="Images/perf_moves.jpg" style="width:70.0%" />
+<figcaption>Finding Best Moves</figcaption>
+</figure>
+<p>From Bast’s perspective, you have information of all 3 enemy picks
+and you know the game is 14vs10 income and you know you have first move
+on the following turn. What do you do and what is your reasoning?
+Simplify the position, find moves that will work 100% of the time.</p>
+<ul>
+<li><p>If you deploy +14 in Vorkuta and first move with 15, if Buns
+deploys +10, 16v12 becomes 7v3 and Buns can still coinflip break the
+other territory (the position is still completely winning for bast, it’s
+a 10vs10 income game with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>
+10 armies advantage). bast in this position can get the card piece in
+Antarctica.</p></li>
+<li><p>If you as bast think of the position as: "Buns has 10 income, he
+goes up to 12, kills up to 7, I can guarantee defense by deploying
+6&amp;7, even 6&amp;6 and first move 1 extra army. I can force outdelay
+and then attack and slowly proceed". The end result isn’t wrong, at the
+end of the turn Buns will likely get SA, and the game would now be a
+14vs14 game with army advantage. The problem is that it’s not a forced
+win and you waste armies in delays.</p></li>
+</ul>
+<p>So we are stuck between these two ideas, or well, strategies. One of
+them is very safe and slow, the other risks a recapture of our bonus. Is
+it a prediction? No. Remember the kill rate tables and discussion. Why
+first move with 15vs12 instead of 13vs12? You can deploy +12 on Vorkuta
+and first move with 13, get at worse a trade of 14vs12 to 6vs4 and
+deploy the remaining 2 of your income in Ufa. Even if Buns decides to
+full deploy, his remaining alive defenders (3 after you subtract the
+army stand guard), cannot capture Ufa.</p>
+<h4 id="taps">Taps</h4>
+<p>Tapping is an idea of attacking with exactly one army. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.60</mn><mo>×</mo><mn>1</mn><mo>=</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">0.60 \times 1 = 0.60</annotation></semantics></math>
+it rounds to 1, which is a perfect trade 1:1. The real value comes in
+specific scenarios, some of them explained later, but a crucial one the
+fact that taps change the remainder class of the enemy stack by -1,
+which can flip how the rounding behaves for a big attack the following
+turn. Practically speaking, lets define taps and their usage in 2
+categories, offensively and defensively.</p>
+<ol>
+<li><p>Tapping as the attacker</p>
+<ul>
+<li><p>Useful for sniping leftover armies to deny delays</p></li>
+<li><p>Useful at reducing an opponent’s stack through equal
+trades</p></li>
+<li><p>Useful at setting up a forced kill or sequence later on</p></li>
+</ul></li>
+<li><p>Tapping as the defender</p>
+<ul>
+<li><p>Useful for sniping leftover armies to deny delays</p></li>
+<li><p>To gain a favourable kill rate. Table <a
+href="#table:defenderTap" data-reference-type="ref"
+data-reference="table:defenderTap">3</a>.</p></li>
+</ul></li>
+</ol>
+<table id="table:defenderTap">
+<caption>One-army tap from the defender bumps the attacker into a worse
+rounding class; same casualties on the defender side, one extra loss for
+the attacker.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Start (A v D)</th>
+<th style="text-align: center;">Result if <strong>attacker swings
+first</strong></th>
+<th style="text-align: center;">Result if <strong>defender taps, then
+attack</strong></th>
+<th style="text-align: center;">Defender gains …</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Start (A v D)</td>
+<td style="text-align: center;">No tap</td>
+<td style="text-align: center;">Defender-tap line</td>
+<td style="text-align: center;">Gain</td>
+</tr>
+<tr>
+<td style="text-align: center;">6 v 6</td>
+<td style="text-align: center;">2 v 3</td>
+<td style="text-align: center;">1 v 3</td>
+<td style="text-align: center;">+1 net army</td>
+</tr>
+<tr>
+<td style="text-align: center;">9 v 9</td>
+<td style="text-align: center;">3 v 4</td>
+<td style="text-align: center;">2 v 4</td>
+<td style="text-align: center;">+1</td>
+</tr>
+<tr>
+<td style="text-align: center;">12 v 12</td>
+<td style="text-align: center;">4 v 5</td>
+<td style="text-align: center;">3 v 5</td>
+<td style="text-align: center;">+1</td>
+</tr>
+<tr>
+<td style="text-align: center;">19 v 19</td>
+<td style="text-align: center;">6 v 8</td>
+<td style="text-align: center;">5 v 8</td>
+<td style="text-align: center;">+1</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>In case this isn’t self-explanatory, for example in the 9vs9
+scenario:</p>
+<ul>
+<li><p>No tap: 9vs9. 8 att kill 5. 9 defenders kill 6 -&gt;
+3vs4</p></li>
+<li><p>Yes tap: 9vs9-&gt; 8vs8. 7 att kills 4. 8 defenders kill 6 -&gt;
+2vs4</p></li>
+</ul>
+<p>The idea of sniping leftover armies to deny delays is something
+taking place predominantly in brawl templates, but can nonetheless be
+applied to everything. For example in this French Brawl <a
+href="https://www.warzone.com/MultiPlayer?GameID=21713173">game</a> note
+how both players create artificial delays through tapping, on Turn 4
+where Beep taps first order to reduce the opponent’s stack, on Turn 5
+where Othello taps a leftover south to deny from the opponent the extra
+delay they can gain from moving that, and so on. To expand on this idea,
+sometimes you need to first move attacks in order to deny from your
+opponent this 1:1 trade. For example in this French Brawl <a
+href="https://www.warzone.com/MultiPlayer?GameID=41378170">game</a> my
+opponent Turn 2 south should first move me with a 3attack, to get a
+better 2:1 trade for himself. Instead he allows me to get 2x 1:1 trades.
+This is practically risk-free when you have priority that turn, as in
+the opposite scenario your opponent might always move that army away and
+you get a 1:0 trade. For example in this French Brawl <a
+href="https://www.warzone.com/MultiPlayer?GameID=40950869">game</a> pay
+attention to Turn 2 where I tap on my first move (1:1 trade), and my
+opponent taps back the same territory (1:0 trade). Try to avoid these at
+all costs.<br />
+<br />
+Min-maxing your armies through optimizing kill rates is almost a
+revolutionary concept to new players, and while it does take effort, it
+elevates your gameplay. It is, in my opinion, one of the three most
+important thing on your journey to becoming a better player, together
+with making great picks and understanding the template’s and map’s
+dynamics.</p>
+</body>
+</html>

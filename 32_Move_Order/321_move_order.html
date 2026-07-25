@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>321_move_order</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="move-order-picking-phase">Move Order &amp; Picking Phase</h1>
+<h2 id="ABBA">Explanation of Move Order - ABBA</h2>
+<div class="wrapfigure">
+<p><span>r</span><span>0.35</span> <img src="Images/moveorder.jpg"
+style="width:25.0%" alt="image" /></p>
+</div>
+<p>In accordance with <a
+href="https://www.warzone.com/wiki/Move_Order">Warzone Wiki Move Order
+Explanation</a>, in a Warzone 1vs1 game between player A and player B,
+and under the assumption that player A has the first move, the move
+order alternates as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">ABBAABBAA</mtext><mi>…</mi></mrow><annotation encoding="application/x-tex">\text{ABBAABBAA}\dots</annotation></semantics></math>.
+This sequence can be described as follows:</p>
+<ul>
+<li><p>Player A executes their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>1</mn><mtext mathvariant="normal">st</mtext></msup><annotation encoding="application/x-tex">1^{\text{st}}</annotation></semantics></math>
+move.</p></li>
+<li><p>Player B executes their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>1</mn><mtext mathvariant="normal">st</mtext></msup><annotation encoding="application/x-tex">1^{\text{st}}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mtext mathvariant="normal">nd</mtext></msup><annotation encoding="application/x-tex">2^{\text{nd}}</annotation></semantics></math>
+moves consecutively.</p></li>
+<li><p>Player A executes their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mtext mathvariant="normal">nd</mtext></msup><annotation encoding="application/x-tex">2^{\text{nd}}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mtext mathvariant="normal">rd</mtext></msup><annotation encoding="application/x-tex">3^{\text{rd}}</annotation></semantics></math>
+moves consecutively.</p></li>
+<li><p>Player B executes their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mtext mathvariant="normal">rd</mtext></msup><annotation encoding="application/x-tex">3^{\text{rd}}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>4</mn><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">4^{\text{th}}</annotation></semantics></math>
+moves consecutively.</p></li>
+<li><p>Player A executes their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>4</mn><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">4^{\text{th}}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>5</mn><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">5^{\text{th}}</annotation></semantics></math>
+moves consecutively.</p></li>
+<li><p>Player B executes their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>5</mn><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">5^{\text{th}}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>6</mn><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">6^{\text{th}}</annotation></semantics></math>
+moves consecutively.</p></li>
+<li><p>And so on, following the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="normal">ABBA</mtext><annotation encoding="application/x-tex">\text{ABBA}</annotation></semantics></math>
+pattern, with an example at Figure <a href="#ABBA_image"
+data-reference-type="ref"
+data-reference="ABBA_image">[ABBA_image]</a>.</p></li>
+</ul>
+<p>This pattern ensures that player A and player B alternate moves, with
+each player receiving consecutive moves in pairs after the first move by
+player A. The sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="normal">ABBA</mtext><annotation encoding="application/x-tex">\text{ABBA}</annotation></semantics></math>
+then continues cyclically.<br />
+<br />
+Of course, in the opposite case that player B has first move, then the
+move order follows the inverse pattern
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">BAABBAABB</mtext><mi>…</mi></mrow><annotation encoding="application/x-tex">\text{BAABBAABB} \dots</annotation></semantics></math>.
+The ABBA algorithm determines not only the order of moves but also the
+order of deployments, without exception. The arising question regarding
+the above rule, how is it decided which player moves first each turn.
+The answer to that question relies on the 3 different settings of
+implementation one can find upon creating a game. Needless to say, each
+game follows exactly 1 of the settings below:</p>
+<ol>
+<li><p>Random Move Order <a href="#random_move_order"
+data-reference-type="ref"
+data-reference="random_move_order">[random_move_order]</a></p></li>
+<li><p>Cyclic Move Order <a href="#cyclic_move_order"
+data-reference-type="ref"
+data-reference="cyclic_move_order">[cyclic_move_order]</a></p></li>
+<li><p>No-Luck Cycle Move Order <a href="#noluck_cycle"
+data-reference-type="ref"
+data-reference="noluck_cycle">[noluck_cycle]</a></p></li>
+</ol>
+</body>
+</html>

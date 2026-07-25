@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>021_Luck_explanation</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="luck-modifier">Luck Modifier</h2>
+<h3 id="how-luck-works">How Luck works</h3>
+<p><a href="https://www.warzone.com/wiki/Luck_Modifier"
+class="uri">https://www.warzone.com/wiki/Luck_Modifier</a><br />
+<br />
+Welcome to the rabbit hole that is luck. Thankfully, the 2 templates in
+MTL that involve luck are simpler than this shit-show that is
+calculating the binomial probability of an attack succeeding. If you
+want to go in depth about how it works, go ahead. I will do my best in
+explaining it as simply as possible, which also linking to you the code
+in order to calculate it as fast as possible. Let’s Define:</p>
+<ol>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo></mrow><annotation encoding="application/x-tex">A \rightarrow</annotation></semantics></math>
+Attacking Armies</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>→</mo></mrow><annotation encoding="application/x-tex">D \rightarrow</annotation></semantics></math>
+Defending Armies</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>→</mo></mrow><annotation encoding="application/x-tex">L \rightarrow</annotation></semantics></math>
+Luck Percent</p></li>
+</ol>
+<p>3 Steps in our calculations. Baby steps:</p>
+<ol>
+<li><p>Binomial Probability
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>;</mo><mi>p</mi><mo>,</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow></mrow><mi>n</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>x</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>p</mi><mi>x</mi></msup><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>n</mi><mo>−</mo><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">P(x;p,n) = \begin{pmatrix}{} n \\ x \end{pmatrix} {p}^x(1-p)^{n-x}</annotation></semantics></math>
+What happens behind the scenes when attacking in Warlight. Imagine
+attacking with 3 armies. That means 3 integers are randomly generated
+behind the scenes between 1 and 100 (RNG). for kill rate 60% or 0.6,
+then:</p>
+<ul>
+<li><p>if RNG&gt;60, successfull roll</p></li>
+<li><p>if RNG&lt;60, unsuccessfull roll</p></li>
+</ul>
+<p>That of course means there are 4 scenarios, 0,1,2 and 3 successful
+rolls. Or, mathematically, the number of successfully rolls, defined as
+(i), takes values from 0 to A. That’s where the binomial distribution
+comes in play.
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mfrac><mrow><mi>A</mi><mi>!</mi></mrow><mrow><mi>i</mi><mi>!</mi><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>−</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mi>!</mi></mrow></mfrac><mo>×</mo><msup><mn>0.6</mn><mi>i</mi></msup><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mn>0.6</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>−</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">for </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mi>A</mi><mo stretchy="false" form="postfix">]</mo></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">P = \begin{cases}
+    \frac{A!}{i! \times(A-i)!} \times 0.6^i \times (1-0.6)^{(A-i)}, &amp; \text{for } i=[0,1,...,A]
+    \end{cases}</annotation></semantics></math> Following till now?
+Good.</p></li>
+<li><p>Armies killed
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mtext mathvariant="normal">Round</mtext><mo stretchy="false" form="prefix">[</mo><mi>L</mi><mo>×</mo><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>0.6</mn><mo>×</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>0.6</mn><mo>×</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">K = \text{Round}[L\times(i-(0.6 \times A))+(0.6 \times A)]</annotation></semantics></math>
+By round, I refer to rounding K to the closest integer</p></li>
+<li><p>Addition of the Probabilities For A attackers there are A+1
+number of rolls. We spot which of these rolls correspond to killing
+equal or more than D, defined as the defending armies. Then sum up their
+corresponding probabilities</p></li>
+</ol>
+<p>Examples:</p>
+<h4 id="attack-of-3-on-2">Attack of 3 on 2</h4>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>3</mn><mo>,</mo><mi>D</mi><mo>=</mo><mn>2</mn><mo>,</mo><mi>L</mi><mo>=</mo><mn>0.16</mn></mrow><annotation encoding="application/x-tex">A=3, D=2, L=0.16</annotation></semantics></math>
+Binomial Probability:</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.064</mn></mrow><annotation encoding="application/x-tex">i=0 \rightarrow P=0.064</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.288</mn></mrow><annotation encoding="application/x-tex">i=1 \rightarrow P=0.288</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>2</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.432</mn></mrow><annotation encoding="application/x-tex">i=2 \rightarrow P=0.432</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>3</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.216</mn></mrow><annotation encoding="application/x-tex">i=3 \rightarrow P=0.216</annotation></semantics></math></p></li>
+</ul>
+<p>The probabilities add up to 1, which translates to 100%. Armies
+Killed:</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>1.512</mn><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">i=0 \rightarrow K=1.512 \rightarrow 2</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>1.672</mn><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">i=1 \rightarrow K=1.672 \rightarrow 2</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>2</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>1.832</mn><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">i=2 \rightarrow K=1.832 \rightarrow 2</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>3</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>1.992</mn><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">i=3 \rightarrow K=1.992 \rightarrow 2</annotation></semantics></math></p></li>
+</ul>
+<p>K rounds to the nearest integer!</p>
+<p>Probability of killing 2 defenders:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>2</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>3</mn></mrow></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">P = P_{i=0} + P_{i=1} + P_{i=2} + P_{i=3} = 1</annotation></semantics></math>
+, means the attack works 100% of the time</p>
+<h4 id="attack-of-6-on-4">Attack of 6 on 4</h4>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>6</mn><mo>,</mo><mi>D</mi><mo>=</mo><mn>4</mn><mo>,</mo><mi>L</mi><mo>=</mo><mn>0.16</mn></mrow><annotation encoding="application/x-tex">A=6, D=4, L=0.16</annotation></semantics></math>
+Binomial Probability:</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.004096</mn></mrow><annotation encoding="application/x-tex">i=0 \rightarrow P=0.004096</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.036864</mn></mrow><annotation encoding="application/x-tex">i=1 \rightarrow P=0.036864</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>2</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.138240</mn></mrow><annotation encoding="application/x-tex">i=2 \rightarrow P=0.138240</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>3</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.276480</mn></mrow><annotation encoding="application/x-tex">i=3 \rightarrow P=0.276480</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>4</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.311040</mn></mrow><annotation encoding="application/x-tex">i=4 \rightarrow P=0.311040</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>5</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.186624</mn></mrow><annotation encoding="application/x-tex">i=5 \rightarrow P=0.186624</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>6</mn><mo>→</mo><mi>P</mi><mo>=</mo><mn>0.046656</mn></mrow><annotation encoding="application/x-tex">i=6 \rightarrow P=0.046656</annotation></semantics></math></p></li>
+</ul>
+<p>The probabilities add up to 1, which translates to 100%. Armies
+Killed:</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.024</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">i=0 \rightarrow K=3.024 \rightarrow 3</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.184</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">i=1 \rightarrow K=3.184 \rightarrow 3</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>2</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.344</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">i=2 \rightarrow K=3.344 \rightarrow 3</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>3</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.504</mn><mo>→</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">i=3 \rightarrow K=3.504 \rightarrow 4</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>4</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.664</mn><mo>→</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">i=4 \rightarrow K=3.664 \rightarrow 4</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>5</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.824</mn><mo>→</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">i=5 \rightarrow K=3.824 \rightarrow 4</annotation></semantics></math></p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>6</mn><mo>→</mo><mi>K</mi><mo>=</mo><mn>3.984</mn><mo>→</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">i=6 \rightarrow K=3.984 \rightarrow 4</annotation></semantics></math></p></li>
+</ul>
+<p>K rounds to the nearest integer!</p>
+<p>Probability of killing 3 defenders:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>2</mn></mrow></msub><mo>=</mo><mn>0.1792</mn></mrow><annotation encoding="application/x-tex">P=P_{i=0}+P_{i=1}+P_{i=2} = 0.1792</annotation></semantics></math>
+Probability of killing 4 defenders:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>3</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>4</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>5</mn></mrow></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>=</mo><mn>6</mn></mrow></msub><mo>=</mo><mn>0.8208</mn></mrow><annotation encoding="application/x-tex">P=P_{i=3}+P_{i=4}+P_{i=5}+P_{i=6} = 0.8208</annotation></semantics></math>
+,where 0.179 means 17.9% and 0.821 means 82.1%.<br />
+<br />
+What does this mean? Short story it means Luck is a bad feature. Long
+story is some people think luck is a good feature. Those people either
+don’t know how luck works, or are serial gamblers. (jk, I’m being harsh
+about something trivial.) Luck barely affects gameplay 99% of the times.
+It makes expansion over a bonus without a starting territory in a bit
+more difficult and that’s usually all there is to it.<br />
+<br />
+But Chris, do I really need to calculate all these when I am playing the
+game? No young Padawan. You can press Game on the bottom left
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+Analyse Attack, input the number of defending armies and see a graph of
+numbers of attacking armies with their corresponding probabilities of
+success in killing the specified number of defenders.<br />
+<br />
+But Chris, you may ask, does the Luck setting only affect attacking and
+not defending? It should affect both right? How can I see how Luck
+affects the number of armies that defenders can kill based on
+Luck.<br />
+<br />
+Well, it affects both attacking and defending obviously. And you cannot
+see it in the game somewhere in the graphs, haHA. <a
+href="https://www.warzone.com/MultiPlayer?GameID=35445501">Here,</a> on
+Turn 7, look at Yelo’s 1st move of 26 armies capturing a neutral of 4
+territories. By what we know, 4x0.7=2.8, which rounds to 3 armies. So,
+we expect to see 3 attacking armies die in this attack. However, only 2
+attacking armies die!<br />
+<br />
+By applying the same exact methodology as above, but now for a kill rate
+of 0.7 and accounting for the defending armies, we calculate that 4
+defending armies have 100% chance of killing 2 attacking armies, and
+99.19% chance of killing 3 attacking armies. The cumulative luck graph
+in-game does say that Yelo won 1 army in the process, which is the
+factual outcome of this. So in the end, despite how ridiculous 99.19%
+chance of an event failing seems, it doesn’t really matter.</p>
+<p>By this point you have realised that Luck doesn’t really affect small
+attacks (10 or less attacking armies). In fact, for the attacker’s luck,
+it affects:</p>
+<ul>
+<li><p>4 on 3. an attack you would never do regardless unless you are a
+lunatic (12.96% to succeed).</p></li>
+<li><p>6 on 4. pain. <a
+href="https://www.warzone.com/MultiPlayer?GameID=36624250">Example</a>.
+Turn 8 and 11 (82.08% chance to succeed).</p></li>
+<li><p>7 on 5. an attack you should never do regardless, unless you are
+a serial gambler and need to get into rehab (2.80% chance to
+succeed).</p></li>
+<li><p>8 on 5. pain. <a
+href="https://www.warzone.com/MultiPlayer?GameID=36022109">Example</a>.
+Turn 2 (95.02% chance to succeed).</p></li>
+<li><p>9 on 6: an attack only someone drunk would make (23.18% chance to
+succeed)</p></li>
+</ul>
+<p>As the stacks of armies increase, Luck is more likely to affect the
+outcome. For example, from Yelo vs Octane once again <a
+href="https://www.warzone.com/MultiPlayer?GameID=35445501"
+class="uri">https://www.warzone.com/MultiPlayer?GameID=35445501</a>,
+turn 11 there are attacks of 41 and 86 armies. 41 Attacking armies:</p>
+<ul>
+<li><p>100% chance to kill 21 defenders</p></li>
+<li><p>99.99% chance to kill 22 defenders. In fact, the probability to
+not kill 22 defenders but less, is approximately in the range of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup><mi>%</mi></mrow><annotation encoding="application/x-tex">10^{-8}\%</annotation></semantics></math></p></li>
+<li><p>99.9999829% chance to kill 23 defenders</p></li>
+<li><p>98.74% chance to kill 24 defenders</p></li>
+<li><p>64.04% chance to kill 25 defenders</p></li>
+<li><p>2.74% chance to kill 26 defenders 0.0019% chance to kill 27
+defenders</p></li>
+</ul>
+<p><br />
+<br />
+86 Attacking armies in a SR 0% luck game kill 52 defenders, but in 16%
+luck can kill anything in the
+range<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>43</mn><mo>,</mo><mn>57</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[43,57]</annotation></semantics></math>.
+The probability of killing 57 defenders is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.67</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>13</mn></mrow></msup><mi>%</mi></mrow><annotation encoding="application/x-tex">2.67 \times 10^{-13}\%</annotation></semantics></math>
+Isn’t that cool? If it ever happens in a serious game please link it to
+me.</p>
+</body>
+</html>

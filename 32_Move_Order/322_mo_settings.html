@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>322_mo_settings</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="move-order-settings">Move Order Settings</h2>
+<p><strong>Random Move Order</strong> <span id="random_move_order"
+data-label="random_move_order"></span><br />
+<br />
+When a game is configured to Random Move Order, Warzone will randomize
+the move order on each turn. Very straight forward, no way to predict
+whether you have first move or not, it’s a 50-50 chance. The ABBA
+pattern applies always.<br />
+<br />
+When Warzone was first released, it resembled a lot Risk’s settings of
+luck with dice rolls. Now I am not certain of this, but the game used to
+have only RMO for some years, with Fizzer pushing for a more strategic,
+less luck-heavy meta later on, which included cyclic and nlc. Older
+templates have RMO de facto. That has been the subject of discussion,
+with a lot of templates throughout time altered by the community from
+RMO to a periodic and predictable setting.<br />
+<br />
+<strong>Cyclic Move Order</strong> <span id="cyclic_move_order"
+data-label="cyclic_move_order"></span><br />
+<br />
+Suppose the picking phase of a Warzone’s game is Turn 0, basically the
+only Turn happening prior to Turn 1, with the purpose of allocating
+territories to the 2 players based on their pick choices (assuming of
+course some manual distribution of territories). The first turn of the
+game (Turn 0), is randomised, just as it would be in the Random Move
+Order presented above, but subsequent turns reverse the order each
+time.<br />
+<br />
+In an example of an 1vs1 game between player A and B, the dice is rolled
+during picking phase and let’s assume for the sake of the example player
+A has 1st pick. Then player B gets 2 picks, then A gets 2 picks, and so
+on till both players exhaust the number of initial territories the
+corresponding template offers them. To sum it up, in Cyclic Move Order,
+and if player A had 1st pick, then:</p>
+<ul>
+<li><p>Every even Turn (Turn 2, 4, 6 etc) will involve the patter
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">ABBAABB</mtext><mi>…</mi></mrow><annotation encoding="application/x-tex">\text{ABBAABB} \dots</annotation></semantics></math>
+meaning A has first move.</p></li>
+<li><p>Every odd Turn (Turn 1, 3, 5 etc) will involve the pattern
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">BAABBAA</mtext><mi>…</mi></mrow><annotation encoding="application/x-tex">\text{BAABBAA} \dots</annotation></semantics></math>
+meaning B has first move.</p></li>
+</ul>
+<p>What this implies is that move order is predictable. As long as you
+are able to perceive the move order once, you know who has first move
+each turn in the future and in the past.</p>
+<p><strong>No-Luck Cycle Move Order</strong> <span id="noluck_cycle"
+data-label="noluck_cycle"></span><br />
+<br />
+No-Luck Cycle Move Order is the same as Cyclic, except that it aims to
+remove the random effect of the random roll on the first turn of who
+plays first. The initial order of the cycle is determined by how fast
+each player plays during their first turn. Under the assumption the game
+involves a manual distribution setting, the first turn is the picking
+phase, alternatively it’s the first turn of the game. Whoever plays (and
+commits) faster, will be placed first in the move order.<br />
+<br />
+Basically, whoever picks fastest can guarantee they will get their first
+pick of choice.</p>
+<p><strong>Discussion</strong><br />
+<br />
+If you study or at least come across games from the 2010s you’ll quickly
+see that all templates featured RMO. The introduction of cyclic and NLC
+started as an attempt at reducing the luck factor in games. However this
+is a very controversial topic of discussion. NLC degrades</p>
+</body>
+</html>

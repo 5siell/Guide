@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>3391_blockade</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="blockade">Blockade</h2>
+<p>Blockade appears in almost every single template. The idea behind the
+card generally speaking is to sacrifice a territory you own to a neutral
+blocking your opponent towards completing their goal. It happens at the
+very end of the turn.<br />
+<br />
+A unique way to use this card is explained in <a
+href="https://www.warzone.com/Forum/94540-blockade-pro">this Forum</a>,
+the so called timi-blockade. As explained in the Transfer-only section,
+a failed transfer-only move locks the armies in place. You can use that
+to blockade a territory in a safer way.<br />
+<br />
+You can expand on this idea through <a
+href="https://www.warzone.com/Forum/149405-trans-attc-percentage-cards?Offset=0">Frog’s
+Tips</a>, although I’ve personally not cross-checked the validity nor
+usefulness of this.</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+– defenders (after deployments)</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+– enemy attackers (after his max deployment that you expect). If he goes
+to a stack of 40, a=40, not 39, ignore 1-army stand guard here.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>1</mn></msub><annotation encoding="application/x-tex">z_1</annotation></semantics></math>
+– neutral size you want if he <strong>does not</strong> attack for your
+blockade.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>2</mn></msub><annotation encoding="application/x-tex">z_2</annotation></semantics></math>
+– neutral size you want if he <strong>does</strong> attack for your
+blockade.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+– armies you issue as a transfer-only into the enemy territory (lock in
+place).</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">p\in[0,1]</annotation></semantics></math>
+– fraction you pull back with a percentage transfer.</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>z</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>d</mi><mspace width="0.278em"></mspace><mo>−</mo><mspace width="0.278em"></mspace><mi>p</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>d</mi><mo>−</mo><mi>f</mi><mo>−</mo><mn>1</mn><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>z</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>d</mi><mo>−</mo><mn>0.6</mn><mi>a</mi><mspace width="0.278em"></mspace><mo>−</mo><mspace width="0.278em"></mspace><mi>p</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>d</mi><mo>−</mo><mn>0.6</mn><mi>a</mi><mo>−</mo><mi>f</mi><mo>−</mo><mn>1</mn><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+z_1 &amp;= d \;-\; p\bigl(d-f-1\bigr) \tag{I} \\
+z_2 &amp;= d - 0.6a \;-\; p\bigl(d-0.6a-f-1\bigr) \tag{II}
+\end{align}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mspace width="0.167em"></mspace><mi>p</mi><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mstyle displaystyle="true"><mfrac><mrow><mspace width="0.167em"></mspace><msub><mi>z</mi><mn>2</mn></msub><mo>+</mo><mn>0.6</mn><mi>a</mi><mo>−</mo><mi>d</mi><mspace width="0.167em"></mspace></mrow><mrow><mi>−</mi><mi>d</mi><mo>+</mo><mn>0.6</mn><mi>a</mi><mo>+</mo><mi>f</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mstyle><mspace width="0.167em"></mspace></mrow></menclose><annotation encoding="application/x-tex">\boxed{\,p \;=\; \dfrac{\,z_2 + 0.6a - d\,}{-d + 0.6a + f + 1}\,}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mspace width="0.167em"></mspace><mi>f</mi><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mstyle displaystyle="true"><mfrac><mrow><mspace width="0.167em"></mspace><mi>a</mi><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><msub><mi>z</mi><mn>1</mn></msub><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.278em"></mspace><mo>+</mo><mspace width="0.278em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>−</mo><mn>5</mn><mi>d</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>z</mi><mn>1</mn></msub><mspace width="0.278em"></mspace><mo>+</mo><mspace width="0.278em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mi>d</mi><mo>−</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>z</mi><mn>2</mn></msub><mspace width="0.167em"></mspace></mrow><mrow><mspace width="0.167em"></mspace><mn>3</mn><mi>a</mi><mo>−</mo><mn>5</mn><msub><mi>z</mi><mn>1</mn></msub><mo>+</mo><mn>5</mn><msub><mi>z</mi><mn>2</mn></msub><mspace width="0.167em"></mspace></mrow></mfrac></mstyle></mrow></menclose><annotation encoding="application/x-tex">\boxed{\,f \;=\;
+\dfrac{\,a\!\left(3z_1-3\right) \;+\; (5-5d)z_1 \;+\; (5d-5)z_2\,}
+      {\,3a - 5z_1 + 5z_2\,}}</annotation></semantics></math></p>
+<p>How to use, example <a
+href="https://www.warzone.com/MultiPlayer?GameID=11038333">game</a> from
+the Forum:</p>
+<ol>
+<li><p>From TinyToad’s POV, you want to blockade Panama (in Central
+America).</p></li>
+<li><p>a is 40, his stack after max deploys. d is 31 cause we plan
+that.</p></li>
+<li><p>I choose to blockade with 7 if he doesn’t attack and 5 if he does
+attack.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mn>3.81</mn></mrow><annotation encoding="application/x-tex">f=3.81</annotation></semantics></math>
+round to 4 -&gt; transfer only to the opponent</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.91</mn></mrow><annotation encoding="application/x-tex">p=0.91</annotation></semantics></math>
+-&gt; 91% transfer back last move</p></li>
+</ol>
+<p>You can use this <a
+href="https://docs.google.com/spreadsheets/d/1twgkhrvvzQ-SEY8ad3hSIEKupteou-Vpi9Ahl61yaOI/edit?usp=sharing">Spreadsheet</a>
+(it currently has the parameters listed above. Make a copy and insert
+your own scenario. I haven’t seen this in action but play-tested a bit
+with it’s validity and it seems to work. For example in <a
+href="https://www.warzone.com/MultiPlayer?GameID=40353006">Turn 8</a>,
+let’s say from sb’s perspective Marcus can do a max 11 attack in
+Scandinavia (a=12), and sb goes to d=12. In the game he does
+transfer-only 4 and blocks with 5. Well what if we test blockade of 5 if
+Marcus doesn’t attack and blockade of 3 if Marcus attacks (since his
+stack will be smaller and 3-&gt; becomes 15 in this template). Inputting
+the number prints a transfer-only move of 1.3 -&gt; rounds to 1 with a
+72% move backwards which according to my drunk calculations works.</p>
+<ul>
+<li><p>If Marcus doesn’t attack, it’s 12vs12, 11 movable for sb,
+transfer-only 1 forward. now 10 movable. 72% back that’s 7 armies
+transfered back. 12-7=5 -&gt; block of 5.</p></li>
+<li><p>If Marcus attacks with 11, 12vs12 becomes 4vs5 (sb on 5, 4
+movable). Transfer-only 1 forward (now 3 movable), then 72% transfer
+back -&gt; 2.16 -&gt; 2. From his 5 armies after the trade, sb
+transfered back 2. 5-2=3 -&gt; block of 3.</p></li>
+</ul>
+<p>While it is mathematically correct, any mis-sizes you witness might
+occur simply from rounding.</p>
+</body>
+</html>

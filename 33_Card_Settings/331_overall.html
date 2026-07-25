@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>331_overall</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="card-settings">Card Settings</h1>
+<p>For start, here’s the <a
+href="https://www.warzone.com/wiki/Card_minimums">Wiki</a> link for how
+the settings work when making a template and here’s every setting in
+template-creation explained on Tables <a href="#table:card_globals"
+data-reference-type="ref" data-reference="table:card_globals">1</a> and
+<a href="#table:card_per_type" data-reference-type="ref"
+data-reference="table:card_per_type">2</a>.</p>
+<table id="table:card_globals">
+<caption>Universal card settings — affect <em>all</em> card types on the
+template.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Setting (lobby label)</th>
+<th style="text-align: left;">What it controls</th>
+<th style="text-align: center;">Typical range / default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Setting</td>
+<td style="text-align: left;">What it controls</td>
+<td style="text-align: center;">Typical range / default</td>
+</tr>
+<tr>
+<td style="text-align: left;">(p) Pieces to divide the card into</td>
+<td style="text-align: left;">How many card pieces you must collect
+before a <strong>whole</strong> card appears in your stack.</td>
+<td style="text-align: center;">2–20  (8)</td>
+</tr>
+<tr>
+<td style="text-align: left;">(min) Pieces awarded per turn</td>
+<td style="text-align: left;">Pieces gained for simply capturing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mspace width="-0.167em"></mspace><mn>1</mn></mrow><annotation encoding="application/x-tex">\ge\!1</annotation></semantics></math>
+territory that turn.</td>
+<td style="text-align: center;">0–5  (1)</td>
+</tr>
+<tr>
+<td style="text-align: left;">(start) Pieces at game start</td>
+<td style="text-align: left;">Free head-start pieces each player begins
+with.</td>
+<td style="text-align: center;">0–full card</td>
+</tr>
+<tr>
+<td style="text-align: left;">(w) Weight</td>
+<td style="text-align: left;">When several card types exist, higher
+weight = drawn more often.</td>
+<td style="text-align: center;">0–5  (1)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Maximum cards you can hold</td>
+<td style="text-align: left;">Hard cap; excess cards choose to
+discard.</td>
+<td style="text-align: center;">1–999</td>
+</tr>
+<tr>
+<td style="text-align: left;">Visibility of opponent cards</td>
+<td style="text-align: left;">Hidden / Visible — shows how many cards
+foes possess.</td>
+<td style="text-align: center;">Hidden</td>
+</tr>
+<tr>
+<td style="text-align: left;">Visibility of opponent’s played card</td>
+<td style="text-align: left;">Hidden / Visible — shows the card order
+itself when it is executed.</td>
+<td style="text-align: center;">Hidden</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table id="table:card_per_type">
+<caption>Extra settings and rounding quirks that apply to each
+individual card.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Card type</th>
+<th style="text-align: left;">Extra knobs in the UI</th>
+<th style="text-align: left;">Rounding / special notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Card type</td>
+<td style="text-align: left;">Extra knobs</td>
+<td style="text-align: left;">Rounding / notes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Reinforcement</td>
+<td style="text-align: left;">Mode: <em>Fixed</em> (+X armies)
+<em>or</em> <em>Progressive</em> (multiplier × turn)</td>
+<td style="text-align: left;">Armies round to nearest; .5 rounds
+<strong>down</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Order Priority / Delay</td>
+<td style="text-align: left;">none (just play the card)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Airlift</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">May target teammate if option is
+enabled.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Blockade</td>
+<td style="text-align: left;">Multiplier (% of armies kept)</td>
+<td style="text-align: left;">Resulting stack rounds
+<strong>down</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Emergency Blockade</td>
+<td style="text-align: left;">Multiplier (smaller than regular
+blockade)</td>
+<td style="text-align: left;">Same round-up rule.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bomb</td>
+<td style="text-align: left;">% reduction (default 50 %)</td>
+<td style="text-align: left;">Surviving stack rounds
+<strong>down</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Gift</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">Transfers ownership the moment the order
+fires.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Diplomacy</td>
+<td style="text-align: left;">Duration (# turns)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Spy / Recon / Surveillance</td>
+<td style="text-align: left;">Duration (turns); Recon: radius</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Sanctions</td>
+<td style="text-align: left;">Type: “Set to 0” <em>or</em> % income;
+Duration (turns)</td>
+<td style="text-align: left;">Check Rounding Section</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>You can see all the settings in Table <a
+href="#table:card_strings_slim" data-reference-type="ref"
+data-reference="table:card_strings_slim">3</a>.</p>
+<table id="table:card_strings_slim">
+<caption>Card settings for all templates (shorthand
+<code>p,w,min,start,trailer</code>). “–” = card disabled.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Template</th>
+<th style="text-align: left;">RF</th>
+<th style="text-align: left;">E-block</th>
+<th style="text-align: left;">OP</th>
+<th style="text-align: left;">OD</th>
+<th style="text-align: left;">Gift</th>
+<th style="text-align: left;">Diplo</th>
+<th style="text-align: left;">Sanction</th>
+<th style="text-align: left;">Recon</th>
+<th style="text-align: left;">Blockade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: left;">RF</td>
+<td style="text-align: left;">E-block</td>
+<td style="text-align: left;">OP</td>
+<td style="text-align: left;">OD</td>
+<td style="text-align: left;">Gift</td>
+<td style="text-align: left;">Diplo</td>
+<td style="text-align: left;">Sanction</td>
+<td style="text-align: left;">Recon</td>
+<td style="text-align: left;">Blockade</td>
+</tr>
+<tr>
+<td style="text-align: left;">Aseridith Islands</td>
+<td style="text-align: left;">1,0,0,2,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,2</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">3,1,1,1,6,20%</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">10,1,1,19,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Australia</td>
+<td style="text-align: left;">3,1,1,0,+4</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Basileia</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle for Middle Earth</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">20,1,1,20,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle Islands V</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">3,1,1,0,1</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Belarus</td>
+<td style="text-align: left;">4,1,1,0,+4</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">21,1,1,21,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Biomes of America</td>
+<td style="text-align: left;">1,1,0,1,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,1,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">4,1,1,0,4,25%</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,1,0,2,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Black Sea</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">7,1,1,3</td>
+<td style="text-align: left;">5,1,1,2</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Blitzkrieg Bork</td>
+<td style="text-align: left;">4,1,1,8,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">5,1,1,5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,1,1,10,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">British Raj</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,1,0,1,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">18,1,1,18,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Discovery</td>
+<td style="text-align: left;">4,1,1,0,+6</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,1,0,1,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Earthsea</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Elitist Africa</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">5,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">10,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">10,1,1,16,314%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fast Earth</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,2</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Final Fantasy VII</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">French Brawl</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Georgia Army Cap</td>
+<td style="text-align: left;">4,1,1,4,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,1,1,30,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Great Lakes</td>
+<td style="text-align: left;">3,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">10,1,1,5,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Greater Middle East III</td>
+<td style="text-align: left;">8,1,1,0,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">5,1,1,0,1</td>
+<td style="text-align: left;">19,1,1,14,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Greece LD</td>
+<td style="text-align: left;">5,1,1,0,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">14,1,1,9,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Guiroma</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,314%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hannibal at the Gates</td>
+<td style="text-align: left;">3,1,1,0,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Island of Ruins</td>
+<td style="text-align: left;">3,1,1,2,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,12</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">8,1,1,8,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Laketown</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">18,1,1,18,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Lampuria Swap</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Landria</td>
+<td style="text-align: left;">3,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">8,1,1,16</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">3,1,1,12,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">MA Battle Islands V</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">3,1,1,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">2,1,1,2,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">2,1,1,1,1000%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Macedonia no split</td>
+<td style="text-align: left;">3,1,1,0,+6</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">3,1,1,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Malvia</td>
+<td style="text-align: left;">5,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">MME MA LD</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Numenor</td>
+<td style="text-align: left;">3,1,1,0,+2</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">10,1,1,8,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">8,1,1,8,254%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pangea Ultima</td>
+<td style="text-align: left;">6,1,1,5,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">12,1,1,12,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Phobia</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Post-melt Antarctica</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Randomized Strat ME</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Saudi Arabia</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">16,1,1,16,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Burn</td>
+<td style="text-align: left;">4,1,1,2,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">7,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">15,1,1,15,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat ME</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat MME</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strategic Commanders</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strategic Greece</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Succession Wars</td>
+<td style="text-align: left;">4,1,1,4,+2</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">5,1,1,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tarabonia’s</td>
+<td style="text-align: left;">4,1,1,4,</td>
+<td style="text-align: left;">1,0,0,1,</td>
+<td style="text-align: left;">1,0,0,1</td>
+<td style="text-align: left;">1,0,0,1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,400%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Choice</td>
+<td style="text-align: left;">0.4*turn</td>
+<td style="text-align: left;">200%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">- 3%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Timid Lands</td>
+<td style="text-align: left;">1,1,1,0,+1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,2</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,300%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tor-ture</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Treasure Map</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Turkey LD</td>
+<td style="text-align: left;">3,1,0,0,+3</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1,0,0,1,200%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unicorn Island</td>
+<td style="text-align: left;">5,1,1,0,+4</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Volcano Island</td>
+<td style="text-align: left;">4,1,1,0,+4</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">16,1,1,16,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">World of Warhammer</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">4,1,1,1</td>
+<td style="text-align: left;">4,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">8,1,1,8,314%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Yorkshire Brawl</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

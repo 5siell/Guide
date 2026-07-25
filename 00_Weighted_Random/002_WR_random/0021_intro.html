@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>0021_intro</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="random-move-order-templates">Random Move Order Templates</h2>
+<p>As of July 2025, there are 6 templates in this category, as shown in
+Tables <a href="#wr_rmo_templates_basics" data-reference-type="ref"
+data-reference="wr_rmo_templates_basics">1</a>, <a
+href="#wr_rmo_templates_bonuses" data-reference-type="ref"
+data-reference="wr_rmo_templates_bonuses">2</a> and <a
+href="#wr_rmo_template_ratios" data-reference-type="ref"
+data-reference="wr_rmo_template_ratios">3</a>.</p>
+<table id="wr_rmo_templates_basics">
+<caption>WR RMO templates</caption>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Move</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Neutr</td>
+<td style="text-align: center;">Neutr in</td>
+<td style="text-align: center;">Wastes</td>
+<td style="text-align: center;">Waste</td>
+<td style="text-align: center;">Income</td>
+</tr>
+<tr>
+<td style="text-align: left;">(Name)</td>
+<td style="text-align: center;">order</td>
+<td style="text-align: center;">terr</td>
+<td style="text-align: center;">terr</td>
+<td style="text-align: center;">Size</td>
+<td style="text-align: center;">Dist</td>
+<td style="text-align: center;">(#)</td>
+<td style="text-align: center;">Size</td>
+<td style="text-align: center;">(base)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Move</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Neutr</td>
+<td style="text-align: center;">Neutr in Dist</td>
+<td style="text-align: center;">Wasts</td>
+<td style="text-align: center;">Waste sz</td>
+<td style="text-align: center;">Income</td>
+</tr>
+<tr>
+<td style="text-align: left;">British Raj</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tor-ture</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Randomized Strat ME</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat ME</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Phobia</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Final Fantasy VII</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table id="wr_rmo_templates_bonuses">
+<caption>WR RMO Templates and their bonuses</caption>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Tot</td>
+<td style="text-align: center;">Distr</td>
+<td style="text-align: center;">Bonuses</td>
+<td style="text-align: center;">Overlapping</td>
+<td style="text-align: center;">Effi-</td>
+<td style="text-align: center;">no of Effi-</td>
+</tr>
+<tr>
+<td style="text-align: left;">(Name)</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">inc</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">mode</td>
+<td style="text-align: center;">&gt; 0</td>
+<td style="text-align: center;">Bonuses</td>
+<td style="text-align: center;">ciency</td>
+<td style="text-align: center;">cient Bonuses</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Tot</td>
+<td style="text-align: center;">Distr</td>
+<td style="text-align: center;">Bonuses</td>
+<td style="text-align: center;">Over-</td>
+<td style="text-align: center;">Effi-</td>
+<td style="text-align: center;">Bonus–</td>
+</tr>
+<tr>
+<td style="text-align: left;">British Raj</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">147</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tor-ture</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">168</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr>
+<td style="text-align: left;">Randomized Strat ME</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">131</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Random</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat ME</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">131</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr>
+<td style="text-align: left;">Phobia</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">122</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr>
+<td style="text-align: left;">Final Fantasy VII</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">112</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table id="wr_rmo_template_ratios">
+<caption>WR RMO Templates and their Ratios</caption>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">WL/<br />
+Terr</td>
+<td style="text-align: center;">WL/<br />
+Bonus</td>
+</tr>
+<tr>
+<td style="text-align: left;">(Name)</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">inc</td>
+<td style="text-align: center;">no of Terr</td>
+<td style="text-align: center;">no of Bonus</td>
+<td style="text-align: center;">(RWD)</td>
+<td style="text-align: center;">(RWD)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">WL/<br />
+Terr</td>
+<td style="text-align: center;">WL/<br />
+Bonus</td>
+</tr>
+<tr>
+<td style="text-align: left;">British Raj</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.72</td>
+<td style="text-align: center;">12.9</td>
+<td style="text-align: center;">4.76</td>
+<td style="text-align: center;">22.58</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tor-ture</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.38</td>
+<td style="text-align: center;">11.43</td>
+<td style="text-align: center;">3.57</td>
+<td style="text-align: center;">17.14</td>
+</tr>
+<tr>
+<td style="text-align: left;">Randomized Strat ME</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.29</td>
+<td style="text-align: center;">13.04</td>
+<td style="text-align: center;">5.34</td>
+<td style="text-align: center;">30.43</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat ME</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.29</td>
+<td style="text-align: center;">13.04</td>
+<td style="text-align: center;">5.34</td>
+<td style="text-align: center;">30.43</td>
+</tr>
+<tr>
+<td style="text-align: left;">Phobia</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.46</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">4.92</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">Final Fantasy VII</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.68</td>
+<td style="text-align: center;">13.04</td>
+<td style="text-align: center;">5.36</td>
+<td style="text-align: center;">26.09</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table id="table:wr_rmo_cards_trimmed">
+<caption>Card settings for WR RMO templates
+(<code>p,w,min,start,effect</code>).</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Template</th>
+<th style="text-align: left;">RF</th>
+<th style="text-align: left;">OP</th>
+<th style="text-align: left;">OD</th>
+<th style="text-align: left;">Recon</th>
+<th style="text-align: left;">Blockade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: left;">RF</td>
+<td style="text-align: left;">OP</td>
+<td style="text-align: left;">OD</td>
+<td style="text-align: left;">Recon</td>
+<td style="text-align: left;">Blockade</td>
+</tr>
+<tr>
+<td style="text-align: left;">British Raj</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">1,1,0,1,1</td>
+<td style="text-align: left;">18,1,1,18,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Final Fantasy VII</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Phobia</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Randomized Strat ME</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat ME</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19,1,1,19,351%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tor-ture</td>
+<td style="text-align: left;">4,1,1,0,+5</td>
+<td style="text-align: left;">6,1,1,0</td>
+<td style="text-align: left;">5,1,1,0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>These six templates generally follow the same recipe but with small
+spicing factors on niche things. You’ll find that they all come at Base
+Income of 5 and 4 armies per Initial Territory, which implies the combos
+are the same across all templates. Nonetheless, take note of the
+following main difference between the six templates.</p>
+<ul>
+<li><p>British Raj revolves around it’s 4 efficient bonuses, has 4
+spawns, and a 1-time use of a recon card.</p></li>
+<li><p>Tor-ture:</p>
+<ol>
+<li><p>Largest size (in Territories and Bonuses).</p></li>
+<li><p>Compartmentalized map into income regions to cover.</p></li>
+<li><p>Least coverage provided from Initial Territories per Map size
+&amp; Least Ratio of Wastelands to Bonuses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math>
+no perfect pick-set, no way to cover everything.</p></li>
+<li><p>No blockade card.</p></li>
+</ol></li>
+<li><p>Strat ME and Final Fantasy VII are the same exact thing but in a
+different map.</p></li>
+<li><p>Randomized Strat ME is a unique idea with bonuses fluctuating
+between being super-efficient and not efficient at all.</p></li>
+<li><p>Phobia is the middle child:</p>
+<ol>
+<li><p>Really small map, that’s only smaller due to having +1
+bonuses.</p></li>
+<li><p>Almost every bonus is equally efficient so in reality it has as
+much variety, if not more, than Strat ME.</p></li>
+<li><p>The map has a handful of bottlenecks. Less than ME.</p></li>
+</ol></li>
+</ul>
+</body>
+</html>

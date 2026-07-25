@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>026_Bonus_efficiency</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="maps-templates">Maps &amp; Templates</h2>
+<p>The templates were given at the very beginning of the file, at Table
+<a href="#templates" data-reference-type="ref"
+data-reference="templates">[templates]</a>. Beneath follows some more in
+depth analysis on each map and template specifically for SR
+templates.<br />
+<br />
+The recipe behind the Vanilla templates is straight forward. In the MTL
+there are 19 in this category, plus three more I’m including here due to
+how similar the design is (Guiroma, BFME, Tarabonia’s Choice), as seen
+first in Tables <a href="#table:sr_opening_sorted"
+data-reference-type="ref"
+data-reference="table:sr_opening_sorted">1</a>, <a
+href="#table:sr_bonus_sorted" data-reference-type="ref"
+data-reference="table:sr_bonus_sorted">2</a> and <a
+href="#table:sr_ratios_sorted" data-reference-type="ref"
+data-reference="table:sr_ratios_sorted">3</a>.</p>
+<table id="table:sr_opening_sorted">
+<caption>Straight-Round templates sorted by (Armies per Initial
+Territory) and then by Base Income.</caption>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Move</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Neutr</td>
+<td style="text-align: center;">Neutr in</td>
+<td style="text-align: center;">Wastelands</td>
+<td style="text-align: center;">Wasteland</td>
+<td style="text-align: center;">Base</td>
+</tr>
+<tr>
+<td style="text-align: left;">(Name)</td>
+<td style="text-align: center;">order</td>
+<td style="text-align: center;">terr</td>
+<td style="text-align: center;">terr</td>
+<td style="text-align: center;">Size</td>
+<td style="text-align: center;">Dist</td>
+<td style="text-align: center;">(#)</td>
+<td style="text-align: center;">Size</td>
+<td style="text-align: center;">Income</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Move</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Neutr</td>
+<td style="text-align: center;">Neutr in Dist</td>
+<td style="text-align: center;">Wasts</td>
+<td style="text-align: center;">Waste sz</td>
+<td style="text-align: center;">Base inc</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strategic Greece</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Guiroma</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Basileia</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle for Middle Earth</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle Islands V</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Black Sea</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Malvia</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Post-melt Antarctica</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat MME</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Volcano Island</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">World of Warhammer</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Greater Middle East III</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Laketown</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Saudi Arabia</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tarabonia’s Choice</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Treasure Map</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unicorn Island</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Discovery</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hannibal at the Gates</td>
+<td style="text-align: center;">random</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Australia</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Numenor</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Burn</td>
+<td style="text-align: center;">cycle</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table id="table:sr_bonus_sorted">
+<caption>Straight-Round templates sorted first by
+Armies-per-Initial-Territory, then by Base income.</caption>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Tot</td>
+<td style="text-align: center;">Distr</td>
+<td style="text-align: center;">Bonuses</td>
+<td style="text-align: center;">Over-</td>
+<td style="text-align: center;">Effi-</td>
+<td style="text-align: center;">Bonus–</td>
+</tr>
+<tr>
+<td style="text-align: left;">(Name)</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">inc</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">mode</td>
+<td style="text-align: center;">&gt; 0</td>
+<td style="text-align: center;">lap</td>
+<td style="text-align: center;">ciency</td>
+<td style="text-align: center;">count</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Tot</td>
+<td style="text-align: center;">Distr</td>
+<td style="text-align: center;">Bonuses</td>
+<td style="text-align: center;">Over-</td>
+<td style="text-align: center;">Effi-</td>
+<td style="text-align: center;">Bonus–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strategic Greece</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">103</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">Guiroma</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">106</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr>
+<td style="text-align: left;">Basileia</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle for Middle Earth</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">167</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle Islands V</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">134</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr>
+<td style="text-align: left;">Black Sea</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">114</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr>
+<td style="text-align: left;">Malvia</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">129</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr>
+<td style="text-align: left;">Post-melt Antarctica</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">96</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-2</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat MME</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">129</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">17</td>
+</tr>
+<tr>
+<td style="text-align: left;">Volcano Island</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">123</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr>
+<td style="text-align: left;">World of Warhammer</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">137</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr>
+<td style="text-align: left;">Greater Middle East III</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">17</td>
+</tr>
+<tr>
+<td style="text-align: left;">Laketown</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">109</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr>
+<td style="text-align: left;">Saudi Arabia</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tarabonia’s Choice</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">132</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-2</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr>
+<td style="text-align: left;">Treasure Map</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">137</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unicorn Island</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">153</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;">Discovery</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">RCD</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">34</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hannibal at the Gates</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr>
+<td style="text-align: left;">Australia</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">n</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr>
+<td style="text-align: left;">Numenor</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">159</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Burn</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">134</td>
+<td style="text-align: center;">RWD</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table id="table:sr_ratios_sorted">
+<caption>Straight-Round templates sorted by
+Armies-per-Initial-Territory, then by Base income; showing density and
+wasteland ratios.</caption>
+<tbody>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">WL/<br />
+Terr</td>
+<td style="text-align: center;">WL/<br />
+Bonus</td>
+</tr>
+<tr>
+<td style="text-align: left;">(Name)</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">inc</td>
+<td style="text-align: center;">Terr</td>
+<td style="text-align: center;">Bonus</td>
+<td style="text-align: center;">Eff. Bonus</td>
+<td style="text-align: center;">(RWD)</td>
+<td style="text-align: center;">(RWD)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template</td>
+<td style="text-align: center;">Init</td>
+<td style="text-align: center;">Arm/<br />
+Init</td>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">Init/</td>
+<td style="text-align: center;">WL/<br />
+Terr</td>
+<td style="text-align: center;">WL/<br />
+Bonus</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strategic Greece</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4.85</td>
+<td style="text-align: center;">20.83</td>
+<td style="text-align: center;">20.83</td>
+<td style="text-align: center;">9.71</td>
+<td style="text-align: center;">41.67</td>
+</tr>
+<tr>
+<td style="text-align: left;">Guiroma</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.77</td>
+<td style="text-align: center;">15.38</td>
+<td style="text-align: center;">17.39</td>
+<td style="text-align: center;">14.15</td>
+<td style="text-align: center;">57.69</td>
+</tr>
+<tr>
+<td style="text-align: left;">Basileia</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.75</td>
+<td style="text-align: center;">13.64</td>
+<td style="text-align: center;">13.64</td>
+<td style="text-align: center;">12.50</td>
+<td style="text-align: center;">45.45</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle for Middle Earth</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.40</td>
+<td style="text-align: center;">12.50</td>
+<td style="text-align: center;">28.57</td>
+<td style="text-align: center;">5.99</td>
+<td style="text-align: center;">31.25</td>
+</tr>
+<tr>
+<td style="text-align: left;">Battle Islands V</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.24</td>
+<td style="text-align: center;">12.50</td>
+<td style="text-align: center;">16.67</td>
+<td style="text-align: center;">3.73</td>
+<td style="text-align: center;">20.83</td>
+</tr>
+<tr>
+<td style="text-align: left;">Black Sea</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.51</td>
+<td style="text-align: center;">14.81</td>
+<td style="text-align: center;">14.81</td>
+<td style="text-align: center;">5.26</td>
+<td style="text-align: center;">22.22</td>
+</tr>
+<tr>
+<td style="text-align: left;">Malvia</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.10</td>
+<td style="text-align: center;">14.29</td>
+<td style="text-align: center;">16.00</td>
+<td style="text-align: center;">4.65</td>
+<td style="text-align: center;">21.43</td>
+</tr>
+<tr>
+<td style="text-align: left;">Post-melt Antarctica</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.13</td>
+<td style="text-align: center;">16.67</td>
+<td style="text-align: center;">16.67</td>
+<td style="text-align: center;">7.29</td>
+<td style="text-align: center;">38.89</td>
+</tr>
+<tr>
+<td style="text-align: left;">Strat MME</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.33</td>
+<td style="text-align: center;">13.04</td>
+<td style="text-align: center;">17.65</td>
+<td style="text-align: center;">5.43</td>
+<td style="text-align: center;">30.43</td>
+</tr>
+<tr>
+<td style="text-align: left;">Volcano Island</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.25</td>
+<td style="text-align: center;">17.39</td>
+<td style="text-align: center;">18.18</td>
+<td style="text-align: center;">4.07</td>
+<td style="text-align: center;">21.74</td>
+</tr>
+<tr>
+<td style="text-align: left;">World of Warhammer</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2.92</td>
+<td style="text-align: center;">16.00</td>
+<td style="text-align: center;">21.05</td>
+<td style="text-align: center;">5.84</td>
+<td style="text-align: center;">32.00</td>
+</tr>
+<tr>
+<td style="text-align: left;">Greater Middle East III</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2.86</td>
+<td style="text-align: center;">13.33</td>
+<td style="text-align: center;">23.53</td>
+<td style="text-align: center;">3.57</td>
+<td style="text-align: center;">16.67</td>
+</tr>
+<tr>
+<td style="text-align: left;">Laketown</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.67</td>
+<td style="text-align: center;">17.39</td>
+<td style="text-align: center;">17.39</td>
+<td style="text-align: center;">9.17</td>
+<td style="text-align: center;">43.48</td>
+</tr>
+<tr>
+<td style="text-align: left;">Saudi Arabia</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4.94</td>
+<td style="text-align: center;">22.22</td>
+<td style="text-align: center;">28.57</td>
+<td style="text-align: center;">4.94</td>
+<td style="text-align: center;">22.22</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tarabonia’s Choice</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2.27</td>
+<td style="text-align: center;">10.71</td>
+<td style="text-align: center;">10.71</td>
+<td style="text-align: center;">3.03</td>
+<td style="text-align: center;">14.29</td>
+</tr>
+<tr>
+<td style="text-align: left;">Treasure Map</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2.92</td>
+<td style="text-align: center;">14.81</td>
+<td style="text-align: center;">21.05</td>
+<td style="text-align: center;">4.38</td>
+<td style="text-align: center;">22.22</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unicorn Island</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.27</td>
+<td style="text-align: center;">18.52</td>
+<td style="text-align: center;">41.67</td>
+<td style="text-align: center;">1.96</td>
+<td style="text-align: center;">11.11</td>
+</tr>
+<tr>
+<td style="text-align: left;">Discovery</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.13</td>
+<td style="text-align: center;">11.76</td>
+<td style="text-align: center;">11.76</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hannibal at the Gates</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6.02</td>
+<td style="text-align: center;">20.00</td>
+<td style="text-align: center;">20.00</td>
+<td style="text-align: center;">14.46</td>
+<td style="text-align: center;">48.00</td>
+</tr>
+<tr>
+<td style="text-align: left;">Australia</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4.50</td>
+<td style="text-align: center;">10.20</td>
+<td style="text-align: center;">21.74</td>
+<td style="text-align: center;">54.05</td>
+<td style="text-align: center;">122.45</td>
+</tr>
+<tr>
+<td style="text-align: left;">Numenor</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3.14</td>
+<td style="text-align: center;">10.20</td>
+<td style="text-align: center;">27.78</td>
+<td style="text-align: center;">12.58</td>
+<td style="text-align: center;">40.82</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slow Burn</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2.24</td>
+<td style="text-align: center;">12.50</td>
+<td style="text-align: center;">12.50</td>
+<td style="text-align: center;">5.97</td>
+<td style="text-align: center;">33.33</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Takeaways:</p>
+<ul>
+<li><p>All 22 templates take place in small maps of the size between
+81-167 territories. Generally speaking, the game is more brawly in
+smaller maps, and more expansion heavy in larger maps. However, you can
+see in <a href="#table:sr_bonus_sorted" data-reference-type="ref"
+data-reference="table:sr_bonus_sorted">2</a> the very last column which
+counts the number of efficient bonuses in that template. For example,
+BFME takes place in a map of 167 territories with 32 bonuses, but 14/32
+are actually decent. The ratio of number of initial territories divided
+by number of efficient bonuses is given on <a
+href="#table:sr_ratios_sorted" data-reference-type="ref"
+data-reference="table:sr_ratios_sorted">3</a> column "Init/Bonus". The
+higher the value, the brawlier the template, the more important really
+fast income is. Of course, each template has something unique to it,
+that changes gameplay.</p></li>
+<li><p>There’s four major parameters that control the gameplay (with
+some extra that can influence things like the rf card).</p>
+<ol>
+<li><p>Wastelands (number and size)</p>
+<ul>
+<li><p>Wastelands nullify some bonuses in an attempt to a) introduce
+variety in each template from game to game and b) limit the number of
+ideas in picksets that are possible. It is directly correlated with the
+strategicness of a template. A distribution in MME with 0 wastelands
+allows for way too many possible picksets that you simply cannot account
+for with 1 idea, introducing luck. However, it’s not enough by itself,
+there’s always a pickset to counter another pickset. Luck is an inherent
+part of SR vanilla templates, even at small amounts.</p></li>
+<li><p>You’ll find that some templates have smaller size wastelands,
+introducing some difficulty in completing a bonus but not prohibing
+capture, in templates like Guiroma, Basileia and even Strategic Greece.
+While in other templates, wastelands are so big they define the
+map.</p></li>
+<li><p>In Table <a href="#table:sr_ratios_sorted"
+data-reference-type="ref" data-reference="table:sr_ratios_sorted">3</a>,
+the column WL/Bonus (RWD) gives the number of wastelands, times 100,
+divided by the number of efficient bonuses in the template, to give an
+estimator of the amount of wastelands compared to the amount of bonuses
+in play. You’ll find generally that templates with higher ratio, have
+more forced picks, while templates with lower ratio allow a lot of
+different ideas during picks.</p></li>
+<li><p>Regardless, you can see a sweet spot at 20-35 % ratio. Higher, is
+often accompanied with low size of wastelands (Guiroma, Basileia,
+Laketown, Hannibal at the Gates, Numenor) or in the case of Strategic
+Greece, a very brawly game. Lower than that is only observed in GME III,
+Tarabonia’s Choice and Unicorn Island, with all 3 having a very distinct
+playstyle of trying your best to flank your opponent at the other side
+of the board.</p></li>
+</ul></li>
+<li><p>Differentiating bonuses in efficiency depending on the map
+connections</p>
+<ul>
+<li><p>Reverse the argument. Some of the templates in this list where
+every bonus is equally efficient are Strategic Greece and Slow Burn.
+Both of these come with more wastelands than the average
+template.</p></li>
+<li><p>Another way to limit the number of possible picksets is through
+changing the values of some bonuses to force choices in picks. Templates
+like Australia, BFME, World of Warhammer, come with compartmentalized
+areas of the map which are far superior and change the way you approach
+picks, as well as gameplay.</p></li>
+</ul></li>
+<li><p>Armies per Initial Territory with Income</p>
+<ul>
+<li><p>High Income templates / High Armies per Initial Territory -&gt;
+Expansion is easier -&gt; Earlier contact &amp; fights.</p></li>
+<li><p>Low Income / Low Armies per Initial Territory -&gt; Expansion
+slower -&gt; Contact later</p></li>
+<li><p>High No of Initial Territories -&gt; More coverage of the map
+-&gt; Earlier Fights</p></li>
+<li><p>Low No of Initial Territories -&gt; Less coverage of the map
+-&gt; Contact later</p></li>
+</ul></li>
+<li><p>Neutrals and Neutrals in Distribution</p>
+<ul>
+<li><p>All templates come with neutrals of 2 as of this moment.
+(Neutrals of 6 in Discovery has to do with RCD distribution mode). The
+size 2 allows fast and efficient expansion (-1 attacker at 60:70 kill
+rates). Though there is room for experimentation with different
+numbers.</p></li>
+<li><p>Neutrals in distribution comes as another parameter that can
+affect gameplay. For example, in templates where that number is
+different than 2, seeing a bonus with a 4 army neutral for example
+inside, means your opponent didn’t spawn there, providing you with some
+relative safety after picks.</p></li>
+<li><p>Neutrals in distribution of 2/3 allow faster and easier
+expansion. Size of 4 exists as an obstacle for expanding into different
+bonuses to slow down the game.</p></li>
+</ul></li>
+</ol></li>
+</ul>
+<h3 id="efficient-bonuses">Efficient Bonuses</h3>
+<p>Above, I referred to bonuses as n-1 or n-2, given:</p>
+<ul>
+<li><p>n = territories in the bonus</p></li>
+<li><p>(n-1) or (n-2) or any similar value for the income the bonus
+gives back upon capturing</p></li>
+</ul>
+<ul>
+<li><p>At (n) templates (where x number of territories give x number
+income back, like Australia), the static return of I/T is 1. Every
+bonus, tiny or huge, pays the same. So, if you have immediate contact to
+force plays, you pick smaller bonuses, 1:1 or 2:2. If not, 3:3 or bigger
+bonuses are viable.</p></li>
+<li><p>At (n-1) templates, the static return is between 0.75-0.86.</p>
+<ol>
+<li><p>4 terr for 3 income is 0.75.</p></li>
+<li><p>5 terr for 4 income is 0.8.</p></li>
+<li><p>6 terr for 5 income is 0.83.</p></li>
+</ol>
+<p>As a result, always keep in mind that bigger bonuses slightly more
+efficient. You can imagine this by comparing two different positions in
+Strat MME, where player A has 2x +3 bonuses and a +4 bonus (total of 13
+territories for 10 income) while player B has 2x +5 bonuses and a 3rd
+that doesn’t matter - not completed yet (12 territories for 10 income).
+However, going for bigger bonuses comes with a cost that they are
+slower. Small bonuses finish faster and pay-out faster. Big bonuses are
+more efficient but take time.</p></li>
+<li><p>At (n-2) templates (namely Antarctica and Tarabonia’s Choice),
+the static return is between 0.62-0.71. Bigger bonuses are a lot more
+efficient than smaller ones. A +4 bonus in Tarabonia comes at 6
+territories. If you pick 2x +1 bonuses also for 6 territories, that’s +2
+income in return.</p></li>
+</ul>
+<div class="wrapfigure">
+<p><span>r</span><span>0.40</span> <img src="Images/num4.jpg"
+style="width:40.0%" alt="image" /></p>
+</div>
+<p>So overall, efficiency isn’t as simple as n-1, I just use that metric
+to categorize templates. The map size and the way the game plays out are
+equally if not more important, while some bonuses appear inefficient but
+aren’t. Take a look at Figure <a href="#num4" data-reference-type="ref"
+data-reference="num4">[num4]</a> at the central +4 bonus in Numenor. 6
+Territories for 4 Income. In theory (n-2) in a template with multiple
+(n-1) bonuses. However, consider Player A having 2x +2 bonuses of 3
+territories each (6 terr for 4 income) and Player B having 1x +4 bonus
+of 6 territories. Same outcome. What matters is a) the speed at which
+you can capture the bonus so you can invest that income faster elsewhere
+against your opponent and b) the safety of that bonus.<br />
+<br />
+The templates above feature mostly bonuses that consist of 4-7
+territories, with notable exceptions that push this to the 3-8 range.
+Smaller bonuses typically are too powerful (assuming they net income),
+while larger bonuses are too slow to finish. Only notable exceptions in
+this category are <a
+href="https://www.warzone.com/MultiPlayer/Tournament?ID=52991">Africa
+Ultima</a> and Laketown.<br />
+<br />
+On a final note, don’t take too granted that efficiency is always
+better. Ideally you should calculate how your pickset expands and plays
+out and how it plays out against other ideas. Picking in inefficient
+bonuses might also surprise your opponent. It’s all relative.<br />
+<br />
+Outside of the above 22 templates, the MTL features 9 WR templates that
+follow the same principles of efficiency. Beyond that, there’s a lot
+(20) of "case-specific" ones that feature ideas which define the
+template. The army cap templates are... about army cap and army
+management, similarly for the rest.</p>
+</body>
+</html>

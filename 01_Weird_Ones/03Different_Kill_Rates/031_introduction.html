@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>031_introduction</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="templates-with-different-kill-rates">Templates with different
+Kill Rates</h2>
+<p>Relative to the section on Ratios and Kill Rates (Table <a
+href="#table:killrate_variants" data-reference-type="ref"
+data-reference="table:killrate_variants">[table:killrate_variants]</a>
+and following bullet-points at <a href="#Reverse_Kill_Rates"
+data-reference-type="ref"
+data-reference="Reverse_Kill_Rates">[Reverse_Kill_Rates]</a>), 0.75/0.50
+KR transform the game into a fast pace, attacking based game. The
+attacker’s advantage is so big, you’d rather defend through out-delaying
+and attacking back. Chokepoints don’t hold and safe income is only safe
+if it’s remote; the game is about initiatives -&gt; fast Income (FTBs -
+max Income T2/T3) and hitting first.<br />
+<br />
+At 75% KR for the attacker, every four armies you add the fractional
+part is repeated, as seen in Table <a
+href="#table:attackerResidue_Timid" data-reference-type="ref"
+data-reference="table:attackerResidue_Timid">1</a>. Residue 0/ Multiples
+of 4 are perfectly efficient (Just like 5 attacks in 60/70 KR). Order of
+efficiency is 2&gt;1&gt;0&gt;3, with efficiency equalizing at roughly
+14-15 attackers.</p>
+<table id="table:attackerResidue_Timid">
+<caption>Attacker efficiency curves
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">p = 0.75</annotation></semantics></math>)
+under 0 % Luck + Straight Round</caption>
+<thead>
+<tr>
+<th
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></th>
+<th style="text-align: center;">Rounded Kills K</th>
+<th style="text-align: center;">First Kills</th>
+<th style="text-align: center;">Convergence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></td>
+<td style="text-align: center;">Rounded Kills K</td>
+<td style="text-align: center;">First Kills</td>
+<td style="text-align: center;">Convergence</td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">exact 0.75n</td>
+<td style="text-align: center;">4-&gt;3 (0.75)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+8-&gt;6 (0.75)</td>
+<td style="text-align: center;">Perfect, 0.75 for all n.</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.75n + 0.25</td>
+<td style="text-align: center;">1-&gt;1 (1.00)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+5-&gt;4 (0.80)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+9-&gt;7 (0.77)</td>
+<td style="text-align: center;">Efficient, approaches from above.</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.75n + 0.50</td>
+<td style="text-align: center;">2-&gt;2 (1.00)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+6-&gt;5 (0.83)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+10-&gt;8 (0.80)</td>
+<td style="text-align: center;">Biggest overshoot.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.75n - 0.25</td>
+<td style="text-align: center;">3-&gt;2 (0.67)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+7-&gt;5 (0.714)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math>
+11-&gt;8 (0.72)</td>
+<td style="text-align: center;">Inefficient.</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Defender Kill-Rates at 50% are very simple.</p>
+<ul>
+<li><p>Even number of defenders -&gt; exact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">0.5\times m</annotation></semantics></math>
+Kills.</p></li>
+<li><p>Odd number of defenders -&gt; Always above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">0.5\times m</annotation></semantics></math>
+- more efficient. (e.g. 3-&gt;2 (0.667). But you are still often better
+served attacking your own territories to defend. (5 defenders from 1
+army stand guard and 4 deployments kill 3 attackers. If you out-delay
+and attack your defending territory with 2x 2 army attacks - the 4
+deployments - you kill 4 attackers.)</p></li>
+</ul>
+</body>
+</html>

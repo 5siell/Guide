@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>022_army-management</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="army-management">Army Management</h2>
+<h3 id="expanding-with-leftovers-expanding-efficiently">Expanding with
+Leftovers &amp; Expanding Efficiently</h3>
+<p>Take a look at these 2 games at Strat MME featuring Greenland <a
+href="https://www.warzone.com/MultiPlayer?GameID=41158515">in 2
+Turns</a> and <a
+href="https://www.warzone.com/MultiPlayer?GameID=41406836">in 3
+Turns</a>, in Figures <a href="#green2" data-reference-type="ref"
+data-reference="green2">[green2]</a> and <a href="#green3"
+data-reference-type="ref" data-reference="green3">1</a>. It is possible
+in MME’s settings to complete Greenland as your first bonus by the end
+of T2, only if you spawn at the orange circles (Danmark Havn, Nuuk) and
+only if you commit 10/10 of your deployments in the first two turns. To
+generalize, in this template a bonus consisting of 6 territories, can be
+completed by the end of T2 perfectly optimizing your armies.</p>
+<figure id="green3" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/green2.jpg" style="height:7cm" />
+</div>
+<div class="minipage">
+<img src="Images/green3.jpg" style="height:7cm" />
+</div>
+<figcaption>Greenland in 3</figcaption>
+</figure>
+<p>To expand on this idea, take a look at this <a
+href="https://www.warzone.com/MultiPlayer?GameID=41533400">staged
+game</a> and Figures <a href="#4bon1" data-reference-type="ref"
+data-reference="4bon1">[4bon1]</a> and <a href="#4bon2"
+data-reference-type="ref" data-reference="4bon2">2</a>. The two players
+(call them Black and Ivory from their colours) start building up to a +4
+bonus as their first completed bonus. They use a different approach.</p>
+<ol>
+<li><p>Black splits his deployments on T1, creating a scenario where he
+will need 2/5 of his deployments on T2 for West Russia. He deploys 3/5
+of his deployments on T2 on East USA.</p></li>
+<li><p>Ivory doesn’t stacks in West Africa T1 and needs 3/5 there on T2
+to finish the bonus and 2/5 on East China.</p></li>
+</ol>
+<p>The verdict is that in order to complete a +4 bonus as your first
+bonus in Strat MME, you can go two ways.</p>
+<ol>
+<li><p>You deploy 7/10 of your income in the first 2 turns to complete
+it and end up with 2 leftovers in the completed bonus &amp; 2
+elsewhere.</p></li>
+<li><p>You deploy 8/10 of your income in the first 2 turns to complete
+it and end up with 3 leftovers in the completed bonus &amp; 1
+elsewhere.</p></li>
+</ol>
+<figure id="4bon2" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/4bon1.jpg" style="height:4cm" />
+</div>
+<div class="minipage">
+<img src="Images/4bon2.jpg" style="height:4cm" />
+</div>
+<figcaption>Turn 2</figcaption>
+</figure>
+<p>Whether you go for Ivory’s or Black’s approach depends on your
+gameplay and distribution. The Black approach, is more direct, using the
+least amount of deployments required to finish the project moving into
+the next one. The Ivory approach can be useful if you suspect things to
+not work as expect and want a stack just in case. Sometimes you may even
+want to mix things up in order to leave multiple options open. For
+example in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=41473232">Antarctica</a>
+game I get 1/2/6, have all the information I can get, but lose the game
+due to my opponent deploying on T1 in a way that leaves him with
+multiple options available (ingame chat).<br />
+<br />
+Both Strat MME and Antarctica, the 2 above examples, are vanilla 3x4
+templates with 5 income, where expansion isn’t so strict - there’s a
+certain level of flexibility in the moves you can play and the order you
+can capture bonuses. In contrast, in Tarabonia’s Choice chaining
+expansion in a way that allows you to get consecutive bonuses is
+stricter. For example in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=38142829">game</a> Buns
+goes for 4-&gt;4-&gt;8-&gt;11 and has no room for error. You just cannot
+afford not splitting and attacking this way, else you’ll fall behind in
+income.<br />
+<br />
+In general, expanding efficiently revolves around a) maximising the
+usage of your leftover armies and b) not capturing territories you don’t
+need before completing a bonus. However, it’s a case-specific idea that
+changes for template and distribution.</p>
+<h3 id="vs3-against-31vs3">5vs3 against 3+1vs3</h3>
+<p>When looking specifically in trying to capture a 3 army territory,
+neutral or not, you can quickly see that:</p>
+<ul>
+<li><p>5vs3 captures and results in 2 leftovers.</p></li>
+<li><p>A combination of a tap &amp; a 3vs2 attack captures and results
+in 1 leftover, as displayed in Figures <a href="#5v31"
+data-reference-type="ref" data-reference="5v31">[5v31]</a> and <a
+href="#5v32" data-reference-type="ref" data-reference="5v32">3</a>, part
+of this <a
+href="https://www.warzone.com/MultiPlayer?GameID=40742256">Guiroma
+Game</a>.</p></li>
+</ul>
+<p>What’s the difference? The idea is using all of your armies in the
+best way possible. The tap + 3vs2 attack requires 1 less army to setup
+that you can deploy and have active in another front. While this is
+especially useful in Guiroma, it can be used against an opponent’s stack
+or to reduce a wasteland. For example:</p>
+<ul>
+<li><p>To kill a 5 army neutral, you can go for 8vs5 or 6vs4 and a tap
+(7 deployments instead of 8).</p></li>
+<li><p>To kill a 6 army neutral, you can go for 6vs4 and two taps (8
+deployments instead of 10).</p></li>
+<li><p>To capture a 10-army wasteland, you get in throughout 2 turns by
+doing 3 taps on T1 and 3 taps + a 6vs4 on T2 (12 deployments instead of
+16). And so on.</p></li>
+</ul>
+<p>This is analyzed further in the delaying section.</p>
+<figure id="5v32" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/5v31.jpg" style="height:6cm" />
+</div>
+<div class="minipage">
+<img src="Images/5v32.jpg" style="height:6cm" />
+</div>
+<figcaption>Turn 2</figcaption>
+</figure>
+<h3 id="delaying">Delaying</h3>
+<p>Delaying is something directly correlated with the kill rates of a
+template. In standard 60:70 kill rates, the defender usually gets a
+favorable trade. Due to this simple fact, the player attacking usually
+tries his best to outdelay their opponent, hoping to be the last person
+on the board to attack. Why? Because attacking after the opponent is
+better. This can lead to pretty braindead scenario like the one in
+Figure <a href="#delay1" data-reference-type="ref"
+data-reference="delay1">[delay1]</a>.</p>
+<div class="wrapfigure">
+<p><span>r</span><span>0.40</span> <img src="Images/delaying.png"
+style="width:40.0%" alt="image" /></p>
+</div>
+<p>As a concept delaying is particularly weird to understand and comes
+instinctively. It is very easy to fall into the habit of playing very
+safe, mass-delaying and attacking on the very last move but that’s a)
+very predictable and b) not the best thing to do more often than not. In
+fact, if you want to make pretty decent moves drunk at 2am with 1%
+battery having forgotten the position, overdelaying and doing a bunch of
+small attacks is bullet-proof, but lazy and exploitable, while at the
+end of the day you will never capture back a territory by doing 3-army
+attacks.<br />
+<br />
+</p>
+<h4 id="ability-to-generate-new-armies">Ability to "Generate" new
+armies</h4>
+<p>In this game there are two very interesting mechanics that you may or
+may not have noticed yet. Both of them have to do with how armies can
+sort of multi-attack even when multi-attack is disabled.<br />
+<br />
+The first concept revolves around this sequence:</p>
+<ol>
+<li><p>I have a front of AvsD armies.</p></li>
+<li><p>I try transfer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+amount of armies to the territory in the front. A -&gt; A+n.</p></li>
+<li><p>My opponent attacks that territory, from which process I lose
+some armies.</p></li>
+<li><p>I out-delay and attack back, using A+n, not just A.</p></li>
+</ol>
+<p>Take for example the following <a
+href="https://www.warzone.com/MultiPlayer?GameID=41232564">game</a> and
+the Figures <a href="#f1" data-reference-type="ref"
+data-reference="f1">[f1]</a> to <a href="#f5" data-reference-type="ref"
+data-reference="f5">5</a>.</p>
+<figure id="f3" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/f1.jpg" style="height:5cm" />
+</div>
+<div class="minipage">
+<img src="Images/f2.jpg" style="height:5cm" />
+</div>
+<div class="minipage">
+<img src="Images/f3.jpg" style="height:5cm" />
+</div>
+<figcaption>Step 3: Transfer 1 army in</figcaption>
+</figure>
+<figure id="f5" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/f4.jpg" style="height:5cm" />
+</div>
+<div class="minipage">
+<img src="Images/f6.jpg" style="height:5cm" />
+</div>
+<div class="minipage">
+<img src="Images/f5.jpg" style="height:5cm" />
+</div>
+<figcaption>Step 6: My second attack</figcaption>
+</figure>
+<ul>
+<li><p>In the beginning of the turn, I have 7 movable armies in Quito.
+Figure <a href="#f1" data-reference-type="ref"
+data-reference="f1">[f1]</a></p></li>
+<li><p>Opponent taps me once, the number of movable armies drops to 6.
+Figure <a href="#f2" data-reference-type="ref"
+data-reference="f2">[f2]</a>.</p></li>
+<li><p>I transfer one army forward. Intuition says of course armies
+don’t multi attack, that army cannot attack. I am still at 6 movable
+armies from previous step. Figure <a href="#f3"
+data-reference-type="ref" data-reference="f3">4</a></p></li>
+<li><p>My opponent attacks with 5, kills 3. My 8 defenders drop to 5.
+Figure <a href="#f4" data-reference-type="ref"
+data-reference="f4">[f4]</a></p></li>
+<li><p>I perform two attacks on my last moves, split, 2&amp;2. Figures
+<a href="#f6" data-reference-type="ref" data-reference="f6">[f6]</a> and
+<a href="#f5" data-reference-type="ref"
+data-reference="f5">5</a>.</p></li>
+</ul>
+<p>The way I think about this mechanic, is that on step 4, my opponent
+attacks with 5 and kills 3 of my 8 defenders, including the army I
+transferred in the same turn. So in reality, my initial 6 movable armies
+didn’t drop down to 3 after the attack, but to 4. The aftermath is that
+you should be extra careful about how to approach attacking and
+defending.<br />
+<br />
+The second concept is a continuation of the first one in some way. Above
+we discussed how when an opponent attacks it acts like killing first the
+delays you brought in on the same turn before the attack, instead of the
+initial movable armies. This is about the following sequence, as seen
+also in Figures <a href="#g1" data-reference-type="ref"
+data-reference="g1">[g1]</a> to <a href="#g4" data-reference-type="ref"
+data-reference="g4">7</a>.</p>
+<ol>
+<li><p>I plan 2 split attacks from the same territory to two opponent
+territories.</p></li>
+<li><p>I fail to capture an enemy territory, but not all attackers
+die.</p></li>
+<li><p>Opponent attacks me on that territory from another territory and
+kills some armies that survived the first hit.</p></li>
+<li><p>I attack the second territory with more armies than I
+should’ve.</p></li>
+</ol>
+<figure id="g2" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/g1.jpg" style="height:6cm" />
+</div>
+<div class="minipage">
+<img src="Images/g2.jpg" style="height:6cm" />
+</div>
+<figcaption>Step 2: I queue an attack of 8</figcaption>
+</figure>
+<figure id="g4" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/g3.jpg" style="height:6cm" />
+</div>
+<div class="minipage">
+<img src="Images/g4.jpg" style="height:6cm" />
+</div>
+<figcaption>Step 4: I queue the second attack of 6</figcaption>
+</figure>
+<ul>
+<li><p>I deploy up to 15 and plan on doing two attacks of 8 and 6.
+Figure <a href="#g1" data-reference-type="ref"
+data-reference="g1">[g1]</a>.</p></li>
+<li><p>I queue the first attack of 8, get a 6-, -5 trade. My stack drops
+from 15 to 9. Figure <a href="#g2" data-reference-type="ref"
+data-reference="g2">6</a>.</p></li>
+<li><p>My opponent taps me from another territory. My stack drops from 9
+to 8. Instinctively, this can make you think that the initial attack
+that I queued with 6 armies, will now be 5 armies, but the tap trades an
+army from the attackers that survived the first attack. Figure <a
+href="#g3" data-reference-type="ref"
+data-reference="g3">[g3]</a>.</p></li>
+<li><p>I successfully queue an attack of 6, making it look like I gave
+birth to an extra army. Figure <a href="#g4" data-reference-type="ref"
+data-reference="g4">7</a>.</p></li>
+</ul>
+<p>This, as a mechanic, is really hard to take into consideration or
+utilize in your gameplay. Maybe some times as an attacker you can
+purposefully have your two attacks in a different cycle in hopes your
+opponent will attack in between and your armies get some extra value. Or
+as a defender you have to take into consideration the existence of this
+mechanic and approach consciously the defense of a double/triple
+border.</p>
+<h4 id="when-to-delay">When to delay</h4>
+<p>Generally, if you are a beginner you should delay more, as attacking
+after your opponent results in a better trade due to the 60/70 kill rate
+nature. If you’ve passed the beginner stage, you should start evaluating
+positions and whether delaying would bring an advantage in the first
+place.<br />
+<br />
+Furthermore, once you get into the habit of evaluating your position ask
+yourself am I winning or losing. Delays are a reactionary way of playing
+the game when defending or when trying to grow an advantage. If you get
+yourself ahead you should look into converting the position into a win.
+The very act of converting means finding forcing moves which more often
+than not don’t include extra delays.<br />
+<br />
+To a lot of players I am coming off as a delay-denier so I’m approaching
+so as to refute them. Delays are further correlated with the idea of
+having useful armies. Upon evaluating a position it is important to
+think about the placement of your armies on the board. For example in
+this <a
+href="https://www.warzone.com/MultiPlayer?GameID=38537237">game</a>, by
+end of Turn 2 the game has the two players on 11vs12 income and 5vs7
+useful armies on fronts (with Texx having two extra armies to be brought
+to the front immediately). By the end of turn 3, the situation is 11vs10
+income and 6vs6 useful armies on fronts. The whole circulation of armies
+you see from turn 4 onwards in the islands +3 bonus is a waste of
+resources, all starting with wanting to out-delay on turn 3. Always keep
+in mind</p>
+<h4 id="army-placements-and-maneuvers">Army placements and
+maneuvers</h4>
+<p>Generally speaking, you need to have armies that are active. Take a
+look for example in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=40619054">BIV game</a>.
+I’ve done some weird things and find myself by the end of Turn 5 at
+13vs17 income and down 8 armies in fronts. Borderline a forced loss.
+However, an army advantage means nothing if your armies are placed in
+Narnia, which in case was the SW light blue +4 bonus I blockaded and the
+Green +4 bonus I choose to drop. By the end of Turn 7, I still have an
+income disadvantage 15vs17, and a glorious army disadvantage of 12vs30
+or so, but my opponent threatens nothing and I threaten everything,
+while his armies won’t be useful any time soon. For a similar example,
+in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=40562183">Malvia
+game</a> by the end of Turn 5 Master USA has an army advantage, yes, but
+its in the middle of nowhere up north.<br />
+<br />
+Ultimately, this whole section on army management, delays and
+placements, can be summed up to play for kill-rates, not to outdelay or
+predict your opponent.</p>
+<h3 id="conserving-armies-when-attacking">Conserving armies when
+attacking</h3>
+<p>You should always be aware of the fact that even the capture of an 1
+army opponent territory will lead to you losing 2 armies in the process.
+One army from the defensive killrate 1:1 and another army that now
+becomes locked in place, (1 army stand in guard setting). That’s why
+you’ll see better players build stacks in complicated positions and not
+spread more than they can afford. For example in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=41215348">Malvia
+game</a> I do the exact opposite. Let alone the mistake I did on turn 7
+of wasting my stack sending it forward to a territory that doesn’t
+matter, on turn 8 I split attack everything. By the end of turn 7 I have
+a 22vs1 army advantage locally. By the end of turn 9 I have a 16vs8 army
+advantage locally (of movable armies). By the and of turn 10 I have a
+9vs8 army advantage locally. Do not play like me.</p>
+<h2 id="ratio-and-stalemates">Ratio and Stalemates</h2>
+<h3 id="ratio-and-kill-rates">1.7 Ratio and Kill Rates</h3>
+<p>When you try to break a territory in 0% Luck and SR settings, two
+deterministic tests must both pass, explained in Table <a
+href="#table:break_conditions" data-reference-type="ref"
+data-reference="table:break_conditions">[table:break_conditions]</a>.</p>
+<div class="longtable">
+<p><span>|l|p<span>8cm</span>|</span> Game rule &amp; Deterministic
+inequality (0 Game rule &amp; Deterministic inequality<br />
+<strong>Kill every defender</strong> &amp;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mrow><mspace width="-0.167em"></mspace><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mn>0.60</mn><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mspace width="0.278em"></mspace><mo>≥</mo><mspace width="0.278em"></mspace><mi>D</mi></mrow><annotation encoding="application/x-tex">\mathrm{round}\!\bigl(0.60 \cdot (A-1)\bigr)\;\ge\;D</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A-1</annotation></semantics></math>
+attackers actually move, one stays behind)<br />
+<strong>Keep
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ge 1</annotation></semantics></math>
+survivor</strong> &amp;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mspace width="0.278em"></mspace><mo>−</mo><mspace width="0.278em"></mspace><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mrow><mspace width="-0.167em"></mspace><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mn>0.70</mn><mspace width="0.167em"></mspace><mi>D</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mspace width="0.278em"></mspace><mo>≥</mo><mspace width="0.278em"></mspace><mn>1</mn></mrow><annotation encoding="application/x-tex">(A-1)\;-\;\mathrm{round}\!\bigl(0.70 \, D\bigr)\;\ge\;1</annotation></semantics></math><br />
+</p>
+</div>
+<p>When you solve the first inequality for A you derive approximately.
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><mn>1.666</mn><mi>…</mi><mi>D</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A \geq 1.666 \dots D +1</annotation></semantics></math></p>
+<p>,which is about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.67</mn><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">1.67 \times D</annotation></semantics></math></p>
+<p>The second inequality is milder, producing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><mn>0.70</mn><mi>D</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">A \geq 0.70D + 2</annotation></semantics></math>.
+Once the defenders are above or equal to 4, the 1.67D line is always the
+higher of the two, so it sets the true break-point. Practically what it
+means, is that <strong>if your stack isn’t at least 1.7x the defender
+stack, don’t even bother doing detailed math, you cannot break this
+turn</strong>.</p>
+<p>Because both sides are rounded to whole numbers, you often need one
+or two extra attackers beyond the 1.666 barrier. In practice, the
+threshold oscillates between 1.67 and 1.83, depending on the remainder
+classes discussed Tables <a href="#table:attackerResidue"
+data-reference-type="ref"
+data-reference="table:attackerResidue">[table:attackerResidue]</a> and
+<a href="#table:defenderResidue" data-reference-type="ref"
+data-reference="table:defenderResidue">[table:defenderResidue]</a>. So
+for example in Table <a href="#table:rounding_bump"
+data-reference-type="ref" data-reference="table:rounding_bump">1</a> you
+can see how different defenders require a higher than 1.67 ratio due to
+rounding.</p>
+<table id="table:rounding_bump">
+<caption>Minimum attackers required after rounding (0 % Luck, SR, 60% /
+70%). The ratio oscillates around the clean 1/0.60
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>
+1.67 line.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Defenders
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></th>
+<th style="text-align: center;">Min. attackers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">A_{\min}</annotation></semantics></math></th>
+<th style="text-align: center;">Ratio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mspace width="-0.167em"></mspace><mo>:</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">A_{\min}\! : D</annotation></semantics></math></th>
+<th style="text-align: center;">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">A_{\min}</annotation></semantics></math></td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mspace width="-0.167em"></mspace><mo>:</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">A_{\min}\! : D</annotation></semantics></math></td>
+<td style="text-align: center;">Comment</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">1.80</td>
+<td style="text-align: center;">Rounding forces +2 extra attackers</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1.83</td>
+<td style="text-align: center;">Worst-case bump (inefficient
+6-stack)</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">1.71</td>
+<td style="text-align: center;">Drops back toward theoretical
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>0.60</mn><mo>=</mo><mn>1.67</mn></mrow><annotation encoding="application/x-tex">1/0.60 = 1.67</annotation></semantics></math></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1.75</td>
+<td style="text-align: center;">High again (r = 3 class)</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">1.78</td>
+<td style="text-align: center;">“Hole” at r = 4</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">1.70</td>
+<td style="text-align: center;">Almost pure 1.67× bundle</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>The 60/70 has been predominantly used for standard settings due to
+how it creates big enough changes to make this into a more strategic
+game.</p>
+<table id="table:killrate_variants">
+<caption>How different kill-rate pairs shift the break-ratio and reshape
+gameplay on 0 %-Luck, Straight-Round templates</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Attack rate</th>
+<th style="text-align: center;">Defender rate</th>
+<th style="text-align: center;">“Clean” break-ratio</th>
+<th style="text-align: center;">Practical range</th>
+<th style="text-align: left;">Gameplay Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mtext mathvariant="normal">atk</mtext></msub><annotation encoding="application/x-tex">p_{\text{atk}}</annotation></semantics></math></td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mtext mathvariant="normal">def</mtext></msub><annotation encoding="application/x-tex">p_{\text{def}}</annotation></semantics></math></td>
+<td
+style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msub><mi>p</mi><mtext mathvariant="normal">atk</mtext></msub></mrow><annotation encoding="application/x-tex">1/p_{\text{atk}}</annotation></semantics></math></td>
+<td style="text-align: center;">Practical ratio</td>
+<td style="text-align: left;">Gameplay Impact</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.60 / 0.70</td>
+<td style="text-align: center;">0.70</td>
+<td style="text-align: center;">1.67</td>
+<td style="text-align: center;">1.70 – 1.83</td>
+<td style="text-align: left;">“Standard.” Fast, tactical; taps &amp;
+break-points pay; stalemates rare unless income gap &lt; 2.</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.50 / 0.70</td>
+<td style="text-align: center;">0.70</td>
+<td style="text-align: center;">2.00</td>
+<td style="text-align: center;">2.05 – 2.20</td>
+<td style="text-align: left;">Slower attack. Many long stalemates;
+reinforcement cards and +2 income swings decide borders.</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.70 / 0.70</td>
+<td style="text-align: center;">0.70</td>
+<td style="text-align: center;">1.43</td>
+<td style="text-align: center;">1.45 – 1.55</td>
+<td style="text-align: left;">Buffed offense. Borders melt; initiative
+beats micro-management; games snowball from offense.</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.40 / 0.50</td>
+<td style="text-align: center;">0.50</td>
+<td style="text-align: center;">2.50</td>
+<td style="text-align: center;">2.55 – 2.70</td>
+<td style="text-align: left;">Expensive neutral clears; wide maps bog
+down; No income transition tempo, more about cards and stacks of
+armies.</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>At a glance a kill-rate slider looks like a pure numbers tweak, but
+it actually rewires tempo and pretty much every aspect of strategy one
+can think of. Think of each template as living on two axes:</p>
+<ol>
+<li><p>Attacker rate:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>a</mi></msub><annotation encoding="application/x-tex">p_a</annotation></semantics></math></p>
+<ul>
+<li><p>Low
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>a</mi></msub><annotation encoding="application/x-tex">p_a</annotation></semantics></math>
+translates to every battle being a slog, attackers needing huge ratios
+to move forward.</p></li>
+<li><p>High
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>a</mi></msub><annotation encoding="application/x-tex">p_a</annotation></semantics></math>
+translates to a snow-bally gameplay where the attacker’s momentum
+matters above everything else. The first attack ends the fight.</p></li>
+</ul></li>
+<li><p>Defender rate:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>d</mi></msub><annotation encoding="application/x-tex">p_d</annotation></semantics></math></p>
+<ul>
+<li><p>Low
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>d</mi></msub><annotation encoding="application/x-tex">p_d</annotation></semantics></math>
+translates to bonuses that are pretty impossible to defend. Hard to hold
+gorund, positions crumble.</p></li>
+<li><p>High
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>d</mi></msub><annotation encoding="application/x-tex">p_d</annotation></semantics></math>
+translates to a game state where stacks trade away fairly quickly and
+stalemates form if the players match income.</p></li>
+</ul></li>
+</ol>
+<p>Mix the two and you get four very broad families.</p>
+<ol>
+<li><p>Both rates high (e.g. 0.75/0.75 or 1.0/0.9)</p>
+<ul>
+<li><p>Break ratio at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mfrac><mn>1</mn><msub><mi>p</mi><mi>a</mi></msub></mfrac><mo>→</mo><mo>∼</mo><mn>1.33</mn><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">\approx \frac{1}{p_a} \rightarrow \sim 1.33 \times D</annotation></semantics></math>,
+meaning only 1.33 times the defenders are required to to wipe.</p></li>
+<li><p>The end result is borders are fragile, rf cards are likely
+overkill on top of things, and delaying shouldn’t matter. Game becomes
+about striking fast and often. This translates to wanting to pick small
+bonuses, rush income, and expect decisive outcomes by as early as Turn
+1.</p></li>
+</ul></li>
+<li><p>Both rates low (e.g. 0.40/0.50)</p>
+<ul>
+<li><p>Break ratio rises above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.5</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">2.5 \times</annotation></semantics></math>,
+even clearing neutrals is now expensive.</p></li>
+<li><p>This means expansion stalls. It’s way slower. Hard draws should
+appear unless someone secures an income-edge in the long run, while rf
+cards are important to grow a lead.</p></li>
+<li><p>Games in theory should last way longer, thus be more
+positional.</p></li>
+</ul></li>
+<li><p>High offense, Low defense (e.g. 0.75/0.50), the Timid Lands case
+<span id="Reverse_Kill_Rates"
+data-label="Reverse_Kill_Rates"></span></p>
+<ul>
+<li><p>The break ratio is now at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.33</mn><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">1.33\times D</annotation></semantics></math>
+which rounds to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>1.35</mn><mo>−</mo><mn>1.45</mn></mrow><annotation encoding="application/x-tex">\approx 1.35 - 1.45</annotation></semantics></math>
+with SR bumps.</p></li>
+<li><p>In reality, the defenders kill 50% of what they face, so the
+attacker keeps half their stack to push deeper. The attacker has the
+advantage.</p></li>
+<li><p>Taps don’t decide the fight since a simple +1/-1 change rarely
+affect the fight. 2 attacks become incredibly powerful as 2 attackers
+kill 2 defenders.</p></li>
+<li><p>As a defender sometimes you’d rather out-delay your opponent and
+attack your own territories for better ratios.</p></li>
+<li><p>Stalemates don’t happen. Wide income-rich maps become viable
+because you can sprint across empty territories without bogging down.
+Choke maps lose value, choke-points don’t hold. Overall the game becomes
+more about initiatives, than position and finesse. If you can hit first,
+do it</p></li>
+</ul></li>
+<li><p>Low offense, High defense (e.g. 0.50/0.80)</p>
+<ul>
+<li><p>Breat ratio explodes past
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.0</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">2.0 \times</annotation></semantics></math>
+and defenders shred 80% of what survives.</p></li>
+<li><p>Position flips. The game becomes all about choke-points and taps
+and breakpoints. Pure expansion race stalls, doesn’t matter.</p></li>
+<li><p>Gameplay is highly methodical, puzzle-like. Secure a choke-point,
+outexpand slowly, or force a break through multi-front pressure or
+hiding income/armies.</p></li>
+</ul></li>
+</ol>
+<h3 id="stalemates">Stalemates</h3>
+<p>If we denote:</p>
+<ul>
+<li><p>A as the attackers before deploys</p></li>
+<li><p>D as the defenders before deploys</p></li>
+<li><p>IA, ID the armies each side adds that turn (trasfer ins, income,
+cards etc)</p></li>
+</ul>
+<p>,then after deploys:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>A</mi><mo>′</mo></msup><mo>=</mo><mi>A</mi><mo>+</mo><mi>I</mi><mi>A</mi><mo>−</mo><mn>1</mn><mo>−</mo><mi>r</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mn>0.70</mn><mi>D</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>D</mi><mo>′</mo></msup><mo>=</mo><mi>D</mi><mo>+</mo><mi>I</mi><mi>D</mi><mo>−</mo><mn>1</mn><mo>−</mo><mi>r</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mn>0.60</mn><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>I</mi><mi>A</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+A&#39; = A + IA - 1 - round(0.70D) \\
+D&#39; = D + ID -1 - round(0.60(A+IA-1))
+\end{cases}</annotation></semantics></math></p>
+<p>A hard stalemate occurs when both sides land on a fixed point where
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>A</mi><mo>′</mo></msup><mo>=</mo><mi>A</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>D</mi><mo>′</mo></msup><mo>=</mo><mi>D</mi></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+A&#39; = A \\
+D&#39; = D
+\end{cases}</annotation></semantics></math></p>
+<p>, which in plain english means, <strong>The extra armies the attacker
+brings each turn must be exactly offset by the extra kills the defender
+scores (and vice versa)</strong>. Take for example this Earthsea <a
+href="https://www.warzone.com/MultiPlayer?GameID=36770903">game</a>.<br />
+<br />
+</p>
+<ul>
+<li><p>The situation is 5vs1 before deployments</p></li>
+<li><p>IA = 6, ID = 7</p></li>
+<li><p>Attacker kills 7, Defender kills 6</p></li>
+<li><p>Down to 6vs1 again, exactly offsetting the deployments.</p></li>
+</ul>
+<p>Another example of it takes place in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=12851727">Sri Lanka
+game</a>, where the position before deployments is 9vs1 at 8vs10 income
+and the attacker can never break no matter how much they try. due to the
+8:10 trade happening every turn.<br />
+<br />
+While these don’t happen often, sometimes as the defender this might be
+your only resort to equalizing the game. Always keep in mind that
+stalemates will happen when the offset of deployed income is equalized
+by the offset from the army trade.</p>
+<ul>
+<li><p>6vs1 armies, 6vs7 income, every trade is 6:7. Attacker deploys
+one less income every turn, gets +1 defender killed every turn, we go
+back to the same position at 6vs1.</p></li>
+<li><p>1vs9 armies, 10vs8 income, every trade is 8:10</p></li>
+<li><p>10vs3 armies, 10vs11 income, attacker sends 19, kills 11.
+defender kills 10. We end up at 10vs3 again.</p></li>
+<li><p>5vs3 armies, 6vs6 income. attacker sends 10, kills 6. defender
+attacks 6 from his 9, we end up at 5vs3 again. This one though is a soft
+lock. If the defender taps, he exists the loop and we avoid the
+stalemate.</p></li>
+</ul>
+<p>Lastly, stalemates can occur in INSS templates in situations where
+both players end up at 0 income unable to move forward, as for example
+in <a
+href="https://www.warzone.com/MultiPlayer?GameID=33412724">this</a> and
+<a href="https://www.warzone.com/MultiPlayer?GameID=17799177">this</a>.
+In general if this ever happens to you in an MTL game, the official
+guideline is at <a
+href="https://www.warzone.com/Forum/734956-join-multitemplate-ladder-mtl?Offset=44">this
+Forum post</a> where two players vote-to-ended a game. Don’t do it,
+instead find common ground, most likely at remaking the game.</p>
+</body>
+</html>

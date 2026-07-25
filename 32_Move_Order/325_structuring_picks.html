@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>325_structuring_picks</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="structuring-picks">Structuring Picks</h2>
+<p>All of the important principles are very clearly written in <a
+href="http://nghood.com/pages/warzone/strategyguide">M’Hunters Warlight
+Strategy Guide</a>. (Alternative <a
+href="https://warlight.nghood.com/index.html">link</a>), something I
+suggest revisiting. I will not delve too deep into different picksets
+here, as this is case specific for each template and distribution, but
+rather use this to just comment on how to structure picks properly given
+a strategy and knowing your ABBA.<br />
+<br />
+In the previous section when you saw the table you surely must be
+wondering why know all this. In reality, you do not need to memorize the
+combinations (sometimes), it is but a guideline for what you can expect.
+Take for example templates with 3 initial territories. We sometimes see
+in the distribution an FTB or a big income region and think to ourselves
+I will do 3/4/5/6 in that area, or 3/4/5 to counter that area and 6th
+somewhere else. The fault in this logic comes with assuming that we will
+always get our 1/2 and have our 3rd pick as a counter pick. If we lose
+one of our first 2 picks, then we suddenly find ourselves with a cluster
+at 3/4/5. In other words, sometimes we should deviate from the 1/2 safe
+3/4/5 counter logic to a 1/2/3 safe 4/5/6 counter logic, with 1/2 combo
+and 3 safe, or gamble 1 safe 2/3 combo, or completely disregard both
+ideas and go for more versatile picks. Examples of this backfiring in <a
+href="https://www.warzone.com/MultiPlayer?GameID=39323183">1v1
+Ladder</a>, <a
+href="https://www.warzone.com/MultiPlayer?GameID=40124025">Slow
+Burn</a>, <a
+href="https://www.warzone.com/MultiPlayer?GameID=15035176">Strat
+ME</a>.<br />
+<br />
+Depending on the distribution in the game we can formulate picks based
+on what we expect to get or lose. For example in this <a
+href="https://www.warzone.com/MultiPlayer?GameID=40132924">Malvia</a>
+game, the yellow +4 west as a first pick controls two FTBs. Besides
+that, there is immediate expansion to every direction while also
+controlling the south +5 and +4 with the neutral double borders within 1
+move. At the same time, north east provides fast income in 2 ways, the
+no deploy +2 combo and the ftb +3 in the islands. If the two players A
+and B split 1-4, then player A will get 5 and 8, while B gets two
+consecutive at 6,7. What this means effectively, is that the plan of:
+combo 1-2, then combo 3-4, then cover a region with 5-6-7-8, risks a
+pickset like 1,4,5,6 with two picks in the region you wanted to cover
+last. Meanwhile, your opponent could in theory have 2,3, a safe pick
+somewhere else, and a last pick neighboring your 5,6. Therefore, for
+each combo you expect to split, you can push cover picks later on your
+pickset.<br />
+<br />
+Another important idea during picks is knowing how to ensure coverage,
+or should I rephrase, setup your picks in a specific way so that you
+reduce the variance while picking. Ask yourself this question: In a 4
+initial territory template like Malvia, are there any scenarios where I
+can lose 4 consecutive picks? What about 3 consecutive picks? What if I
+want to cover a region with my 3/4/5, is it ever possible losing that
+triple combination? Same goes for something like 4/5/6, or 5/6/7. The
+answers lie in Table <a href="#tab:4territories_consecutive"
+data-reference-type="ref"
+data-reference="tab:4territories_consecutive">1</a>.</p>
+<table id="tab:4territories_consecutive">
+<caption>Picking Combinations for 4 Initial Territories with Missing
+Picks</caption>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>n Consecutive</strong></td>
+<td style="text-align: left;"><strong>Combination</strong></td>
+<td style="text-align: left;"><strong>Picking Phase</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Missing</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>n Consecutive</strong></td>
+<td style="text-align: left;"><strong>Combination</strong></td>
+<td style="text-align: left;"><strong>Picking Phase</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Missing</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[1, 2, 3, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{4, 5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 4, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 3, 4, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 6, 7]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{3, 4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 4, 5, 6]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{2, 3}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 4, 5, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{2, 3}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 4, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{2, 3}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 6]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{3, 4}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{3, 4}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{3, 4}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 6, 7]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 7]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 4, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>There are a lot of takeaways from this, but the simplest ones
+are:</p>
+<ol>
+<li><p>Covering an area or an FTB with 3/4/5 and losing all three
+guarantees a 1/2/6/7 with known move order.</p></li>
+<li><p>Covering an area or an FTB with 5/6/7 and losing all three, gives
+intel on move order and one of the combinations in the table.</p></li>
+<li><p>Expanding on that, you can lose 3/4/5 (get 1/2/6/7), you can lose
+2/4/5 (get 1/3/6/7) and you can lose 1/4/5 (get 2/3/6/7). So if you can
+afford losing that sequence you control the outcome. If you can’t afford
+losing all three because it is an FTB or a region you deem worthy of
+stacking, the latest you can guarantee coverage is at 2/3/5 (impossible
+to lose all three). You can lose 2/3/6 by getting first pick and a
+combination of 1/4/5 and a last pick on 7 or 8. If you think of picks by
+imagining the ABBA table these should make sense.</p></li>
+<li><p>Losing 2/3 translates to getting 1/4/5 and knowing move
+order.</p></li>
+<li><p>Losing 3/4 translates to getting 1/2/5 100% of the time. This
+does mean that you can use 5 to immediately counter 3/4, however you can
+position 5 somewhere that will counter the expansion from 3/4 while
+having a positional advantage.</p></li>
+<li><p>Losing 4/5 means you guarantee 2/3/6.</p></li>
+</ol>
+<p>Some players actively think about these things. Some others have an
+amazing intuition and it comes to them naturally. Some others tend to
+forget and write things down, like me. Let’s look fast at some games
+purely to evaluate the picks based on possible combinations, starting
+with <a href="https://www.warzone.com/MultiPlayer?GameID=34661130">this
+Guiroma</a> game.</p>
+<ul>
+<li><p>The 2/3/4 combination around Illyricum, the most efficient bonus
+on the map, guarantees coverage, as it is impossible to lose 2/3/4 as
+well as 2/3/5. Choosing to do 4 Illy instead of 5 comes simply from
+wanting to get that triple pick, as it is dominating.</p></li>
+<li><p>3 in Asia instead of Illyricum as losing 1, guarantees 2/3, and 3
+is the latest of the two, providing coverage in the whole Turkey income
+region. 2 can be completed by the end of t1.</p>
+<ul>
+<li><p>Consider adrenaline’s 1/2/3/4 only. At worst he gets only two of
+the four picks. There are two paths moving on with picks from here. One
+of them revolves doing 5 in a safe bonus, then 6/7/8 in an income
+region. The other revolves around doing 5/6 in one region and 7/8 in
+another region. The first, involves the 50-50% risk of losing coverage.
+The latter involves the possibility of getting 5/6 vs a situation where
+your opponent gets a safe pick and a counter to your 5/6. This dilemma
+is something that depends on your comfort as well as the distribution
+give to you.</p></li>
+<li><p>If you scout completed games by the best players in the website,
+you will see a trend where the 5/6 and 7/8 style is preferred. To me,
+the answer lies in the size of the map and the number of areas you deem
+worthy of ensuring coverage. after 1-4 there is only one region left, it
+might be worth it going for 5 safe into 6/7/8 cover, planning to get
+1/4/5/8 or 2/3/6/7. If there’s multiple regions, then 5/6 into 7/8
+eliminates the coinflip of whether i get my choice of safe 5 or
+not.</p></li>
+</ul></li>
+</ul>
+<p>Ultimately, remember that every scenario is unique and every set can
+be countered the weirdest blind counter in existence.<br />
+<br />
+It becomes increasingly fruitless to construct a matrix similar to Table
+<a href="#tab:4territories_consecutive" data-reference-type="ref"
+data-reference="tab:4territories_consecutive">1</a> for more than 5
+Initial Territory maps, as the pick combinations are way too many.
+Nevertheless, maybe this Table <a href="#tab:5territories_consecutive"
+data-reference-type="ref"
+data-reference="tab:5territories_consecutive">2</a> is useful to
+you.</p>
+<table id="tab:5territories_consecutive">
+<caption>Picking Combinations for 4 Initial Territories with Missing
+Picks (excluded combos (2,3)(3,4))</caption>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>n Consecutive</strong></td>
+<td style="text-align: left;"><strong>Combination</strong></td>
+<td style="text-align: left;"><strong>Picking Phase</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Missing</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>n Consecutive</strong></td>
+<td style="text-align: left;"><strong>Combination</strong></td>
+<td style="text-align: left;"><strong>Picking Phase</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Missing</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><code>[1, 2, 3, 4, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6, 7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[1, 2, 3, 8, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{4, 5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[1, 2, 3, 4, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6, 7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[1, 2, 3, 5, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[1, 2, 4, 5, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[1, 3, 4, 5, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>[2, 3, 4, 5, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 4, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 5, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 3, 4, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 3, 5, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[2, 3, 4, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[2, 3, 5, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 5, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 4, 5, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 3, 4, 5, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[2, 3, 4, 5, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 4, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 4, 8, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 3, 4, 8, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{5, 6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 7, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 7, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 3, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 6, 7, 8]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{3, 4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 6, 7, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{3, 4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>[1, 2, 6, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{3, 4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 6, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 5, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 6, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 5, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 6, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{8, 9}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 5, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 4, 5, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 6, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 5, 6, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{7, 8}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 5, 8, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 5, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 5, 8, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 4, 5, 8, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 5, 8]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{6, 7}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 4, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 7, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 7, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 7, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 7, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 4, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 4, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 7, 8]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 7, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 4, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{5, 6}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6, 7]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6, 8]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6, 9]</code></td>
+<td style="text-align: left;"><span style="color: red">first</span>,
+<span style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 2, 3, 6, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 6, 7, 8]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 6, 7, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[1, 3, 6, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 6, 7, 8]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 6, 7, 9]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>[2, 3, 6, 7, 10]</code></td>
+<td style="text-align: left;"><span
+style="color: CustomBlue">second</span></td>
+<td style="text-align: center;">{4, 5}</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Some links I need for specific templates later <a
+href="https://www.warzone.com/MultiPlayer?GameID=26520726">Malvia</a> <a
+href="https://www.warzone.com/MultiPlayer?GameID=27346932">Malvia</a> <a
+href="https://www.warzone.com/MultiPlayer?GameID=40193312 ">Phobia</a></p>
+</body>
+</html>

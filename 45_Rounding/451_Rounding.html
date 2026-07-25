@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>451_Rounding</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="rounding">Rounding</h1>
+<p>This section is for me asking Optimum every other week whether
+sanction rounds up or down. I’ll try to include every rounding
+interaction here for fast tracing. <a
+href="https://www.warzone.com/Forum/230870-rounding-5-reference">Forum</a>
+for reference.</p>
+<h2 id="sanctions">Sanctions</h2>
+<p>Depends how you see it.</p>
+<ul>
+<li><p>The fractional penalty rounds DOWN.</p></li>
+<li><p>Overall it rounds Up.</p></li>
+<li><p><a
+href="https://www.warzone.com/MultiPlayer?GameID=36855257">Turn 5</a>.
+Rufus sanctions PS. One way to look at it:</p>
+<ol>
+<li><p>PS was at 10 income before sanctions</p></li>
+<li><p>Sanctions hit 25%. -&gt; 2.5. PS’ income rounded to
+10-2.5=7.5</p></li>
+<li><p>7.5 becomes 8, Sanctions round UP.</p></li>
+</ol>
+<p>Another way to look at it:</p>
+<ol>
+<li><p>PS was at 10 income before sanctions</p></li>
+<li><p>Sanctions hit 25% -&gt; 2.5. The fractional penalty of 2.5 rounds
+to 2. It rounds DOWN.</p></li>
+<li><p>Final income is 10-2=8</p></li>
+</ol></li>
+</ul>
+<p>In the Forum it says it rounds down, to me it always rounded up. You
+can find tables for sanctions on the Cards section.</p>
+<h2 id="reinforcement-card">Reinforcement Card</h2>
+<p>Rounds DOWN</p>
+<ul>
+<li><p>Exception: Anything less than 1 army always rounds UP, you don’t
+get a rf of +0.</p></li>
+<li><p>RF Card Rounds DOWN.</p></li>
+<li><p>No example for it, in Tarabonia’s Switch it’s 40%, no
+0.5.</p></li>
+<li><p>50% RF for 5 turns =2.5 -&gt; +2 RF card.</p></li>
+</ul>
+<h2 id="emergency-blockade-blockade">Emergency Blockade &amp;
+Blockade</h2>
+<p>Rounds DOWN</p>
+<ul>
+<li><p><a
+href="https://www.warzone.com/MultiPlayer?GameID=41361948">Turn 6</a>.
+250% blockade at 3 armies. 3-&gt;7.5. Rounds DOWN to 7. Same for
+Emergency Blockade!</p></li>
+</ul>
+<h2 id="bomb">Bomb</h2>
+<p>Rounds DOWN</p>
+<ul>
+<li><p>Bombing 5 armies -&gt; 5 * 50% = 2.5 -&gt; Rounds to 2. Kills
+Extra.</p></li>
+</ul>
+<h2 id="kill-rates">Kill Rates</h2>
+<p>Rounds UP</p>
+<ul>
+<li><p>5 Defenders at 70% kill rate kill 3.5 -&gt; 4 attackers.</p></li>
+<li><p>2 Attackers at 75% kill rate kill 1.5 -&gt; 2 defenders.</p></li>
+</ul>
+<h2 id="attack-by-percentage">Attack by Percentage</h2>
+<p>Rounds DOWN</p>
+<ul>
+<li><p>5 movable armies and 50% attack -&gt; 5* 50% = 2.5 -&gt; Rounds
+down to 2.</p></li>
+</ul>
+</body>
+</html>

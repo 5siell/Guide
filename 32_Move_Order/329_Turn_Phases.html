@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>329_Turn_Phases</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="turn-phases">Turn Phases</h2>
+<p>In reference to <a
+href="https://www.warzone.com/wiki/Turn_phases">Wikipedia on Turn
+phases</a>, understanding this is vital to a lot of tricks as well as
+strategy in general. There are distinct phases where each action takes
+place, with those being the below. These turn phases are absolute, they
+are applied 24/7, unless there is a Mod in the game bypassing a
+mechanic. The list is taken from the Wikipedia, but isn’t entirely
+correct with some details like the diplomacy card wearing off after
+receiving new cards.</p>
+<ol>
+<li><ol>
+<li><p>Active Cards wear off</p></li>
+<li><p>Discards</p></li>
+</ol></li>
+<li><ol>
+<li><p>Order Priority Cards</p></li>
+<li><p>Spy-like Cards</p></li>
+<li><p>Reinforcement Cards</p></li>
+</ol></li>
+<li><p>Deploy / Purchase</p></li>
+<li><ol>
+<li><p>Bomb Cards</p></li>
+<li><p>Emergency Blockade</p></li>
+<li><p>Airlift Cards</p></li>
+<li><p>Gift Cards</p></li>
+</ol></li>
+<li><p>Attacks/Transfers and Order Delay Cards</p></li>
+<li><p>Blockade</p></li>
+<li><p>Sanction Cards</p></li>
+<li><p>Receive new cards</p></li>
+</ol>
+<p>The move order isn’t applied in all of the Turn Phases, albeit it is
+in some:</p>
+<ol>
+<li><p>Active Cards wear off</p></li>
+<li><p>Discards</p></li>
+<li><p>Order Priority Cards</p></li>
+<li><p>Spy-like Cards</p></li>
+<li><p>Reinforcement Cards: They are executed in the same order as the
+turn. <a href="https://www.warzone.com/MultiPlayer?GameID=40211798">For
+example, Turn 9</a>.</p></li>
+<li><p>Deploy / Purchase: They are executed in the same order as the
+turn.</p></li>
+<li><p>Bomb Cards: clueless</p></li>
+<li><p>Emergency Blockade: They are executed in the same order as the
+turn. <a href="https://www.warzone.com/MultiPlayer?GameID=37399642">For
+example, turns 15,19,44</a>.</p></li>
+<li><p>Airlift Cards: clueless and haven’t bothered to check.</p></li>
+<li><p>Gift Cards: They are executed in the same order as the turn. <a
+href="https://www.warzone.com/MultiPlayer?GameID=40266635">For
+Example</a>.</p></li>
+<li><p>Attacks/Transfers and Order Delay Cards</p></li>
+<li><p>Blockade: They are executed in the same order as the turn. <a
+href="https://www.warzone.com/MultiPlayer?GameID=26656413">For Example,
+Turn 20</a>.</p></li>
+<li><p>Sanction Cards: They are executed in the same order as the turn.
+<a href="https://www.warzone.com/MultiPlayer?GameID=34305927">For
+Example, Turn 5</a>.</p></li>
+<li><p>Receive new cards: One of the players is selected (no idea as to
+the rule) and that player is always first in that list. <a
+href="https://www.warzone.com/MultiPlayer?GameID=33173841">For
+example</a>. Therefore, this cannot be used to either derive the move
+order, or gain any advantage.</p></li>
+</ol>
+<p>There are a handful of small things one can note of, but most of them
+are extremely case-specific. As an example, in Georgia Army Cap and
+Landria the players have an abundance of Blockades. It’s always
+recommended to first blockade territories bordering your opponent so as
+to avoid passing information on how many territories you blockaded or
+how many cards you used.</p>
+<h3 id="OD and phases">Order Delay and Phases</h3>
+<p>So the first mention of this that I found dates back to <a
+href="https://www.warzone.com/Forum/152388-move-order?Offset=0">2016</a>.
+But before we jump deep into this, let’s first understand the way OD
+functions with this <a
+href="https://www.warzone.com/MultiPlayer?GameID=38665549">Game, and
+Turns 10,17</a> in Figures <a href="#od1" data-reference-type="ref"
+data-reference="od1">[od1]</a> and <a href="#od2"
+data-reference-type="ref" data-reference="od2">1</a>.</p>
+<figure id="od2" data-latex-placement="H">
+<div class="minipage">
+<img src="Images/od1.jpg" style="height:15cm" />
+</div>
+<div class="minipage">
+<img src="Images/od2.jpg" style="height:15cm" />
+</div>
+<figcaption>Turn 17</figcaption>
+</figure>
+<p>Playing an OD card effectively creates a new phase for orders to
+execute in. Playing a set of OD cards at the same time, or more, pushes
+moves to a second, or latter phase, respectively. But you can que moves
+between each OD phase. The arising question is what happens with the
+move order, as in the above 2016 forum, quoting this <a
+href="https://www.warzone.com/multiplayer?GameID=11157247">game</a>,
+turn 7 doesn’t seem to make any sense. Fizzer’s response to it <a
+href="https://www.warzone.com/Forum/152388-move-order?Offset=20">was</a>:</p>
+<ol>
+<li><p>Consider all players with unprocessed orders. Is the top order
+for everyone an OD?</p>
+<ul>
+<li><p>If so, process one OD from everyone.</p></li>
+</ul></li>
+<li><p>Process top order from each player whose top order is not an
+order delay card.</p></li>
+<li><p>Reverse the move order</p></li>
+<li><p>If there are still unprocessed orders, go to 1</p></li>
+</ol>
+<p>So to explain it further, in that game on Turn 7, first move belongs
+to Sultan. After deployments, the above algorithm is implemented.</p>
+<ol>
+<li><p>1. Is skipped since not both players have OD first</p></li>
+<li><p>2. Njord’s first move is played</p></li>
+<li><p>3. Move order is reversed, meaning next move will belong to
+njord, followed by 2x from sultan, etc.</p></li>
+<li><p>4. If there were unprocessed orders this algorithm repeats. Here
+there aren’t. The set of ODs is played.</p></li>
+</ol>
+<p>Practically speaking, this algorithm implies that moves in this game
+are coded as AB pairs and not ABBA pairs, with the order flipped after
+each pair. If A has a move while B doesn’t then the order will still be
+flipped if the turn has more actions later on during an OD. Now I will
+use the same simple matrix used in <a
+href="https://www.warzone.com/Forum/694458-new-trick-solarflare">Gak’s
+and Solar’s trick</a> to define a set of ODs as well as the actions
+before, inbetween and after those.</p>
+<div class="wrapfigure">
+<p><span>r</span><span>0.35</span> <img src="Images/odtrick.jpg"
+style="width:25.0%" alt="image" /></p>
+</div>
+<p>Applying the same algorithm on <a
+href="https://www.warzone.com/MultiPlayer?GameID=40150939">Turn 19</a>
+as well as <a
+href="https://www.warzone.com/MultiPlayer?GameID=26880828">Turn 19</a>
+proves that in the before ODs phase:</p>
+<ul>
+<li><p>Playing a single move results in the move order always getting
+flipped. So, <a
+href="https://www.warzone.com/MultiPlayer?GameID=40150939">here</a>, on
+Turn 19 Krzysztof has first move, has 1 order in the before OD phase.
+Move order then is reversed to 1. nickpugs 2. Krzysztof. Set of ODs is
+played, followed by 1 move from nickpugs, 2 from Krzysztof and so
+on.</p></li>
+<li><p>If there are no moves played, the move order is not flipped <a
+href="https://www.warzone.com/MultiPlayer?GameID=33954581">Turn
+1</a>.</p></li>
+<li><p>If there are 2 moves played, the move order is flipped twice,
+practically speaking going back to the original one, like <a
+href="https://www.warzone.com/MultiPlayer?GameID=26880828">Turn
+19</a>.</p></li>
+<li><p>3 onward you get the memo.</p></li>
+</ul>
+<p>When 2 sets of ODs are played like in <a
+href="https://www.warzone.com/MultiPlayer?GameID=33173841">Turn 37</a>,
+the algorithm is still run as above. Specifically:</p>
+<ol>
+<li><p>1. Yes the top order from both is an OD-&gt; 1st set of ODs is
+played</p></li>
+<li><p>2. No order found in this setep to process</p></li>
+<li><p>3. Move order is reversed. Now Crazy has first move.</p></li>
+<li><p>4. There are still unprocessed orders so back to 1.</p></li>
+<li><p>1. The second set of ODs is played.</p></li>
+<li><p>2. Crazy’s first move is played. Move Order reversed, no more
+ODs, proceed into 2x Gak etc</p></li>
+</ol>
+<p>The trick behind these, is that the game treats 0-moves in the same
+way it treats every other order, as it doesn’t know the orders will
+fail. Therefore, you can use a failed 0-move like in <a
+href="https://www.warzone.com/MultiPlayer?GameID=37574317">Turn 7</a> to
+make sure the cycle after the set of ODs favors you (Rufus playing 2
+moves before the set of ODs makes it that the order is not flipped and
+he has first move after the set of ODs, especially since Rufus plays an
+OP himself). You can scout for more scenarios in Solar’s games <a
+href="https://www.warzone.com/MultiPlayer?GameID=33965256">1</a> and <a
+href="https://www.warzone.com/MultiPlayer?GameID=33954581">2</a>.</p>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>022_Guiroma</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h4 id="guiroma">Guiroma</h4>
+<h5 id="outline">Outline</h5>
+<p>Treat it like vanilla SR with 4 picks per player. Small map -&gt;
+early contact -&gt; max Income T1/T2 or T3. RMO -&gt; you can get bailed
+out with a dice-roll &amp; you also sometimes can’t convert an advantage
+due to luck.</p>
+<p><a href="https://www.youtube.com/watch?v=jTnh64g0Edo"
+class="uri">https://www.youtube.com/watch?v=jTnh64g0Edo</a><br />
+<a
+href="https://www.warzone.com/Forum/382353-allgemeine-rangordnung-der-boni-auf-guiroma"
+class="uri">https://www.warzone.com/Forum/382353-allgemeine-rangordnung-der-boni-auf-guiroma</a><br />
+4x5, neutrals 2/4, wastelands 15/3, base: +5</p>
+<h5 id="map-dynamics">Map Dynamics</h5>
+<p>Guiroma’s map (Imperium Romanum) favors specific regions/bonuses.
+Using Figure <a href="#guiroma_winrates" data-reference-type="ref"
+data-reference="guiroma_winrates">1</a>:</p>
+<figure id="guiroma_winrates" data-latex-placement="H">
+<img src="Images/guiroma.jpg" style="width:90.0%" />
+<figcaption>Guiroma Chokepoints and WR</figcaption>
+</figure>
+<ul>
+<li><p>The map has compartments with bottlenecks that allow easy
+defense.</p>
+<ol>
+<li><p>Asia - the whole Turkey area + Arabia. You only need to protect 3
+chokepoints to control this area: Pelusium in Egypt, Crete in Greece,
+and Byzantium between Thracia and Asia. If you control these, you win.
+At the start of the game, run the algorithm:</p>
+<ul>
+<li><p>Can Egypt counter Arabia?</p></li>
+<li><p>Can Syria counter Arabia?</p>
+<p>If the answer to both is no, and Arabia can be picked, then Arabia is
+a safe but boring first pick (not always the best pick). Examples: <a
+href="https://www.warzone.com/MultiPlayer?GameID=36627592">1</a>, <a
+href="https://www.warzone.com/MultiPlayer?GameID=36565091">2</a>, <a
+href="https://www.warzone.com/MultiPlayer?GameID=34480255">3</a>.
+However, sometimes you might not pick Arabia first to avoid being
+predictable. If you lose Arabia and need coverage for Asia, the counters
+are basically Thracia, Greece, Sicily, and Egypt. Example: <a
+href="https://www.warzone.com/MultiPlayer?GameID=35593018">here</a>. My
+5/6 are long-term Asia counters in case I lose my first pick, which of
+course, I lost.</p></li>
+</ul>
+<p>Asia is so good that Arabia is the most picked bonus on the map
+(273/450 games) with 56% WR. Asia/Ponticia/Syria all have &gt;50% WR and
+2/3 of it’s counters, Illyricum and Thracia rock 60% WR.</p></li>
+<li><p>The Italy/Greece region has safe and slow in expansion bonuses.
+In these settings of 4 spawns in such a small map, a safe spawn for max
+Income T1/T2 and contact is usually enough. Southern Italy +3 suffers no
+double border and counters Greece. This justifies it being the
+second-best area/bonus on the map. It’s the only super-efficient bonus
+on the map but is counterable by almost everything. High risk, high
+reward.</p></li>
+<li><p>Central Europe: Usually becomes a brawl and is contested. Also
+might be a noob-trap.</p></li>
+<li><p>Spain/France: Tarraconensis &gt; Southern Gaul &gt; Narbonensis
+usually. All other bonuses are very situational. Great region, rich in
+expansion, has 2 chokepoints you’d want to secure.</p></li>
+<li><p>Central Africa: Despite appearing appealing, it has awful
+expansion, and usually a pick there means you don’t have a cover pick in
+an area that outputs more income. Example: <a
+href="https://www.warzone.com/MultiPlayer?GameID=25701044"
+class="uri">https://www.warzone.com/MultiPlayer?GameID=25701044</a>.</p></li>
+</ol></li>
+</ul>
+<h5 id="gameplay-ideas">Gameplay &amp; Ideas</h5>
+<p>Guiroma acts similarly to any vanilla SR template in that you want a
+combination of a) max Income on contact and b) better position. I have
+heard of an argument for RMO existing in Guiroma because in certain
+distributions First Pick is extremely powerful, not only due to Arabia’s
+existence, but because in 4-pick templates 1st pick gets both first and
+last pick (1/4/5/8 vs 2/3/6/7). It’s a controversial topic I will not
+delve into.<br />
+<br />
+Max Income end of Turn 1 is 12 with a tap in a setup that has exactly 2x
++2 Bonuses and a combo +3 bonus to be completed with a tap.
+Realistically speaking, the max Income is 11 through configurations such
+as:</p>
+<ul>
+<li><p>+3 FTB, +1 like a Sicily spawn, &amp; a combo +2 Bonus.</p></li>
+<li><p>2x +2 bonuses, &amp; a combo +2 Bonus.</p></li>
+</ul>
+<p>In reality, the optimal transition involves a setup of 8-10 Income
+end of Turn 1 and 13-16 Income end of Turn 2 (as long as you plan to
+have contact on Turn 2 or Turn 3, which is 90% of the time the case in
+Guiroma). Setups like:</p>
+<ul>
+<li><p><a
+href="https://www.warzone.com/MultiPlayer?GameID=40882156">5-&gt;9-&gt;16</a>
+with Bonuses of size 2/2/3/4. That’s the max.</p></li>
+<li><p><a
+href="https://www.warzone.com/MultiPlayer?GameID=40882156">5-&gt;9-&gt;15</a>
+(same game different perspective) with Bonuses of size 2/2/3/3 and a
+counter. Or <a
+href="https://www.warzone.com/MultiPlayer?GameID=40742256">5-&gt;9-&gt;15</a>
+by Octane with a 6-attack.</p></li>
+</ul>
+<p>Illyricum rolls the map even as a double pick like <a
+href="https://www.warzone.com/MultiPlayer?GameID=36808169">here</a> and
+<a href="https://www.warzone.com/MultiPlayer?GameID=26520244">here</a>
+(even with a wasteland).<br />
+<br />
+The 8th pick in Guiroma intuitively combos with the 1st pick, while the
+7th combos with the 2nd. This fits games like <a
+href="https://www.warzone.com/MultiPlayer?GameID=40568482">this one</a>
+and the Italy synergy.</p>
+</body>
+</html>
