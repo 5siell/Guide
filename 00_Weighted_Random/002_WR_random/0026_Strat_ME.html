@@ -31,16 +31,18 @@
 </head>
 <body>
 <nav class="site-nav">
-    <a href="../../index.html">🏠 Αρχική</a>
-    <select onchange="if(this.value) window.location.href=this.value">
-        <option value="">-- Μετάβαση σε Κεφάλαιο --</option>
-        <option value="../../30_Abstract-Introduction/301_Abstract.html">1. Abstract</option>
-        <option value="../../30_Abstract-Introduction/302_Introduction.html">1. Introduction</option>
-        <option value="../../36_Useful_Links/36_Useful_Links.html">2. Useful Links</option>
-        <option value="../../32_Move_Order/32_Move_Order.html">4. Move Order & Picking Phase</option>
-        <option value="../../02_General_Gameplay/02_General_Gameplay.html">5. General Gameplay</option>
-        <option value="../../33_Card_Settings/33_Card_Settings.html">7. Card Settings</option>
-    </select>
+    <a href="../../index.html" class="home-btn">🏠 Αρχική</a>
+    <div class="dropdown">
+        <button class="dropbtn">Μενού Κεφαλαίων ▼</button>
+        <div class="dropdown-content">
+            <a href="../../30_Abstract-Introduction/301_Abstract.html">1. Abstract</a>
+            <a href="../../30_Abstract-Introduction/302_Introduction.html">1. Introduction</a>
+            <a href="../../36_Useful_Links/36_Useful_Links.html">2. Useful Links</a>
+            <a href="../../32_Move_Order/32_Move_Order.html">4. Move Order & Picking Phase</a>
+            <a href="../../02_General_Gameplay/02_General_Gameplay.html">5. General Gameplay</a>
+            <a href="../../33_Card_Settings/33_Card_Settings.html">7. Card Settings</a>
+        </div>
+    </div>
 </nav>
 <h3 id="strat-me">Strat ME</h3>
 <h4 id="outline">Outline</h4>
